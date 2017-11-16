@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://www.jiaxm.me/2017-07-day/Xshell/</loc>
+        <lastmod>2017-11-16T03:23:36.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://www.jiaxm.me/2017-07-day/Hexo%20Configuration/</loc>
         <lastmod>2017-08-06T07:42:51.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -47,7 +55,7 @@
     </url>
 
     <url>
-        <loc>http://www.jiaxm.me/2017-07-day/ShiCiGeFu/</loc>
+        <loc>http://www.jiaxm.me/2017-07-day/Ubuntu_Rescue_Mode_Repair/</loc>
         <lastmod>2017-08-06T07:42:51.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -63,23 +71,7 @@
     </url>
 
     <url>
-        <loc>http://www.jiaxm.me/2017-07-day/Ubuntu_Rescue_Mode_Repair/</loc>
-        <lastmod>2017-08-06T07:42:51.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://www.jiaxm.me/2017-07-day/python_code/</loc>
-        <lastmod>2017-08-06T07:42:51.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.jiaxm.me/2017-07-day/test/</loc>
         <lastmod>2017-08-06T07:42:51.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
