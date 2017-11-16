@@ -3,6 +3,49 @@
   
     
     <entry>
+      <title></title>
+      <url>/2017-11-day/test/</url>
+      <content type="html"><![CDATA[<h1 id="解法"><a href="#解法" class="header-anchor"></a>1. <a href="#解法" class="headerlink" title="解法"></a>解法</h1><p> $\frac{m<em>{so}}{2630}+\frac{m</em>{so}}{2700}=1-\frac{378}{3100}-\frac{159}{1000}-0.01\times1$    (1)<br>$\frac{m<em>{so}}{m</em>{so}+m<em>{go}}\times100=34$    (2)<br>简单的方法是通过（2）式解出$m</em>{so}$与$m<em>{go}$的关系：<br>$\frac{m</em>{so}}{m<em>{so}+m</em>{go}}\times100=34$<br>$m<em>{so}\times100=34\times(m</em>{so}+m<em>{go})$<br>$m</em>{so}\times100=34\times m<em>{so}+34\times m</em>{go}$<br>$66\times m<em>{so}=34\times m</em>{go}$<br>$m<em>{so}=\frac{34}{66} m</em>{go} = \frac{17}{33}m<em>{go}$  (3)<br>将（3）式得到的$m</em>{so}$与$m<em>{go}$关系式带入（1）式：<br>$\frac{\frac{17}{33}m</em>{go}}{2630}+\frac{m<em>{go}}{2700}=1-\frac{378}{3100}-\frac{159}{1000}-0.01\times1$<br>$m</em>{go}\times(\frac{\frac{17}{33}}{2630}+\frac{1}{2700})=1-\frac{378}{3100}-\frac{159}{1000}-0.01\times1$<br>$m<em>{go}=\frac{1-\frac{378}{3100}-\frac{159}{1000}-0.01\times1}{\frac{\frac{17}{33}}{2630}+\frac{1}{2700}}$<br>$m</em>{go}=1252.2210811520424$<br>所以$m<em>{so}=\frac{17}{33} m</em>{go} = 645.0835872601431$</p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[一些软件的安装步骤(hoomd, gromacs, cuda，etc.)]]></title>
+      <url>/2017-11-day/InstallationManual/</url>
+      <content type="html"><![CDATA[<p>一些软件的安装步骤，以及此过程中遇到的问题的解决办法。<br><a id="more"></a></p>
+<h1 id="服务器软件的安装"><a href="#服务器软件的安装" class="header-anchor"></a>1. <a href="#服务器软件的安装" class="headerlink" title="服务器软件的安装"></a>服务器软件的安装</h1><h2 id="安装cuda"><a href="#安装cuda" class="header-anchor"></a>1.1. <a href="#安装cuda" class="headerlink" title="安装cuda"></a>安装cuda</h2><ol>
+<li>安装cuda经常会遇到问题，但大部分都与如何禁用nouveau驱动相关，所以step-1，需要禁用nouveau驱动。<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">1. 在配置文件中禁用nouveau</div><div class="line">vi /etc/modprobe.d/blacklist.conf  添加：blacklist nouveau</div><div class="line">    CentOS 7:</div><div class="line">     vim /usr/lib/modprobe.d/dist-blacklist.conf$</div><div class="line">    或</div><div class="line">     vim /lib/modprobe.d/dist-blacklist.conf</div><div class="line">    并且在加上blacklist nouveau之后还要加上一行options nouveau modeset=0</div><div class="line">2. 备份原来的 initramfs nouveau image镜像</div><div class="line">mv /boot/initramfs-$(uname -r).img /boot/initramfs-$(uname -r)-nouveau.img  </div><div class="line">3. 创建新的 initramfs image镜像</div><div class="line">dracut /boot/initramfs-$(uname -r).img $(uname -r)  </div><div class="line">注：重启后会发现终端界面字体变大了，不清晰了，表示nouveau禁用成功。</div><div class="line">4. 所有安装已经完成，重新启动机器。</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>2.单独安装nvidia驱动 <code>./NVIDIA-Linux-x86_64-384.90-1080ti.run</code><br>需要注意几点：<br>（1）cuda安装包本身包含两个部分：cuda-toolkit和nvidia driver，再安装cuda的时候是可以选择只安装cuda-toolkit，而省略nvidia driver的（甚至可以从cuda中抽出单独的部分作为一个安装包）<br>（2）1080Ti的显卡需要较新的驱动384.90来支持<br>（3）安装完成后一定要用命令查看一下显卡状态<code>nvidia-smi</code>，如果有错误提示，则安装有问题。</p>
+<ol>
+<li>安装cuda <code>./cuda_9.0.176_384.81_linux-run</code> 不需要装driver<h2 id="hoomd"><a href="#hoomd" class="header-anchor"></a>1.2. <a href="#hoomd" class="headerlink" title="hoomd"></a>hoomd</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(1) mkdir build 然后进入build</div><div class="line">(2) cmake -Wno-dev ../ -DCMAKE_INSTALL_PREFIX=<span class="variable">$HOME</span>/.<span class="built_in">local</span>/hoomd -DCMAKE_BUILD_TYPE=Release -DENABLE_CUDA=On -DCUDA_TOOLKIT_ROOT_DIR=/usr/<span class="built_in">local</span>/cuda -DENABLE_MPI_CUDA=On -DENABLE_MPI=On -DPYTHON_EXECUTABLE=`<span class="built_in">which</span> python2`</div><div class="line">(3) make install -j8</div><div class="line">注意事项：</div><div class="line">1. 确保默认python的是用系统自带的python2</div><div class="line">2. 如果编译并行版本的话，需要安装openmpi，并且做好环境变量</div></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 技术学习 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> hoomd </tag>
+            
+            <tag> gromacs </tag>
+            
+            <tag> cuda </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Xshell 相关]]></title>
       <url>/2017-11-day/Xshell/</url>
       <content type="html"><![CDATA[<p>关于Xshell的设置技巧、使用中遇到的问题~<br><a id="more"></a></p>
@@ -19,6 +62,99 @@
         <tags>
             
             <tag> xshell </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Fortran命令]]></title>
+      <url>/2017-09-day/fortran/</url>
+      <content type="html"><![CDATA[<p>保存fortran的一些常用命令，以作备忘。<br><a id="more"></a></p>
+<p>#有关fortran编程本身</p>
+<h2 id="rewind和backspace的用法"><a href="#rewind和backspace的用法" class="header-anchor"></a>1. <a href="#rewind和backspace的用法" class="headerlink" title="rewind和backspace的用法"></a>rewind和backspace的用法</h2><p>在早期的FORTRAN规范和编译器中，BACKSPACE和REWIND的确与顺序存贮设备–比如磁带机–有关。后来，变成设备无关的语句。但是，可能与文件模式有关。<br>REWIND现在仍然很常用。假如您的程序需要两遍读入同一个文本格式数据文件，当您读完第一遍后，用REWIND回到文件头部。BACKSPACE用于回退一个记录。后面通常加上文件号，这里的记录可以理解为一个回车符号。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> fortran </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> fortran </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[win10系统重装相关]]></title>
+      <url>/2017-08-day/ReinstallSystemBackup/</url>
+      <content type="html"><![CDATA[<p>windows系统用过一段时间后会产生一些系统垃圾，运行变慢，应运而生的“系统瘦身”软件也层出不穷。不过，最好的方法仍是——重装。备份好重要数据，一个win的安装USB就可以在一个下午的时间翻新系统。本文即重装注意事项和数据清单。<br><a id="more"></a></p>
+<h1 id="备份数据"><a href="#备份数据" class="header-anchor"></a>1. <a href="#备份数据" class="headerlink" title="备份数据"></a>备份数据</h1><p>一般我们都将系统分为C盘+D盘（或者还有其他盘）。其中C盘是系统盘，个人重要的数据和软件安装一般放在D盘（or others）中。那么重装的时候清空C盘分区，其他的分区不动即可保存数据。不过，个人安装的软件，除了绿色软件外，基本都无法继续使用。我们正好也借此机会，通过重装软件清空一下软件带来的冗余。</p>
+<h1 id="软件list和相关操作"><a href="#软件list和相关操作" class="header-anchor"></a>2. <a href="#软件list和相关操作" class="headerlink" title="软件list和相关操作"></a>软件list和相关操作</h1><ol>
+<li>Endnote。一是，整个文献库通过compress为一个enl文件备份（其中包含这个lib的所有数据）；二是，Endnote里面的style文件比如，比如Jilin-thesis这种style文件，lib压缩的时候不包括。三是，Endnote x8的安装软件msi+license.dat（from byr）。note:安装完Endnote软件后，拷贝compressed lib到Endnote新建Libs目录，打开即可加载。style文件点击加载，保存即可。[Endnote 8.0已备份移动硬盘]</li>
+<li>xshell+xftp+xmanager。注册码百度即可。xshell，文件-导出-下一步 可以得到包含所有会话的配置（server-user-passwd）。点击加载即可重新使用。[已备份移动硬盘]</li>
+<li>Office。没什么可备份的，有2013版本的软件安装即可。但是要注意之后安装mathtype公式编辑工具。[office2013+mathtype已备份移动硬盘]</li>
+<li>CTEX</li>
+<li>Diskgenius 4.6.2.1 破解版</li>
+<li>FastStone Capture</li>
+<li>Shadowsocks-4.0.5。one of the most important softwares.</li>
+<li>origin</li>
+<li>evernote</li>
+<li>Photoshop CS4直接安装无需破解版本</li>
+<li>uTorrentPortable：uTorrent移动版本的自然是更好操作一些。备份torrents数据，之后拷贝到新系统的uTorrent的data/torrents目录下（其他也可以）。在uTorrent中设置下载的默认路径，指向原来byr的目录。如果下载一个文件到一个文件夹，uTorrent会检查是否有这么一个文件的，如果有会检查文件的完整性然后自动关联上传做种。</li>
+<li>WinRAR</li>
+<li>PotPlayer: windows上强大的播放器。在andorid上推荐xplayer，流畅的飞起。</li>
+<li>Bitvise client/server:用作远程工具</li>
+<li>Adobe reader</li>
+<li>大白菜装机</li>
+<li>百度云</li>
+<li>SoftEther VPN Client</li>
+<li>Chrome</li>
+<li>SougouInput</li>
+<li>Material Studio (it depends.)</li>
+</ol>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> windows </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Markdown Writing]]></title>
+      <url>/2017-07-day/Markdown_Writing/</url>
+      <content type="html"><![CDATA[<p>Markdown语法测试<br><a id="more"></a></p>
+<h1 id="任务列表"><a href="#任务列表" class="header-anchor"></a>1. <a href="#任务列表" class="headerlink" title="任务列表"></a>任务列表</h1><p>在任务项目前面加[]。用[x]表示此项已完成。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- [x] Finish my changes</div><div class="line">- [ ] Push my commits to GitHub</div><div class="line">- [ ] Open a pull request</div></pre></td></tr></table></figure></p>
+<ul>
+<li style="list-style: none"><input type="checkbox" checked> Finish my changes</li>
+<li style="list-style: none"><input type="checkbox"> Push my commits to GitHub</li>
+<li style="list-style: none"><input type="checkbox"> Open a pull request</li>
+</ul>
+<p>注意如果项目内容以（）开始要对（加转义字符\<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- [ ] \(Optional) Open a followup issue</div></pre></td></tr></table></figure></p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> (Optional) Open a followup issue</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> markdown </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> markdown </tag>
             
         </tags>
         
@@ -50,6 +186,111 @@
         <tags>
             
             <tag> markdown </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Learn Numpy The Hard Way]]></title>
+      <url>/2017-07-day/NumPy_Learn/</url>
+      <content type="html"><![CDATA[<p>NumPy, which stands for Numerical Python, is a library consisting of multidimensional array objects and a collection of routines for processing those arrays. Using NumPy, mathematical and logical operations on arrays can be performed<br>一些参考资料：<br><a href="http://scipy-lectures.github.io/intro/numpy/index.html" target="_blank" rel="external">Basics of numpy</a><br><a href="http://scipy-lectures.github.io/intro/numpy/exercises.html" target="_blank" rel="external">Some numpy exercises</a><br><a href="http://scipy-lectures.github.io/advanced/advanced_numpy/" target="_blank" rel="external">Advanced numpy</a><br><a href="http://docs.scipy.org/doc/numpy/reference/" target="_blank" rel="external">Numpy reference</a></p>
+<a id="more"></a>
+<h1 id="numpy的前世今生"><a href="#numpy的前世今生" class="header-anchor"></a>1. <a href="#Numpy的前世今生" class="headerlink" title="Numpy的前世今生"></a>Numpy的前世今生</h1><p><strong>Numeric</strong>, the ancestor of NumPy, was developed by Jim Hugunin. Another package Numarray was also developed, having some additional functionalities. In 2005, Travis Oliphant created NumPy package by incorporating the features of Numarray into Numeric package. There are many contributors to this open source project.</p>
+<h1 id="numpy数值类型"><a href="#numpy数值类型" class="header-anchor"></a>2. <a href="#Numpy数值类型" class="headerlink" title="Numpy数值类型"></a>Numpy数值类型</h1><p>NumPy中的基本数据类型</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">bool</td>
+<td style="text-align:left">用一个字节存储的布尔类型（True或False）</td>
+</tr>
+<tr>
+<td style="text-align:left">inti</td>
+<td style="text-align:left">由所在平台决定其大小的整数（一般为int32或int64）</td>
+</tr>
+<tr>
+<td style="text-align:left">int8</td>
+<td style="text-align:left">一个字节大小，-128 至 127</td>
+</tr>
+<tr>
+<td style="text-align:left">int16</td>
+<td style="text-align:left">整数，-32768 至 32767</td>
+</tr>
+<tr>
+<td style="text-align:left">int32</td>
+<td style="text-align:left">整数，-2 <strong> 31 至 2 </strong> 32 -1</td>
+</tr>
+<tr>
+<td style="text-align:left">int64</td>
+<td style="text-align:left">整数，-2 <strong> 63 至 2 </strong> 63 - 1</td>
+</tr>
+<tr>
+<td style="text-align:left">uint8</td>
+<td style="text-align:left">无符号整数，0 至 255</td>
+</tr>
+<tr>
+<td style="text-align:left">uint16</td>
+<td style="text-align:left">无符号整数，0 至 65535</td>
+</tr>
+<tr>
+<td style="text-align:left">uint32</td>
+<td style="text-align:left">无符号整数，0 至 2 ** 32 - 1</td>
+</tr>
+<tr>
+<td style="text-align:left">uint64</td>
+<td style="text-align:left">无符号整数，0 至 2 ** 64 - 1</td>
+</tr>
+<tr>
+<td style="text-align:left">float16</td>
+<td style="text-align:left">半精度浮点数：16位，正负号1位，指数5位，精度10位</td>
+</tr>
+<tr>
+<td style="text-align:left">float32</td>
+<td style="text-align:left">单精度浮点数：32位，正负号1位，指数8位，精度23位</td>
+</tr>
+<tr>
+<td style="text-align:left">float64或float</td>
+<td style="text-align:left">双精度浮点数：64位，正负号1位，指数11位，精度52位</td>
+</tr>
+<tr>
+<td style="text-align:left">complex64</td>
+<td style="text-align:left">复数，分别用两个32位浮点数表示实部和虚部</td>
+</tr>
+<tr>
+<td style="text-align:left">complex128或complex</td>
+<td style="text-align:left">复数，分别用两个64位浮点数表示实部和虚部</td>
+</tr>
+</tbody>
+</table>
+<h1 id="numpy数组的初始化"><a href="#numpy数组的初始化" class="header-anchor"></a>3. <a href="#Numpy数组的初始化" class="headerlink" title="Numpy数组的初始化"></a>Numpy数组的初始化</h1><p>Numpy的主要数据类型是ndarray，即多维数组。它有以下几个属性：<br>ndarray.ndim：数组的维数<br>ndarray.shape：数组每一维的大小<br>ndarray.size：数组中全部元素的数量<br>ndarray.dtype：数组中元素的类型（numpy.int32, numpy.int16, and numpy.float64等）<br>ndarray.itemsize：每个元素占几个字节</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">np.arange(<span class="number">24</span>).reshape(<span class="number">3</span>,<span class="number">8</span>) <span class="comment"># np.arange初始化数组并reshape</span></div><div class="line"></div><div class="line"><span class="comment">#生成数组赋特殊值：</span></div><div class="line">np.zeros(<span class="number">24</span>)</div><div class="line">np.ones(<span class="number">24</span>)</div><div class="line"><span class="comment"># 由于numpy可以按index取值，所以zeros/ones方法可以用来创建bool数组用于取值</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>np.ones(<span class="number">24</span>, dtype=bool)</div><div class="line">array([ <span class="keyword">True</span>,  <span class="keyword">True</span>,  <span class="keyword">True</span>,  <span class="keyword">True</span>,  <span class="keyword">True</span>,  <span class="keyword">True</span>,  <span class="keyword">True</span>,  <span class="keyword">True</span>,  <span class="keyword">True</span>,</div><div class="line">        <span class="keyword">True</span>,  <span class="keyword">True</span>,  <span class="keyword">True</span>,  <span class="keyword">True</span>,  <span class="keyword">True</span>,  <span class="keyword">True</span>,  <span class="keyword">True</span>,  <span class="keyword">True</span>,  <span class="keyword">True</span>,</div><div class="line">        <span class="keyword">True</span>,  <span class="keyword">True</span>,  <span class="keyword">True</span>,  <span class="keyword">True</span>,  <span class="keyword">True</span>,  <span class="keyword">True</span>], dtype=bool)</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>np.empty(<span class="number">24</span>)  <span class="comment"># 随机数，取决于内存情况</span></div><div class="line">array([  <span class="number">6.89818397e-310</span>,   <span class="number">6.89818397e-310</span>,   <span class="number">6.89817518e-310</span>,</div><div class="line">         <span class="number">6.89817518e-310</span>,   <span class="number">6.89817384e-310</span>,   <span class="number">6.89817852e-310</span>,</div><div class="line">         <span class="number">6.89818486e-310</span>,   <span class="number">6.89818483e-310</span>,   <span class="number">6.89817852e-310</span>,</div><div class="line">         <span class="number">6.89817384e-310</span>,   <span class="number">6.89818483e-310</span>,   <span class="number">6.89817384e-310</span>,</div><div class="line">         <span class="number">6.89818486e-310</span>,   <span class="number">6.89818486e-310</span>,   <span class="number">6.89818483e-310</span>,</div><div class="line">         <span class="number">6.89817518e-310</span>,   <span class="number">6.89818486e-310</span>,   <span class="number">6.89818484e-310</span>,</div><div class="line">         <span class="number">6.89817518e-310</span>,   <span class="number">6.89818488e-310</span>,   <span class="number">6.89817518e-310</span>,</div><div class="line">         <span class="number">6.89818486e-310</span>,   <span class="number">6.89818488e-310</span>,   <span class="number">6.89818484e-310</span>])</div><div class="line"><span class="string">'np.arange() （最小值，最大值，步长）（左闭右开） '</span></div><div class="line"><span class="string">'np.linspace（最小值，最大值，元素数量）'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>np.linspace(<span class="number">0</span>, <span class="number">2</span>*np.pi, <span class="number">20</span>)</div><div class="line">array([ <span class="number">0.</span>        ,  <span class="number">0.33069396</span>,  <span class="number">0.66138793</span>,  <span class="number">0.99208189</span>,  <span class="number">1.32277585</span>,</div><div class="line">        <span class="number">1.65346982</span>,  <span class="number">1.98416378</span>,  <span class="number">2.31485774</span>,  <span class="number">2.64555171</span>,  <span class="number">2.97624567</span>,</div><div class="line">        <span class="number">3.30693964</span>,  <span class="number">3.6376336</span> ,  <span class="number">3.96832756</span>,  <span class="number">4.29902153</span>,  <span class="number">4.62971549</span>,</div><div class="line">        <span class="number">4.96040945</span>,  <span class="number">5.29110342</span>,  <span class="number">5.62179738</span>,  <span class="number">5.95249134</span>,  <span class="number">6.28318531</span>])</div></pre></td></tr></table></figure>
+<h1 id="numpy-数组的寻址索引和遍历"><a href="#numpy-数组的寻址索引和遍历" class="header-anchor"></a>4. <a href="#Numpy-数组的寻址，索引和遍历" class="headerlink" title="Numpy 数组的寻址，索引和遍历"></a>Numpy 数组的寻址，索引和遍历</h1><p>多维数组的访问通过给每一维指定一个索引，顺序是先高维再低维：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x, y)</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="number">10</span>*x + y</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>np.fromfunction(f, (<span class="number">5</span>,<span class="number">4</span>), dtype=np.int)</div><div class="line">array([[ <span class="number">0</span>,  <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>],</div><div class="line">       [<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>],</div><div class="line">       [<span class="number">20</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>],</div><div class="line">       [<span class="number">30</span>, <span class="number">31</span>, <span class="number">32</span>, <span class="number">33</span>],</div><div class="line">       [<span class="number">40</span>, <span class="number">41</span>, <span class="number">42</span>, <span class="number">43</span>]])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b[<span class="number">1</span>:<span class="number">3</span>, :]</div><div class="line">array([[<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>],</div><div class="line">              [<span class="number">20</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>]])</div></pre></td></tr></table></figure></p>
+<p>…符号表示将所有未指定索引的维度均赋为：，：表示索引该维度范围所有元素<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>c =  np.arange(<span class="number">24</span>).reshape(<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</div><div class="line">array([[[ <span class="number">0</span>,  <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>],</div><div class="line">        [ <span class="number">4</span>,  <span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>],</div><div class="line">        [ <span class="number">8</span>,  <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>]],</div><div class="line"></div><div class="line">       [[<span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>],</div><div class="line">        [<span class="number">16</span>, <span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>],</div><div class="line">        [<span class="number">20</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>]]])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>c[<span class="number">1</span>,...]</div><div class="line">array([[<span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>],</div><div class="line">       [<span class="number">16</span>, <span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>],</div><div class="line">       [<span class="number">20</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>]])</div></pre></td></tr></table></figure></p>
+<p>遍历数组的方法可以用循环/迭代器等。如果需要flatten数组然后访问，可以用c.flat做一个迭代器，也可以用c.flatten（）函数将数组先一维展开。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> c.flat:</div><div class="line">        print(i)</div><div class="line">  <span class="comment">#即可打印所有元素</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>c.flatten()</div><div class="line">array([ <span class="number">0</span>,  <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>,  <span class="number">4</span>,  <span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>,  <span class="number">8</span>,  <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>, <span class="number">16</span>,</div><div class="line">       <span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>, <span class="number">20</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>])</div></pre></td></tr></table></figure></p>
+<h1 id="scipy中的空间算法"><a href="#scipy中的空间算法" class="header-anchor"></a>5. <a href="#Scipy中的空间算法" class="headerlink" title="Scipy中的空间算法"></a>Scipy中的空间算法</h1><p>计算点集的凸点，即计算一堆点用最外层的点连线围起来，形成一个多面体。这个多面体包含所有的点。<br><code>scipy.spatial.ConvexHull</code>函数用于计算多维凸面（Convex hulls in N dimensions.）<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> scipy.spatial <span class="keyword">import</span> ConvexHull</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>points = np.random.rand(<span class="number">30</span>, <span class="number">3</span>)   <span class="comment"># 30 random points in 3-D</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>hull = ConvexHull(points)</div></pre></td></tr></table></figure></p>
+<p>通过<code>ConvexHull函数即可计算points的凸面</code>，然后通过<code>simplices</code>提取凸点<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">simp = hull.simplices</div></pre></td></tr></table></figure></p>
+<p>注意这里simp是二维numpy数组，其中每个元素都包含三个id，id是粒子的index。每个元素实际上都是三个点构成一个外接圆，simplices算法就是这样找出所有外接圆，且没有任何粒子在外接圆内。<br>我们可以通过merge所有的id来找到所有的凸点（注意很可能有重复的点）<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Final_hull = list(set(simp.flatten()))</div></pre></td></tr></table></figure></p>
+<p>note:甚至你可以通过计算所有凸点的平均最短近邻距离，然后估算凸多面体的表面积。（此方法未验证其误差）<br>当然还有其他方法提取凸点，即<code>vertices</code>，可以直接给出凸点id。<br>附上scipy 对ConvexHull的Attributes的描述：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">points	(ndarray of double, shape (npoints, ndim)) Coordinates of input points.</div><div class="line">vertices	(ndarray of ints, shape (nvertices,)) Indices of points forming the vertices of the convex hull. For 2-D convex hulls, the vertices are in counterclockwise order. For other dimensions, they are in input order.</div><div class="line">simplices	(ndarray of ints, shape (nfacet, ndim)) Indices of points forming the simplical facets of the convex hull.</div><div class="line">neighbors	(ndarray of ints, shape (nfacet, ndim)) Indices of neighbor facets for each facet. The kth neighbor is opposite to the kth vertex. -1 denotes no neighbor.</div><div class="line">equations	(ndarray of double, shape (nfacet, ndim+1)) [normal, offset] forming the hyperplane equation of the facet (see Qhull documentation for more).</div><div class="line">coplanar	(ndarray of int, shape (ncoplanar, 3)) Indices of coplanar points and the corresponding indices of the nearest facets and nearest vertex indices. Coplanar points are input points which were not included in the triangulation due to numerical precision issues. If option “Qc” is not specified, this list is not computed.</div><div class="line">area	(float) Area of the convex hull</div><div class="line">volume	(float) Volume of the convex hull</div></pre></td></tr></table></figure></p>
+<h1 id="numpyrandomchoice的用法"><a href="#numpyrandomchoice的用法" class="header-anchor"></a>6. <a href="#numpy-random-choice的用法" class="headerlink" title="numpy.random.choice的用法"></a>numpy.random.choice的用法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">numpy.random.choice(a, size=<span class="keyword">None</span>, replace=<span class="keyword">True</span>, p=<span class="keyword">None</span>)</div><div class="line">--从所给的一维数组a中产生一个样本</div><div class="line">参数：</div><div class="line">-- a 表示一个给定的一维数组或者一个数字，如果是数字，则相当于np.arange(n)</div><div class="line">-- size 表示一个整数或整数元组；默认无值，给出一个随机选择的值</div><div class="line">-- replace 值为<span class="keyword">True</span> <span class="keyword">False</span> 表示随机选的值是否可以重复，如果是<span class="keyword">False</span>表示所有选的值不重复</div><div class="line">-- p 与a的shape一样的一维数组，表示选择的权重（概率，probability），不给出则为uniform分布</div></pre></td></tr></table></figure>
+<h1 id="numpyrandomshuffle的用法"><a href="#numpyrandomshuffle的用法" class="header-anchor"></a>7. <a href="#numpy-random-shuffle的用法" class="headerlink" title="numpy.random.shuffle的用法"></a>numpy.random.shuffle的用法</h1><p>（shuffle是洗牌的意思，顾名思义是对数组random排序的意思）<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">numpy.random.shuffle(x)</div><div class="line">Modify a sequence <span class="keyword">in</span>-place by shuffling its contents.即原地修改原数组。</div><div class="line">x是数组或者list，不限维度</div><div class="line">可以通过shuffle一个List，然后取前多少个值来完成随机选择一些值。</div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> python </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> python </tag>
             
         </tags>
         
@@ -295,6 +536,150 @@
     <entry>
       <title><![CDATA[Hexo Configuration]]></title>
       <url>/2017-07-day/Hexo%20Configuration/</url>
+      <content type="html"><![CDATA[<p><meta content="text/html; charset=UTF-8" http-equiv="content-type"><br>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。本文为Hexo相关的东西，大部分与特性配置有关。<br><a id="more"></a></p>
+<h1 id="特性配置"><a href="#特性配置" class="header-anchor"></a>1. <a href="#特性配置" class="headerlink" title="特性配置"></a>特性配置</h1><h2 id="添加邮箱链接控制"><a href="#添加邮箱链接控制" class="header-anchor"></a>1.1. <a href="#添加邮箱链接控制" class="headerlink" title="添加邮箱链接控制"></a>添加邮箱链接控制</h2><p>安装插件<code>hexo-email-obfuscate</code>，参考<a href="https://www.npmjs.com/package/hexo-email-obfuscate" target="_blank" rel="external">这里</a><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-email-obfuscate --save</div></pre></td></tr></table></figure></p>
+<p>在站点配置文件<code>_config.yml</code>中加入：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">plugins</span>:</div><div class="line">  <span class="selector-tag">-</span> <span class="selector-tag">hexo-email-obfuscate</span></div></pre></td></tr></table></figure></p>
+<p>使用语法：<br>Markdown<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[Contact Me](mailto:foo@bar.com)</div></pre></td></tr></table></figure></p>
+<h2 id="文章中添加居中模块"><a href="#文章中添加居中模块" class="header-anchor"></a>1.2. <a href="#文章中添加居中模块" class="headerlink" title="文章中添加居中模块"></a>文章中添加居中模块</h2><p>文章Markdown中填写如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;blockquote class="blockquote-center"&gt;优秀的人，不是不合群，而是他们合群的人里面没有你&lt;/blockquote&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="隐藏网页底部powered-by-hexo-强力驱动"><a href="#隐藏网页底部powered-by-hexo-强力驱动" class="header-anchor"></a>1.3. <a href="#隐藏网页底部powered-By-Hexo-强力驱动" class="headerlink" title="隐藏网页底部powered By Hexo / 强力驱动"></a>隐藏网页底部powered By Hexo / 强力驱动</h2><p>打开themes/next/layout/_partials/footer.swig,使用””隐藏之间的代码即可，或者直接删除。</p>
+<h2 id="友情链接设置"><a href="#友情链接设置" class="header-anchor"></a>1.4. <a href="#友情链接设置" class="headerlink" title="友情链接设置"></a>友情链接设置</h2><p>编辑站点的 _config.yml 添加：<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># title, chinese available</span></div><div class="line"><span class="attr">links_title:</span> <span class="string">Links</span></div><div class="line"><span class="comment"># links</span></div><div class="line"><span class="attr">links:</span></div><div class="line"><span class="attr">  MacTalk:</span> <span class="attr">http://macshuo.com/</span></div></pre></td></tr></table></figure></p>
+<h2 id="代码高亮问题"><a href="#代码高亮问题" class="header-anchor"></a>1.5. <a href="#代码高亮问题" class="headerlink" title="代码高亮问题"></a>代码高亮问题</h2><p>Hexo自带的highlight.js代码高亮并不好用，当在博客配置中将highlight的选项auto_detect设为true时，hexo g生成博客时报错<br>但是如果你不去设置这一项，代码高亮永远是<code>normal</code>主题。解决这个问题很简单，就是手动设置<code>auto_detect = false</code>:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">highlight:</div><div class="line">  enable: <span class="literal">false</span></div><div class="line">  line_number: <span class="literal">false</span></div><div class="line">  auto_detect: <span class="literal">false</span></div><div class="line">  tab_replace:</div></pre></td></tr></table></figure></p>
+<h2 id="代码高亮prism"><a href="#代码高亮prism" class="header-anchor"></a>1.6. <a href="#代码高亮prism" class="headerlink" title="代码高亮prism"></a>代码高亮prism</h2><p>由<a href="https://github.com/wayou/hexo-prism" target="_blank" rel="external">wayou</a>开发，代替hexo原生代码高亮。</p>
+<h3 id="install"><a href="#install" class="header-anchor"></a>1.6.1. <a href="#Install" class="headerlink" title="Install:"></a>Install:</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i -S hexo-prism-plugin</div></pre></td></tr></table></figure>
+<h3 id="usage"><a href="#usage" class="header-anchor"></a>1.6.2. <a href="#Usage" class="headerlink" title="Usage:"></a>Usage:</h3><p>编辑站点配置文件<code>_config.yml</code>，加入<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">### prism_plugin</span></div><div class="line"><span class="attr">prism_plugin:</span></div><div class="line"><span class="attr">  mode:</span> <span class="string">'preprocess'</span>    <span class="comment"># realtime or preprocess</span></div><div class="line"><span class="attr">  theme:</span> <span class="string">'default'</span></div><div class="line">  <span class="comment">#theme: 'coy'</span></div><div class="line">  <span class="comment">#theme: 'dark'</span></div><div class="line">  <span class="comment">#theme: 'funky'</span></div><div class="line">  <span class="comment">#theme: 'okaidia'</span></div><div class="line">  <span class="comment">#theme: 'solarizedlight'</span></div><div class="line">  <span class="comment">#theme: 'tomorrow'</span></div><div class="line">  <span class="comment">#theme: 'twilight'</span></div><div class="line"><span class="attr">  line_number:</span> <span class="literal">true</span>   <span class="comment"># default false</span></div><div class="line"><span class="attr">  auto_import_assets:</span> <span class="literal">true</span>   <span class="comment"># default true</span></div></pre></td></tr></table></figure></p>
+<h3 id="代码高亮主题测试"><a href="#代码高亮主题测试" class="header-anchor"></a>1.6.3. <a href="#代码高亮主题测试" class="headerlink" title="代码高亮主题测试"></a>代码高亮主题测试</h3><p>default:<br><img src="http://res.cloudinary.com/jiaxm/image/upload/v1500807063/default_kglgrh.jpg" alt=""><br>coy:<br><img src="http://res.cloudinary.com/jiaxm/image/upload/v1500807063/coy_vjozcy.jpg" alt=""><br>dark:<br><img src="http://res.cloudinary.com/jiaxm/image/upload/v1500807063/dark_lxldep.jpg" alt=""><br>funky:<br><img src="http://res.cloudinary.com/jiaxm/image/upload/v1500807064/funky_bvxgwk.jpg" alt=""><br>okaidia:<br><img src="http://res.cloudinary.com/jiaxm/image/upload/v1500807064/okaidia_jtwjxz.jpg" alt=""><br>solarizedlight:<br><img src="http://res.cloudinary.com/jiaxm/image/upload/v1500807064/Solariedlight_d6h4xb.jpg" alt=""><br>tomorrow:<br><img src="http://res.cloudinary.com/jiaxm/image/upload/v1500807064/tomorrow_liekgg.jpg" alt=""><br>twilight:<br><img src="http://res.cloudinary.com/jiaxm/image/upload/v1500807064/twilight_wlpsfk.jpg" alt=""><br>note:感觉有些主题怪怪的~~~</p>
+<h2 id="文章内插入图片"><a href="#文章内插入图片" class="header-anchor"></a>1.7. <a href="#文章内插入图片" class="headerlink" title="文章内插入图片"></a>文章内插入图片</h2><p>在文章中写入:<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![](/upload_image/1.jpg)</div></pre></td></tr></table></figure></p>
+<p>然后进入themes-主题名-source-upload_image目录下(自己创建)，将图片放到这个目录下，就可以了。</p>
+<blockquote>
+<p>说明：当执行hexo g命令时，会自动把图片复制到 public文件的upload_image目录下。</p>
+</blockquote>
+<h2 id="鼠标点击小红心的设置"><a href="#鼠标点击小红心的设置" class="header-anchor"></a>1.8. <a href="#鼠标点击小红心的设置" class="headerlink" title="鼠标点击小红心的设置"></a>鼠标点击小红心的设置</h2><p>将 <a href="https://github.com/Neveryu/Neveryu.github.io/blob/master/js/src/love.js" target="_blank" rel="external">love.js</a> 文件添加到 \themes\next\source\js\src 文件目录下。<br>找到 \themes\next\layout_layout.swing 文件， 在文件的后面， 标签之前 添加以下代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 页面点击小红心 --&gt;</div><div class="line">&lt;script type="text/javascript" src="/js/src/love.js"&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="修改文章内链接文本样式"><a href="#修改文章内链接文本样式" class="header-anchor"></a>1.9. <a href="#修改文章内链接文本样式" class="headerlink" title="修改文章内链接文本样式"></a>修改文章内链接文本样式</h2><p>将链接文本设置为蓝色，鼠标划过时文字颜色加深，并显示下划线。<br>找到文件 themes\next\source\css_custom\custom.styl ，添加如下 css 样式：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">.post-body p a &#123;</div><div class="line">  color: #0593d3;</div><div class="line">  border-bottom: none;</div><div class="line">  &amp;:hover &#123;</div><div class="line">    color: #0477ab;</div><div class="line">    text-decoration: underline;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="设置字体"><a href="#设置字体" class="header-anchor"></a>1.10. <a href="#设置字体" class="headerlink" title="设置字体"></a>设置字体</h2><blockquote>
+<p>note: 此特性在版本 5.0.1 中引入，要使用此功能请确保所使用的 NexT 版本在此之后</p>
+</blockquote>
+<p>为了解决 Google Fonts API 不稳定的问题，NexT 在 5.0.1 中引入此特性。 通过此特性，你可以指定所使用的字体库外链地址；与此同时，NexT 开放了 5 个特定范围的字体设定，他们是：</p>
+<ul>
+<li>全局字体：定义的字体将在全站范围使用</li>
+<li>标题字体：文章内标题的字体（h1, h2, h3, h4, h5, h6）</li>
+<li>文章字体：文章所使用的字体</li>
+<li>Logo字体：Logo 所使用的字体</li>
+<li>代码字体： 代码块所使用的字体</li>
+</ul>
+<p>注意，各项所指定的字体将作为首选字体，当他们不可用时会自动 Fallback 到 NexT 设定的基础字体组：<br>非代码类字体：Fallback 到 “PingFang SC”, “Microsoft YaHei”, sans-serif<br>代码类字体： Fallback 到 consolas, Menlo, “PingFang SC”, “Microsoft YaHei”, monospace<br>另外，每一项都有一个额外的 external 属性，此属性用来控制是否使用外链字体库。 开放此属性方便你设定那些已经安装在系统中的字体，减少不必要的请求（请求大小）。<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="attr">font:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">true</span></div><div class="line"></div><div class="line">  <span class="comment"># 外链字体库地址，例如 //fonts.googleapis.com (默认值)</span></div><div class="line"><span class="attr">  host:</span> <span class="string">//fonts.googleapis.com</span></div><div class="line"></div><div class="line">  <span class="comment"># 全局字体，应用在 body 元素上</span></div><div class="line"><span class="attr">  global:</span></div><div class="line"><span class="attr">    external:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    family:</span> <span class="string">Lato</span></div><div class="line"></div><div class="line">  <span class="comment"># 标题字体 (h1, h2, h3, h4, h5, h6)</span></div><div class="line"><span class="attr">  headings:</span></div><div class="line"><span class="attr">    external:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    family:</span> <span class="string">Playball</span></div><div class="line"><span class="attr">    size:</span> <span class="number">30</span></div><div class="line"></div><div class="line">  <span class="comment"># 文章字体</span></div><div class="line"><span class="attr">  posts:</span></div><div class="line"><span class="attr">    external:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    family:</span></div><div class="line"></div><div class="line">  <span class="comment"># Logo 字体</span></div><div class="line"><span class="attr">  logo:</span></div><div class="line"><span class="attr">    external:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    family:</span> <span class="string">Playball</span></div><div class="line"><span class="attr">    size:</span> <span class="number">40</span></div><div class="line"></div><div class="line">  <span class="comment"># 代码字体，应用于 code 以及代码块</span></div><div class="line"><span class="attr">  codes:</span></div><div class="line"><span class="attr">    external:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    family:</span> <span class="string">Droid</span> <span class="string">Sans</span> <span class="string">Mono</span></div><div class="line"><span class="attr">    size:</span> <span class="number">25</span></div></pre></td></tr></table></figure></p>
+<h2 id="设置菜单"><a href="#设置菜单" class="header-anchor"></a>1.11. <a href="#设置菜单" class="headerlink" title="设置菜单"></a>设置菜单</h2><p>菜单配置包括三个部分，第一是菜单项（名称和链接），第二是菜单项的显示文本，第三是菜单项对应的图标。 NexT 使用的是 <a href="http://fontawesome.io/" target="_blank" rel="external">Font Awesome</a> 提供的图标， Font Awesome 提供了 600+ 的图标，可以满足绝大的多数的场景。参考<a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">官方设置菜单配置</a><br>如添加一个新的页面“链接”：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new page Links</div></pre></td></tr></table></figure></p>
+<p>即在<code>hexo/source/</code>目录下新建了<code>Links</code>目录，目录中包含<code>index.md</code>文件，文件内容：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">---</span></div><div class="line"><span class="selector-tag">title</span>: <span class="selector-tag">Links</span></div><div class="line"><span class="selector-tag">date</span>: 2017<span class="selector-tag">-07-20</span> 10<span class="selector-pseudo">:34</span><span class="selector-pseudo">:38</span></div><div class="line"><span class="selector-tag">---</span></div></pre></td></tr></table></figure></p>
+<p>然后再NexT主题配置文件中的menu项和menu_ico项中加入 Links</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="attr">menu:</span></div><div class="line"><span class="attr">  home:</span> <span class="string">/</span></div><div class="line"><span class="attr">  categories:</span> <span class="string">/categories/</span></div><div class="line"><span class="attr">  archives:</span> <span class="string">/archives/</span></div><div class="line"><span class="attr">  tags:</span> <span class="string">/tags/</span></div><div class="line"><span class="attr">  about:</span> <span class="string">/about/</span></div><div class="line"><span class="attr">  links:</span> <span class="string">/Links/</span> <span class="comment"># <span class="doctag">note:</span> links尝试用过Links: /Links发现会有问题——即使hexo g产生的/hexo/public目录中确实有/links，但是在推送到VPS的时候莫名其妙变成/Links，造成无法访问。</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">menu_icons</span>:</div><div class="line">  <span class="selector-tag">enable</span>: <span class="selector-tag">true</span></div><div class="line">  <span class="selector-id">#KeyMapsToMenuItemKey</span>: <span class="selector-tag">NameOfTheIconFromFontAwesome</span></div><div class="line">  <span class="selector-tag">home</span>: <span class="selector-tag">home</span></div><div class="line">  <span class="selector-tag">about</span>: <span class="selector-tag">user</span></div><div class="line">  <span class="selector-tag">categories</span>: <span class="selector-tag">th</span></div><div class="line">  <span class="selector-tag">schedule</span>: <span class="selector-tag">calendar</span></div><div class="line">  <span class="selector-tag">tags</span>: <span class="selector-tag">heart</span></div><div class="line">  <span class="selector-tag">archives</span>: <span class="selector-tag">archive</span></div><div class="line">  <span class="selector-tag">links</span>: <span class="selector-tag">heart</span></div></pre></td></tr></table></figure>
+<p>最后要修改<code>/themes/next/languages/</code>中对应的语言文件<code>zh-Hans.yml</code>的中links项<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="attr">menu:</span></div><div class="line"><span class="attr">  home:</span> <span class="string">首页</span></div><div class="line"><span class="attr">  archives:</span> <span class="string">归档</span></div><div class="line"><span class="attr">  categories:</span> <span class="string">分类</span></div><div class="line"><span class="attr">  tags:</span> <span class="string">标签</span></div><div class="line"><span class="attr">  about:</span> <span class="string">关于</span></div><div class="line"><span class="attr">  search:</span> <span class="string">搜索</span></div><div class="line"><span class="attr">  schedule:</span> <span class="string">日程表</span></div><div class="line"><span class="attr">  sitemap:</span> <span class="string">站点地图</span></div><div class="line"><span class="attr">  commonweal:</span> <span class="string">公益404</span></div><div class="line"><span class="attr">  links:</span> <span class="string">链接</span></div></pre></td></tr></table></figure></p>
+<h2 id="添加并美化本地搜索"><a href="#添加并美化本地搜索" class="header-anchor"></a>1.12. <a href="#添加并美化本地搜索" class="headerlink" title="添加并美化本地搜索"></a>添加并美化本地搜索</h2><p>NexT 主题内置了本地站内搜索，很方便添加。</p>
+<ol>
+<li><p>首先安装<code>hexo-generator-search</code>插件，用于生成博客索引数据<br>在站点的根目录下执行以下命令进行安装：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-search --save</div></pre></td></tr></table></figure>
+</li>
+<li><p>编辑 站点配置文件<code>_config.yml</code>，新增以下内容到任意位置：</p>
+</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">search</span>:</div><div class="line">  <span class="selector-tag">path</span>: <span class="selector-tag">search</span><span class="selector-class">.xml</span></div><div class="line">  <span class="selector-tag">field</span>: <span class="selector-tag">post</span></div></pre></td></tr></table></figure>
+<ol>
+<li>编辑NexT主题配置文件<code>_config.yml</code>，解注释local search:<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Local search</span></div><div class="line"><span class="attr">local_search:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">true</span></div><div class="line">  <span class="comment"># if auto, trigger search by changing input</span></div><div class="line">  <span class="comment"># if manual, trigger search by pressing enter key or search button</span></div><div class="line"><span class="attr">  path:</span> <span class="string">search.xml</span></div><div class="line"><span class="attr">  fielf:</span> <span class="string">post</span></div><div class="line"><span class="attr">  format:</span> <span class="string">html</span></div><div class="line"><span class="attr">  limit:</span> <span class="number">10000</span></div><div class="line"><span class="attr">  trigger:</span> <span class="string">auto</span></div><div class="line">  <span class="comment"># 注意把trigger: auto打开，可以在输入的同时即时显示搜索结果</span></div><div class="line">  <span class="comment"># show top n results per article, show all results by setting to -1</span></div><div class="line">  <span class="comment">#top_n_per_article: 1</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="侧边栏头像修饰"><a href="#侧边栏头像修饰" class="header-anchor"></a>1.13. <a href="#侧边栏头像修饰" class="headerlink" title="侧边栏头像修饰"></a>侧边栏头像修饰</h2><p>把侧边栏头像变成圆形，并且鼠标停留在上面发生旋转效果，参考<a href="odepub.cn/2016/03/20/Hexo-blog-theme-switching-from-Jacman-to-NexT-Mist/">这里</a>，具体修改文件的位置是<code>hexo\themes\next\source\css\_common\components\sidebar\sidebar-author.styl</code>中的内容如下:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.site-author-image</span> &#123;</div><div class="line">  <span class="attribute">display</span>: block;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</div><div class="line">  <span class="attribute">max-width</span>: <span class="number">96px</span>;</div><div class="line">  <span class="attribute">height</span>: auto;</div><div class="line">  <span class="attribute">border</span>: <span class="number">2px</span> solid <span class="number">#333</span>;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">2px</span>;</div><div class="line">  <span class="comment">/* start*/</span></div><div class="line">  <span class="attribute">border-radius</span>: <span class="number">50%</span></div><div class="line">  webkit-transition: <span class="number">1.4s</span> all;</div><div class="line">  <span class="attribute">moz-transition</span>: <span class="number">1.4s</span> all;</div><div class="line">  <span class="attribute">ms-transition</span>: <span class="number">1.4s</span> all;</div><div class="line">  <span class="attribute">transition</span>: <span class="number">1.4s</span> all;</div><div class="line">  <span class="comment">/* end */</span></div><div class="line">&#125;</div><div class="line"><span class="comment">/* start */</span></div><div class="line"><span class="selector-class">.site-author-image</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">  <span class="attribute">background-color</span>: <span class="number">#55DAE1</span>;</div><div class="line">  <span class="attribute">webkit-transform</span>: <span class="built_in">rotate</span>(360deg) <span class="built_in">scale</span>(1.1);</div><div class="line">  <span class="attribute">moz-transform</span>: <span class="built_in">rotate</span>(360deg) <span class="built_in">scale</span>(1.1);</div><div class="line">  <span class="attribute">ms-transform</span>: <span class="built_in">rotate</span>(360deg) <span class="built_in">scale</span>(1.1);</div><div class="line">  <span class="attribute">transform</span>: <span class="built_in">rotate</span>(360deg) <span class="built_in">scale</span>(1.1);</div><div class="line">&#125;</div><div class="line"><span class="comment">/* end */</span></div></pre></td></tr></table></figure></p>
+<h2 id="cloudinary-在线图片服务"><a href="#cloudinary-在线图片服务" class="header-anchor"></a>1.14. <a href="#Cloudinary-在线图片服务" class="headerlink" title="Cloudinary 在线图片服务"></a>Cloudinary 在线图片服务</h2><p>除了在本地存储图片，还可以将图片上传到一些免费的CDN服务中。比如Cloudinary提供的图片CDN服务，在Cloudinary中上传图片后，会生成对应的url地址，将地址直接拿来引用即可。<br>在<a href="https://cloudinary.com" target="_blank" rel="external">Cloudinary</a>申请账号，上传图片(注意把upload选项中的unsigned signature选上)</p>
+<h2 id="设置文章置顶"><a href="#设置文章置顶" class="header-anchor"></a>1.15. <a href="#设置文章置顶" class="headerlink" title="设置文章置顶"></a>设置文章置顶</h2><blockquote>
+<p>note: 参考<a href="http://www.netcan666.com/2015/11/22/%E8%A7%A3%E5%86%B3Hexo%E7%BD%AE%E9%A1%B6%E9%97%AE%E9%A2%98/" target="_blank" rel="external">解决文章置顶</a></p>
+</blockquote>
+<ol>
+<li><p>安装 hexo-generator-index</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i --save hexo-generator-index</div></pre></td></tr></table></figure>
+</li>
+<li><p>将如下的代码加入<code>node_modules/hexo-generator-index/lib/generator.js</code></p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">posts.data = posts.data.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(a.top &amp;&amp; b.top) &#123; <span class="comment">// 两篇文章top都有定义</span></div><div class="line">        <span class="keyword">if</span>(a.top == b.top) <span class="keyword">return</span> b.date - a.date; <span class="comment">// 若top值一样则按照文章日期降序排</span></div><div class="line">        <span class="keyword">else</span> <span class="keyword">return</span> b.top - a.top; <span class="comment">// 否则按照top值降序排</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(a.top &amp;&amp; !b.top) &#123; <span class="comment">// 以下是只有一篇文章top有定义，那么将有top的排在前面（这里用异或操作居然不行233）</span></div><div class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(!a.top &amp;&amp; b.top) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">return</span> b.date - a.date; <span class="comment">// 都没定义按照文章日期降序排</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>最终的 <code>node_modules/hexo-generator-index/lib/generator.js</code> 代码:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="string">'use strict'</span>;</div><div class="line">var pagination = require(<span class="string">'hexo-pagination'</span>);</div><div class="line"><span class="keyword">module</span>.<span class="keyword">exports</span> = function(locals) &#123;</div><div class="line">    var config = <span class="keyword">this</span>.config;</div><div class="line">    var posts = locals.posts.sort(config.index_generator.order_by);</div><div class="line">    var paginationDir = config.pagination_dir || <span class="string">'page'</span>;</div><div class="line">    posts.data = posts.data.sort(function(a, b) &#123;</div><div class="line">        <span class="keyword">if</span>(a.top &amp;&amp; b.top) &#123; <span class="comment">// 两篇文章top都有定义</span></div><div class="line">            <span class="keyword">if</span>(a.top == b.top) <span class="keyword">return</span> b.date - a.date; <span class="comment">// 若top值一样则按照文章日期降序排</span></div><div class="line">            <span class="keyword">else</span> <span class="keyword">return</span> b.top - a.top; <span class="comment">// 否则按照top值降序排</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(a.top &amp;&amp; !b.top) &#123; <span class="comment">// 以下是只有一篇文章top有定义，那么将有top的排在前面（这里用异或操作居然不行233）</span></div><div class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(!a.top &amp;&amp; b.top) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">return</span> b.date - a.date; <span class="comment">// 都没定义按照文章日期降序排</span></div><div class="line">    &#125;);</div><div class="line">    <span class="keyword">return</span> pagination(<span class="string">''</span>, posts, &#123;</div><div class="line">        perPage: config.index_generator.per_page,</div><div class="line">        layout: [<span class="string">'index'</span>, <span class="string">'archive'</span>],</div><div class="line">        format: paginationDir + <span class="string">'/%d/'</span>,</div><div class="line">        data: &#123;</div><div class="line">          __index: <span class="keyword">true</span></div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>在文章 <code>Front-matter</code> 中添加 <code>top</code> 值，数值越大文章越靠前，如：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">title</span>: <span class="selector-tag">Hexo</span></div><div class="line"><span class="selector-tag">date</span>: 2017<span class="selector-tag">-07-21</span></div><div class="line"><span class="selector-tag">tags</span>: <span class="selector-tag">vps</span></div><div class="line"><span class="selector-tag">categories</span>: <span class="selector-tag">vps</span></div><div class="line"><span class="selector-tag">top</span>: 3</div></pre></td></tr></table></figure></p>
+<h2 id="next主题宽度调整"><a href="#next主题宽度调整" class="header-anchor"></a>1.16. <a href="#next主题宽度调整" class="headerlink" title="next主题宽度调整"></a>next主题宽度调整</h2><p>编辑 <code>themes/next/source/css/_variables/custom.styl</code> 文件，新增变量：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 修改成你期望的宽度</span></div><div class="line">$content-desktop = <span class="number">700</span>px</div><div class="line"><span class="comment">// 当视窗超过 1600px 后的宽度</span></div><div class="line">$content-desktop-large = <span class="number">900</span>px</div></pre></td></tr></table></figure></p>
+<p>以上方法不适用与next.Picses scheme<br><code>Pisces Scheme</code> 编辑<code>themes/next/source/css/_schemes/Picses/_layout.styl</code>文件，更改以下 css 选项定义值：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.header</span>&#123; <span class="attribute">width</span>: <span class="number">1150px</span>; &#125;</div><div class="line"><span class="selector-class">.container</span> <span class="selector-class">.main-inner</span> &#123; <span class="attribute">width</span>: <span class="number">1150px</span>; &#125;</div><div class="line"><span class="selector-class">.content-wrap</span> &#123; <span class="attribute">width</span>: <span class="built_in">calc</span>(100% - 260px); &#125;</div></pre></td></tr></table></figure></p>
+<h2 id="设置disqus"><a href="#设置disqus" class="header-anchor"></a>1.17. <a href="#设置disqus" class="headerlink" title="设置disqus"></a>设置disqus</h2><blockquote>
+<p>note: “多说”评论功能应用广泛，但是据其公司的<a href="http://dev.duoshuo.com/threads/58d1169ae293b89a20c57241" target="_blank" rel="external">声明</a>，多说网已经关闭。</p>
+</blockquote>
+<p>hexo已经内置了对disqus的支持，配置也很简单</p>
+<ol>
+<li>首先注册disques账号<br><a href="https://disqus.com" target="_blank" rel="external">https://disqus.com</a> 获取shortname</li>
+<li>next主题内置了对disqus的支持，在next主题的_config_xml中搜索disqus，并做如下配置：<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># <span class="selector-tag">disqus</span></div><div class="line"><span class="selector-tag">disqus</span>:</div><div class="line">  <span class="selector-tag">enable</span>: <span class="selector-tag">True</span></div><div class="line">  <span class="selector-tag">shortname</span>: <span class="selector-tag">jiaxm-me</span></div><div class="line">  <span class="selector-tag">count</span>: <span class="selector-tag">true</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="给github添加readme"><a href="#给github添加readme" class="header-anchor"></a>1.18. <a href="#给github添加README" class="headerlink" title="给github添加README"></a>给github添加README</h2><p>hexo会把md文件都解析成html，但是github的readme只支持MD格式，最简单的方法是让hexo不对README.md做转换。<br>站点配置文件_config_xml中的<code>skip_render:</code>改为<code>skip_render: README.md</code><br>note: README.md放在 hexo/source/目录中即可</p>
+<h2 id="markdown里-table-的语法"><a href="#markdown里-table-的语法" class="header-anchor"></a>1.19. <a href="#MarkDown里-table-的语法" class="headerlink" title="MarkDown里 table 的语法"></a>MarkDown里 table 的语法</h2><p>MD的写法<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">| I | am | table |</div><div class="line">|:-----|:---:|----------:|</div><div class="line">|文本内容| **`是`** |table|</div><div class="line">|文本内容| **`是`** |table|</div><div class="line">|文本内容| **`是`** |table|</div></pre></td></tr></table></figure></p>
+<ol>
+<li>表格与上面的文本内容之间<strong>空一行</strong>。否则解析不出来</li>
+<li>最上面一行是表格第一列的值。第二行的冒号位置决定表格内文本的对齐方式。有水平居中、水平靠左对齐、水平靠右对齐三种</li>
+<li>每列的宽度是根据对应列里最长的文本来决定的</li>
+</ol>
+<p>输出结果：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">我</th>
+<th style="text-align:center">是</th>
+<th style="text-align:right">展示表格</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">文本内容</td>
+<td style="text-align:center"><strong><code>是</code></strong></td>
+<td style="text-align:right">table</td>
+</tr>
+<tr>
+<td style="text-align:left">文本内容</td>
+<td style="text-align:center"><strong><code>是</code></strong></td>
+<td style="text-align:right">table</td>
+</tr>
+<tr>
+<td style="text-align:left">文本内容</td>
+<td style="text-align:center"><strong><code>是</code></strong></td>
+<td style="text-align:right">table</td>
+</tr>
+</tbody>
+</table>
+<h2 id="去除b2t-sidebar"><a href="#去除b2t-sidebar" class="header-anchor"></a>1.20. <a href="#去除b2t-sidebar" class="headerlink" title="去除b2t sidebar"></a>去除b2t sidebar</h2><p>找到<code>Hexo/themes/next/layout/_macro/sidebar.swig</code>文件，去掉其中关于b2t的部分：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;% if theme.sidebar.b2t %&#125;</div><div class="line">  &lt;div class="back-to-top"&gt;</div><div class="line">    &lt;i class="fa fa-arrow-up"&gt;&lt;/i&gt;</div><div class="line">    &#123;% if theme.sidebar.scrollpercent %&#125;</div><div class="line">      &lt;span id="scrollpercent"&gt;&lt;span&gt;0&lt;/span&gt;%&lt;/span&gt;</div><div class="line">    &#123;% endif %&#125;</div><div class="line">  &lt;/div&gt;</div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="调整b2t样式"><a href="#调整b2t样式" class="header-anchor"></a>1.21. <a href="#调整b2t样式" class="headerlink" title="调整b2t样式"></a>调整b2t样式</h2><p><code>back-to-top</code>的控制文件为<code>/home/jxm/Hexo/themes/next/source/css/_common/components/back-to-top.styl</code><br>在文件中可以修改b2t bar的格式，如颜色，位置，大小等。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">.back-to-top &#123;</div><div class="line">  box-sizing: border-box;</div><div class="line">  position: fixed;</div><div class="line">  bottom: $b2t-position-bottom;</div><div class="line">  right: $b2t-position-right;</div><div class="line">  z-index: $zindex-5;</div><div class="line">  padding: 0 6px;</div><div class="line">  width: hexo-config('sidebar.scrollpercent') ? initial : 24px;</div><div class="line">  background: white;</div><div class="line">  font-size: $b2t-font-size;</div><div class="line">  opacity: $b2t-opacity;</div><div class="line">  color: green </div><div class="line">  cursor: pointer;</div><div class="line">  text-align: center;</div><div class="line">  -webkit-transform: translateZ(0);</div><div class="line">  transition-property: bottom;</div><div class="line">  the-transition();</div><div class="line"></div><div class="line">  +mobile() &#123;</div><div class="line">    display: none;</div><div class="line">  &#125;</div><div class="line">  +tablet() &#123;</div><div class="line">    display: none;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  &amp;.back-to-top-on &#123;</div><div class="line">    bottom: $b2t-position-bottom-on;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="设置网站图标logo"><a href="#设置网站图标logo" class="header-anchor"></a>1.22. <a href="#设置网站图标Logo" class="headerlink" title="设置网站图标Logo"></a>设置网站图标Logo</h2><ol>
+<li>通过网站<a href="http://tool.lu/favicon/" target="_blank" rel="external">favicon在线制作制作</a>favicon图片，logo最好设置32*32。</li>
+<li>next主题：将图片放在next主题source/images目录下</li>
+<li>在next主题配置文件中添加：<code>favicon: images/favicon.ico</code>;或者直接把<code>favicon.ico</code>放到站点source文件夹</li>
+</ol>
+<h2 id="设置emoji"><a href="#设置emoji" class="header-anchor"></a>1.23. <a href="#设置emoji" class="headerlink" title="设置emoji"></a>设置emoji</h2><p>to test this plugin! :simple_smile:</p>
+<h1 id="主题配置参考"><a href="#主题配置参考" class="header-anchor"></a>2. <a href="#主题配置参考" class="headerlink" title="主题配置参考"></a>主题配置参考</h1><ol>
+<li><a href="http://chitanda.me/2015/06/11/tips-for-setup-hexo/" target="_blank" rel="external">markdown table</a></li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> hexo </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> next </tag>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Hexo Configuration]]></title>
+      <url>/2017-07-day/Hexo_Configuration/</url>
       <content type="html"><![CDATA[<p><meta content="text/html; charset=UTF-8" http-equiv="content-type"><br>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。本文为Hexo相关的东西，大部分与特性配置有关。<br><a id="more"></a></p>
 <h1 id="特性配置"><a href="#特性配置" class="header-anchor"></a>1. <a href="#特性配置" class="headerlink" title="特性配置"></a>特性配置</h1><h2 id="添加邮箱链接控制"><a href="#添加邮箱链接控制" class="header-anchor"></a>1.1. <a href="#添加邮箱链接控制" class="headerlink" title="添加邮箱链接控制"></a>添加邮箱链接控制</h2><p>安装插件<code>hexo-email-obfuscate</code>，参考<a href="https://www.npmjs.com/package/hexo-email-obfuscate" target="_blank" rel="external">这里</a><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-email-obfuscate --save</div></pre></td></tr></table></figure></p>
 <p>在站点配置文件<code>_config.yml</code>中加入：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">plugins</span>:</div><div class="line">  <span class="selector-tag">-</span> <span class="selector-tag">hexo-email-obfuscate</span></div></pre></td></tr></table></figure></p>
