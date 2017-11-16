@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[linux 常用命令]]></title>
     <url>%2F2017-11-day%2FLinuxCommand%2F</url>
-    <content type="text"><![CDATA[linux 常用命令，比较杂PS: 部分fork自大师兄个人网站 1. 一句一命令系列tac: cat倒过来写，将文件以line为单位反向输出。join: 将两个文件里指定栏同样的行拼接起来，即依照两个文件里共有的一列，将相应的行拼起来。join file1 file2 默认两个文件的第一列为匹配域。具体用法可以参考[这里]（http://www.cnblogs.com/mfryf/p/3402200.html） 2. ！命令!#，引用当前的命令行，例如：cp filename filename.bak 可以写为 cp filename !#:1.bak note: :1 表示选择当前行命令的第一个参数!-n 重复执行倒数第 n 条命令，n 为正整数!! 重复执行上一条命令。该命令等价于 !-1!^ 重用上一条命令的第一个参数 ls /usr/share/doc /usr/share/man; cd !^# 即 cd /usr/share/doc!* 重用上一条命令的所有参数 touch t1 t2 t3， rm !*即rm t1 t2 t3!!:n 重用上一条命令中的第n个参数，n为正整数。touch t1 t2 t3，rm !!:2即touch t2!str:x-y 重用上一条以str开头的命令的第x到第y个参数。touch t1 t2 t3，rm !touch:2:3即rm t2 t3!?str:n* 重用上一条包含 str 的命令的从第 n 个到最后一个参数 &lt;持续更新……&gt;]]></content>
+    <content type="text"><![CDATA[linux 常用命令，比较杂PS: 部分fork自大师兄个人网站 1. 一句一命令系列tac: cat倒过来写，将文件以line为单位反向输出。join: 将两个文件里指定栏同样的行拼接起来，即依照两个文件里共有的一列，将相应的行拼起来。join file1 file2 默认两个文件的第一列为匹配域。具体用法可以参考[这里]（http://www.cnblogs.com/mfryf/p/3402200.html） 2. ！命令!#，引用当前的命令行，例如：cp filename filename.bak 可以写为 cp filename !#:1.bak note: :1 表示选择当前行命令的第一个参数!-n 重复执行倒数第 n 条命令，n 为正整数!! 重复执行上一条命令。该命令等价于 !-1!^ 重用上一条命令的第一个参数 ls /usr/share/doc /usr/share/man; cd !^# 即 cd /usr/share/doc!$ 重用上一条命令的最后一个参数!* 重用上一条命令的所有参数 touch t1 t2 t3， rm !*即rm t1 t2 t3!!:n 重用上一条命令中的第n个参数，n为正整数。touch t1 t2 t3，rm !!:2即touch t2!str:x-y 重用上一条以str开头的命令的第x到第y个参数。touch t1 t2 t3，rm !touch:2:3即rm t2 t3!?str:n* 重用上一条包含 str 的命令的从第 n 个到最后一个参数 &lt;持续更新……&gt;]]></content>
       <categories>
         <category>linux</category>
       </categories>

@@ -461,11 +461,11 @@
 
       
         <p>由grub引导的Linux与Windows共存的双系统环境中，Windows版本更新的时候常会出现grub引导失败，造成系统无法正常启动的问题。这是因为Windows更新的过程中导致MBR损坏导致无法找到/boot/grub部分，无法进一步引导系统。而这种情况下启动界面上会启动<code>grub rescue</code>模式，本文即在此模式下恢复grub引导。<br><a id="more"></a></p>
-<h1 id="1-术语简述"><a href="#术语简述" class="header-anchor"></a>1. <a href="#术语简述" class="headerlink" title="术语简述"></a>术语简述</h1><h2 id="11-bios"><a href="#bios" class="header-anchor"></a>1.1. <a href="#BIOS" class="headerlink" title="BIOS"></a>BIOS</h2><p>“Basic Input Output System”，中文名称就是”基本输入输出系统”。其实，它是一组固化到计算机内主板上一个ROM芯片上的程序，它保存着计算机最重要的基本输入输出的程序、系统设置信息、开机后自检程序和系统自启动程序。 其主要功能是为计算机提供最底层的、最直接的硬件设置和控制。</p>
-<h2 id="12-mbr"><a href="#mbr" class="header-anchor"></a>1.2. <a href="#MBR" class="headerlink" title="MBR"></a>MBR</h2><p>“Master Boot Record” 硬盘的物理扇区，也叫主引导记录！因为BIOS 很小无法承载启动的运行程序，所以在bios检测到一个硬盘后，将硬盘的0柱面、0磁头、1扇区的内容经过简单判断后， 至内存中的指定位置，然后跳转至这个位置，开始从这个位置运行，大小为512个byte，其中主要存放引导程序和该硬盘的分区表。</p>
-<h2 id="13-grub"><a href="#grub" class="header-anchor"></a>1.3. <a href="#grub" class="headerlink" title="grub"></a>grub</h2><p>“GRand Unified Bootloade” 多重操作系统启动管理器，就是运行这个GRUB之后可以通过它来引导进入其它的系统，包括window以及linux</p>
+<h1 id="术语简述"><a href="#术语简述" class="header-anchor"></a>1. <a href="#术语简述" class="headerlink" title="术语简述"></a>术语简述</h1><h2 id="bios"><a href="#bios" class="header-anchor"></a>1.1. <a href="#BIOS" class="headerlink" title="BIOS"></a>BIOS</h2><p>“Basic Input Output System”，中文名称就是”基本输入输出系统”。其实，它是一组固化到计算机内主板上一个ROM芯片上的程序，它保存着计算机最重要的基本输入输出的程序、系统设置信息、开机后自检程序和系统自启动程序。 其主要功能是为计算机提供最底层的、最直接的硬件设置和控制。</p>
+<h2 id="mbr"><a href="#mbr" class="header-anchor"></a>1.2. <a href="#MBR" class="headerlink" title="MBR"></a>MBR</h2><p>“Master Boot Record” 硬盘的物理扇区，也叫主引导记录！因为BIOS 很小无法承载启动的运行程序，所以在bios检测到一个硬盘后，将硬盘的0柱面、0磁头、1扇区的内容经过简单判断后， 至内存中的指定位置，然后跳转至这个位置，开始从这个位置运行，大小为512个byte，其中主要存放引导程序和该硬盘的分区表。</p>
+<h2 id="grub"><a href="#grub" class="header-anchor"></a>1.3. <a href="#grub" class="headerlink" title="grub"></a>grub</h2><p>“GRand Unified Bootloade” 多重操作系统启动管理器，就是运行这个GRUB之后可以通过它来引导进入其它的系统，包括window以及linux</p>
 <p>小结：PC 首先启动到BIOS ，然后检测硬盘的MBR，将MBR这块扇区的内容(也就是写在上面的GRUB)装入内存运行，再通过运行GRUB得到的结果实现新的跳转启动！</p>
-<h1 id="2-出现grub-resuce情况下修复grub2"><a href="#出现grub-resuce情况下修复grub2" class="header-anchor"></a>2. <a href="#出现grub-resuce情况下修复grub2" class="headerlink" title="出现grub resuce情况下修复grub2"></a>出现grub resuce情况下修复grub2</h1><p>grub2分为两部分，一部分写入MBR，另一部分存在linux系统的/boot/grub目录下。出现<code>grub rescue&gt;</code>即MBR部分无法正常运作grub程序，找不到/boot/grub部分，于是启动grub救援模式。</p>
+<h1 id="出现grub-resuce情况下修复grub2"><a href="#出现grub-resuce情况下修复grub2" class="header-anchor"></a>2. <a href="#出现grub-resuce情况下修复grub2" class="headerlink" title="出现grub resuce情况下修复grub2"></a>出现grub resuce情况下修复grub2</h1><p>grub2分为两部分，一部分写入MBR，另一部分存在linux系统的/boot/grub目录下。出现<code>grub rescue&gt;</code>即MBR部分无法正常运作grub程序，找不到/boot/grub部分，于是启动grub救援模式。</p>
 <p>grub rescue命令行有以下可用命令：<br>set, ls, insmod, root, prefix（设置启动路径）</p>
 <ol>
 <li>ls查看所有分区，列出：<br>（hd0），（hd0，msdos8），（hd0，msdos7），（hd0，msdos6），（hd0，msdos5），（hd0，msdos3），（hd0，msdos1）<br>需要找到ubuntu的安装分区，通过 <code>ls (hd0, msdos4)/boot</code>直到不出现<code>error: unknown filesystem</code></li>
@@ -478,7 +478,7 @@
 </li>
 </ol>
 <p>在正确进入了ubuntu之后，需要更新MBR的grub部分来适应新的分区情况：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo update-grub2 <span class="comment"># update /boot/grub/grub.cfg</span></div><div class="line">sudo grub-install /dev/sda <span class="comment"># install grub into MBR of Mater Disk</span></div></pre></td></tr></table></figure></p>
-<h1 id="3-livecd-修复方法"><a href="#livecd-修复方法" class="header-anchor"></a>3. <a href="#liveCD-修复方法" class="headerlink" title="liveCD 修复方法"></a>liveCD 修复方法</h1><p>用启动盘进入try ubuntu界面，手动更新grub<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo update-grub2</div><div class="line">sudo grub-install /dev/sda8</div></pre></td></tr></table></figure></p>
+<h1 id="livecd-修复方法"><a href="#livecd-修复方法" class="header-anchor"></a>3. <a href="#liveCD-修复方法" class="headerlink" title="liveCD 修复方法"></a>liveCD 修复方法</h1><p>用启动盘进入try ubuntu界面，手动更新grub<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo update-grub2</div><div class="line">sudo grub-install /dev/sda8</div></pre></td></tr></table></figure></p>
 <p>参考：</p>
 <ol>
 <li><a href="http://blog.csdn.net/jscese/article/details/36865449" target="_blank" rel="external">csdn-jscese</a></li>
@@ -724,7 +724,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-术语简述"><span class="nav-text">1. 术语简述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#11-bios"><span class="nav-text">1.1. BIOS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-mbr"><span class="nav-text">1.2. MBR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-grub"><span class="nav-text">1.3. grub</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-出现grub-resuce情况下修复grub2"><span class="nav-text">2. 出现grub resuce情况下修复grub2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-livecd-修复方法"><span class="nav-text">3. liveCD 修复方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#术语简述"><span class="nav-text">1. 术语简述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bios"><span class="nav-text">1.1. BIOS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mbr"><span class="nav-text">1.2. MBR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#grub"><span class="nav-text">1.3. grub</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#出现grub-resuce情况下修复grub2"><span class="nav-text">2. 出现grub resuce情况下修复grub2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#livecd-修复方法"><span class="nav-text">3. liveCD 修复方法</span></a></li></ol></div>
             
 
           </div>
