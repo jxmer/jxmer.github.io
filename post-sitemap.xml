@@ -55,7 +55,7 @@
     </url>
 
     <url>
-        <loc>http://www.jiaxm.me/2017-07-day/Hexo%20Configuration/</loc>
+        <loc>http://www.jiaxm.me/2017-07-day/Hexo_Configuration/</loc>
         <lastmod>2017-08-06T07:42:51.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -63,7 +63,7 @@
     </url>
 
     <url>
-        <loc>http://www.jiaxm.me/2017-07-day/Hexo_Configuration/</loc>
+        <loc>http://www.jiaxm.me/2017-07-day/Hexo%20Configuration/</loc>
         <lastmod>2017-08-06T07:42:51.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -87,14 +87,6 @@
     </url>
 
     <url>
-        <loc>http://www.jiaxm.me/2017-07-day/Markdown_Writing/</loc>
-        <lastmod>2017-08-06T07:42:51.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://www.jiaxm.me/2017-07-day/NumPy%20Learn/</loc>
         <lastmod>2017-08-06T07:42:51.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -111,7 +103,7 @@
     </url>
 
     <url>
-        <loc>http://www.jiaxm.me/2017-07-day/Ubuntu_Rescue_Mode_Repair/</loc>
+        <loc>http://www.jiaxm.me/2017-07-day/Markdown_Writing/</loc>
         <lastmod>2017-08-06T07:42:51.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -128,6 +120,14 @@
 
     <url>
         <loc>http://www.jiaxm.me/2017-07-day/python_code/</loc>
+        <lastmod>2017-08-06T07:42:51.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.jiaxm.me/2017-07-day/Ubuntu_Rescue_Mode_Repair/</loc>
         <lastmod>2017-08-06T07:42:51.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
