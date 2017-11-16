@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://www.jiaxm.me/2017-11-day/InstallationManual/</loc>
+        <lastmod>2017-11-16T07:26:11.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://www.jiaxm.me/2017-11-day/Xshell/</loc>
         <lastmod>2017-11-16T07:10:09.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -17,14 +25,6 @@
     <url>
         <loc>http://www.jiaxm.me/2017-07-day/NumPy_Learn/</loc>
         <lastmod>2017-11-16T07:09:21.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.jiaxm.me/2017-11-day/InstallationManual/</loc>
-        <lastmod>2017-11-16T07:06:07.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -55,14 +55,6 @@
     </url>
 
     <url>
-        <loc>http://www.jiaxm.me/2017-07-day/Linux_Terminal_Shortcuts/</loc>
-        <lastmod>2017-08-06T07:42:51.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://www.jiaxm.me/2017-07-day/LearnNumpy/</loc>
         <lastmod>2017-08-06T07:42:51.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -71,7 +63,7 @@
     </url>
 
     <url>
-        <loc>http://www.jiaxm.me/2017-07-day/Markdown_Writing/</loc>
+        <loc>http://www.jiaxm.me/2017-07-day/Linux_Terminal_Shortcuts/</loc>
         <lastmod>2017-08-06T07:42:51.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -87,7 +79,7 @@
     </url>
 
     <url>
-        <loc>http://www.jiaxm.me/2017-07-day/VPS/</loc>
+        <loc>http://www.jiaxm.me/2017-07-day/Ubuntu_Rescue_Mode_Repair/</loc>
         <lastmod>2017-08-06T07:42:51.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -95,7 +87,15 @@
     </url>
 
     <url>
-        <loc>http://www.jiaxm.me/2017-07-day/Ubuntu_Rescue_Mode_Repair/</loc>
+        <loc>http://www.jiaxm.me/2017-07-day/Markdown_Writing/</loc>
+        <lastmod>2017-08-06T07:42:51.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.jiaxm.me/2017-07-day/VPS/</loc>
         <lastmod>2017-08-06T07:42:51.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
