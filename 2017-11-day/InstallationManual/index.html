@@ -461,13 +461,13 @@
 
       
         <p>一些软件的安装步骤，以及此过程中遇到的问题的解决办法。<br><a id="more"></a></p>
-<h1 id="1-服务器软件的安装"><a href="#服务器软件的安装" class="header-anchor"></a>1. <a href="#服务器软件的安装" class="headerlink" title="服务器软件的安装"></a>服务器软件的安装</h1><h2 id="11-安装cuda"><a href="#安装cuda" class="header-anchor"></a>1.1. <a href="#安装cuda" class="headerlink" title="安装cuda"></a>安装cuda</h2><ol>
+<h1 id="服务器软件的安装"><a href="#服务器软件的安装" class="header-anchor"></a>1. <a href="#服务器软件的安装" class="headerlink" title="服务器软件的安装"></a>服务器软件的安装</h1><h2 id="安装cuda"><a href="#安装cuda" class="header-anchor"></a>1.1. <a href="#安装cuda" class="headerlink" title="安装cuda"></a>安装cuda</h2><ol>
 <li>安装cuda经常会遇到问题，但大部分都与如何禁用nouveau驱动相关，所以step-1，需要禁用nouveau驱动。<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">1. 在配置文件中禁用nouveau</div><div class="line">vi /etc/modprobe.d/blacklist.conf  添加：blacklist nouveau</div><div class="line">    CentOS 7:</div><div class="line">     vim /usr/lib/modprobe.d/dist-blacklist.conf$</div><div class="line">    或</div><div class="line">     vim /lib/modprobe.d/dist-blacklist.conf</div><div class="line">    并且在加上blacklist nouveau之后还要加上一行options nouveau modeset=0</div><div class="line">2. 备份原来的 initramfs nouveau image镜像</div><div class="line">mv /boot/initramfs-$(uname -r).img /boot/initramfs-$(uname -r)-nouveau.img  </div><div class="line">3. 创建新的 initramfs image镜像</div><div class="line">dracut /boot/initramfs-$(uname -r).img $(uname -r)  </div><div class="line">注：重启后会发现终端界面字体变大了，不清晰了，表示nouveau禁用成功。</div><div class="line">4. 所有安装已经完成，重新启动机器。</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>2.单独安装nvidia驱动 <code>./NVIDIA-Linux-x86_64-384.90-1080ti.run</code><br>需要注意几点：<br>（1）cuda安装包本身包含两个部分：cuda-toolkit和nvidia driver，再安装cuda的时候是可以选择只安装cuda-toolkit，而省略nvidia driver的（甚至可以从cuda中抽出单独的部分作为一个安装包）<br>（2）1080Ti的显卡需要较新的驱动384.90来支持<br>（3）安装完成后一定要用命令查看一下显卡状态<code>nvidia-smi</code>，如果有错误提示，则安装有问题。</p>
 <ol>
-<li>安装cuda <code>./cuda_9.0.176_384.81_linux-run</code> 不需要装driver<h2 id="12-hoomd"><a href="#hoomd" class="header-anchor"></a>1.2. <a href="#hoomd" class="headerlink" title="hoomd"></a>hoomd</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(1) mkdir build 然后进入build</div><div class="line">(2) cmake -Wno-dev ../ -DCMAKE_INSTALL_PREFIX=<span class="variable">$HOME</span>/.<span class="built_in">local</span>/hoomd -DCMAKE_BUILD_TYPE=Release -DENABLE_CUDA=On -DCUDA_TOOLKIT_ROOT_DIR=/usr/<span class="built_in">local</span>/cuda -DENABLE_MPI_CUDA=On -DENABLE_MPI=On -DPYTHON_EXECUTABLE=`<span class="built_in">which</span> python2`</div><div class="line">(3) make install -j8</div><div class="line">注意事项：</div><div class="line">1. 确保默认python的是用系统自带的python2</div><div class="line">2. 如果编译并行版本的话，需要安装openmpi，并且做好环境变量</div></pre></td></tr></table></figure>
+<li>安装cuda <code>./cuda_9.0.176_384.81_linux-run</code> 不需要装driver<h2 id="hoomd"><a href="#hoomd" class="header-anchor"></a>1.2. <a href="#hoomd" class="headerlink" title="hoomd"></a>hoomd</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(1) mkdir build 然后进入build</div><div class="line">(2) cmake -Wno-dev ../ -DCMAKE_INSTALL_PREFIX=<span class="variable">$HOME</span>/.<span class="built_in">local</span>/hoomd -DCMAKE_BUILD_TYPE=Release -DENABLE_CUDA=On -DCUDA_TOOLKIT_ROOT_DIR=/usr/<span class="built_in">local</span>/cuda -DENABLE_MPI_CUDA=On -DENABLE_MPI=On -DPYTHON_EXECUTABLE=`<span class="built_in">which</span> python2`</div><div class="line">(3) make install -j8</div><div class="line">注意事项：</div><div class="line">1. 确保默认python的是用系统自带的python2</div><div class="line">2. 如果编译并行版本的话，需要安装openmpi，并且做好环境变量</div></pre></td></tr></table></figure>
 </li>
 </ol>
 
@@ -619,7 +619,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -709,7 +709,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-服务器软件的安装"><span class="nav-text">1. 服务器软件的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#11-安装cuda"><span class="nav-text">1.1. 安装cuda</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-hoomd"><span class="nav-text">1.2. hoomd</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#服务器软件的安装"><span class="nav-text">1. 服务器软件的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装cuda"><span class="nav-text">1.1. 安装cuda</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hoomd"><span class="nav-text">1.2. hoomd</span></a></li></ol></li></ol></div>
             
 
           </div>
