@@ -94,7 +94,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="VPS,Shadowsocks," />
+  <meta name="keywords" content="linux," />
 
 
 
@@ -110,20 +110,18 @@
 
 
 
-<meta name="description" content="对于做科研、写代码的同学来说，翻GFW是必不可少的，对于专业的资料来说，google/sholar搜索的丰富程度可以秒某度的。梯子有很多种，例如改hosts、vpn(SoftEther)、浏览器翻墙的插件(谷歌上网助手)、自由门、GoAgent、cow、Lantern等等。今天我们来介绍一下在国外VPS(Virtual private server)的搭建，不只是可以用来上google，schol">
-<meta name="keywords" content="VPS,Shadowsocks">
+<meta name="description" content="linux 常用命令，比较杂PS: 部分fork自大师兄个人网站">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Shadowsocks 的搭建">
-<meta property="og:url" content="http://www.jiaxm.me/2017-07-day/Shadowsocks_Configuration/index.html">
+<meta property="og:title" content="linux 常用命令">
+<meta property="og:url" content="http://www.jiaxm.me/2017-11-day/LinuxCommand/index.html">
 <meta property="og:site_name" content="Memories">
-<meta property="og:description" content="对于做科研、写代码的同学来说，翻GFW是必不可少的，对于专业的资料来说，google/sholar搜索的丰富程度可以秒某度的。梯子有很多种，例如改hosts、vpn(SoftEther)、浏览器翻墙的插件(谷歌上网助手)、自由门、GoAgent、cow、Lantern等等。今天我们来介绍一下在国外VPS(Virtual private server)的搭建，不只是可以用来上google，schol">
+<meta property="og:description" content="linux 常用命令，比较杂PS: 部分fork自大师兄个人网站">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.jiaxm.me/images/scenery.jpg">
-<meta property="og:updated_time" content="2017-11-16T16:35:09.691Z">
+<meta property="og:updated_time" content="2017-11-16T13:30:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Shadowsocks 的搭建">
-<meta name="twitter:description" content="对于做科研、写代码的同学来说，翻GFW是必不可少的，对于专业的资料来说，google/sholar搜索的丰富程度可以秒某度的。梯子有很多种，例如改hosts、vpn(SoftEther)、浏览器翻墙的插件(谷歌上网助手)、自由门、GoAgent、cow、Lantern等等。今天我们来介绍一下在国外VPS(Virtual private server)的搭建，不只是可以用来上google，schol">
-<meta name="twitter:image" content="http://www.jiaxm.me/images/scenery.jpg">
+<meta name="twitter:title" content="linux 常用命令">
+<meta name="twitter:description" content="linux 常用命令，比较杂PS: 部分fork自大师兄个人网站">
 
 
 
@@ -151,14 +149,14 @@
 
 
 
-  <link rel="canonical" href="http://www.jiaxm.me/2017-07-day/Shadowsocks_Configuration/"/>
+  <link rel="canonical" href="http://www.jiaxm.me/2017-11-day/LinuxCommand/"/>
 
 
 
 
 
 
-  <title>Shadowsocks 的搭建 | Memories</title>
+  <title>linux 常用命令 | Memories</title>
   
 
 
@@ -360,7 +358,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.jiaxm.me/2017-07-day/Shadowsocks_Configuration/">
+    <link itemprop="mainEntityOfPage" href="http://www.jiaxm.me/2017-11-day/LinuxCommand/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="jxm">
@@ -377,7 +375,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Shadowsocks 的搭建</h2>
+          <h2 class="post-title" itemprop="name headline">linux 常用命令</h2>
         
 
         <div class="post-meta">
@@ -389,8 +387,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-14T00:00:00+08:00">
-                2017-07-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-16T18:00:04+08:00">
+                2017-11-16
               </time>
             
 
@@ -400,6 +398,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -408,9 +428,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017-07-day/Shadowsocks_Configuration/#comments" itemprop="discussionUrl">
+                <a href="/2017-11-day/LinuxCommand/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017-07-day/Shadowsocks_Configuration/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017-11-day/LinuxCommand/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -440,83 +460,10 @@
       
 
       
-        <p>对于做科研、写代码的同学来说，翻<a href="https://zh.wikipedia.org/wiki/%E9%98%B2%E7%81%AB%E9%95%BF%E5%9F%8E" target="_blank" rel="external">GFW</a>是必不可少的，对于专业的资料来说，google/sholar搜索的丰富程度可以秒某度的。梯子有很多种，例如改hosts、vpn(SoftEther)、浏览器翻墙的插件(谷歌上网助手)、自由门、GoAgent、cow、Lantern等等。今天我们来介绍一下在国外<a href="https://en.wikipedia.org/wiki/Virtual_private_server" target="_blank" rel="external">VPS</a>(Virtual private server)的搭建，不只是可以用来上google，scholar等，可以说相当于拥有了国外的网络环境，没有限制的浏览国外网站。<br><a id="more"></a></p>
-<h1 id="1-shadowsocks-简介"><a href="#shadowsocks-简介" class="header-anchor"></a>1. <a href="#Shadowsocks-简介" class="headerlink" title="Shadowsocks 简介"></a>Shadowsocks 简介</h1><p>维基百科搬运：</p>
-<blockquote>
-<blockquote>
-<p>Shadowsocks (以下简称“ss”) 是一种基于Sock5代理方式的网络资料加密传输工具，分为服务器端和客户端。使用之前，需先将服务器端部署到服务器上面，然后通过客户端连接并建立本地代理。<br>ss的运行原理与其他代理工具基本相同，使用特定的中转服务器完成数据传输。在服务器端部署完成后，用户需要按照指定的密码、加密方式和端口使用客户端软件与其连接。在成功连接到服务器后，客户端会在用户的电脑上构建一个本地Socks5代理。浏览网络时，网络流量会被分到本地socks5代理，客户端将其加密之后发送到服务器，服务器以同样的加密方式将流量回传给客户端，以此实现代理上网。ss的创建者<a href="http://github.com/clowwindy" target="_blank" rel="external">clowwindy</a>是中国人，15年8月22日受到一些外部压力，宣布停止维护此计划（项目）并移除其个人页面所存储的源代码，</p>
-</blockquote>
-</blockquote>
-<p>详细News请移步<a href="https://zh.wikipedia.org/wiki/Shadowsocks" target="_blank" rel="external">维基百科</a>。</p>
-<h1 id="2-ss-搭建"><a href="#ss-搭建" class="header-anchor"></a>2. <a href="#ss-搭建" class="headerlink" title="ss 搭建"></a>ss 搭建</h1><p>详细的搭建步骤有点琐碎，故分列几条。</p>
-<ol>
-<li>安装 Shadowsocks</li>
-<li>server端配置</li>
-<li>Windows客户端配置</li>
-<li>Android客户端配置</li>
-</ol>
-<h2 id="21-安装-ss"><a href="#安装-ss" class="header-anchor"></a>2.1. <a href="#安装-ss" class="headerlink" title="安装 ss"></a>安装 ss</h2><p>以Ubuntu 17.04为例。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install python-pip</div><div class="line">sudo pip install shadowsocks</div><div class="line">sudo apt-get install python-m2crypto <span class="comment"># encrypt method</span></div></pre></td></tr></table></figure></p>
-<h2 id="22-server端配置-ss"><a href="#server端配置-ss" class="header-anchor"></a>2.2. <a href="#server端配置-ss" class="headerlink" title="server端配置 ss"></a>server端配置 ss</h2><h3 id="221-即时启动"><a href="#即时启动" class="header-anchor"></a>2.2.1. <a href="#即时启动：" class="headerlink" title="即时启动："></a>即时启动：</h3><p><code>sudo ssserver -p 8388 -k password -m rc4-md5 -d start</code></p>
-<h3 id="222-使用配置文件启动"><a href="#使用配置文件启动" class="header-anchor"></a>2.2.2. <a href="#使用配置文件启动：" class="headerlink" title="使用配置文件启动："></a>使用配置文件启动：</h3><p>编辑/etc/shadowsocks/config.json文件（如果没有可以创建此文件）<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"><span class="attr">"server"</span>:<span class="string">"my_server_ip"</span>,</div><div class="line"><span class="attr">"server_port"</span>:<span class="number">8388</span>,</div><div class="line"><span class="attr">"local_address"</span>: <span class="string">"127.0.0.1"</span>,</div><div class="line"><span class="attr">"local_port"</span>:<span class="number">1080</span>,</div><div class="line"><span class="attr">"password"</span>:<span class="string">"mypassword"</span>,</div><div class="line"><span class="attr">"timeout"</span>:<span class="number">300</span>,</div><div class="line"><span class="attr">"method"</span>:<span class="string">"rc4-md5"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>字段含义：</p>
-<table>
-<thead>
-<tr>
-<th>字段</th>
-<th>含义  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>server</td>
-<td>服务器 IP (IPv4/IPv6)</td>
-</tr>
-<tr>
-<td>server_port</td>
-<td>服务器端口</td>
-</tr>
-<tr>
-<td>local_port</td>
-<td>本地端端口</td>
-</tr>
-<tr>
-<td>password</td>
-<td>密码</td>
-</tr>
-<tr>
-<td>timeout</td>
-<td>超时时间(s)</td>
-</tr>
-<tr>
-<td>method</td>
-<td>加密方法， 可选“bf-cfb”, “aes-256-cfb”, “rc4-md5”,等</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>加密方式推荐使用rc4-md5，因为 RC4 比 AES 速度快好几倍，如果用在路由器上会带来显著性能提升。旧的 RC4 加密之所以不安全是因为 Shadowsocks 在每个连接上重复使用 key，没有使用 IV。现在已经重新正确实现，可以放心使用。</p>
-</blockquote>
-<p>config.json文件创建完毕后，赋予755权限<br><code>sudo chmod 755 /etc/shadowsocks/config.json</code><br>使用配置文件，后台运行：<br><code>sudo ssserver -c /etc/shadowsocks/config.json -d start</code></p>
-<h3 id="223-开机启动"><a href="#开机启动" class="header-anchor"></a>2.2.3. <a href="#开机启动" class="headerlink" title="开机启动"></a>开机启动</h3><p>上述两种方法都是在机器没有重启的情况下用的，每次重启后都手动去开启ss服务有点麻烦，所以设置开机启动可以省点事。<br>创建 /etc/init.d/shadowsocks 文件 <code>sudo vim /etc/init.d/shadowsocks</code><br>添加以下内容：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line"><span class="comment">### BEGIN INIT INFO</span></div><div class="line"><span class="comment"># Provides:          shadowsocks</span></div><div class="line"><span class="comment"># Required-Start:    $remote_fs $syslog</span></div><div class="line"><span class="comment"># Required-Stop:     $remote_fs $syslog</span></div><div class="line"><span class="comment"># Default-Start:     2 3 4 5</span></div><div class="line"><span class="comment"># Default-Stop:      0 1 6</span></div><div class="line"><span class="comment"># Short-Description: start shadowsocks</span></div><div class="line"><span class="comment"># Description:       start shadowsocks</span></div><div class="line"><span class="comment">### END INIT INFO</span></div><div class="line"></div><div class="line"><span class="function"><span class="title">start</span></span>()&#123;</div><div class="line">    ssserver -c /etc/shadowsocks/config.json -d start</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="title">stop</span></span>()&#123;</div><div class="line">    ssserver -c /etc/shadowsocks/config.json -d stop</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">case</span> <span class="string">"<span class="variable">$1</span>"</span> <span class="keyword">in</span></div><div class="line">start)</div><div class="line">    start</div><div class="line">    ;;</div><div class="line">stop)</div><div class="line">    stop</div><div class="line">    ;;</div><div class="line">reload)</div><div class="line">     stop</div><div class="line">     start</div><div class="line">     ;;</div><div class="line">*)</div><div class="line">    <span class="built_in">echo</span> <span class="string">"Usage: <span class="variable">$0</span> &#123;start|reload|stop&#125;"</span></div><div class="line">    <span class="built_in">exit</span> 1</div><div class="line">    ;;</div><div class="line"><span class="keyword">esac</span></div></pre></td></tr></table></figure></p>
-<p>增加这个文件的可执行权限 <code>sudo chmod +x /etc/init.d/shadowsocks</code><br>在rc.d中新增<code>sudo update-rc.d shadowsocks defaults</code>，添加到开机启动中<br>以后就可以通过<code>sudo service shadowsocks {start|reload|stop}</code>来管理了。</p>
-<h3 id="224-ss多用户配置"><a href="#ss多用户配置" class="header-anchor"></a>2.2.4. <a href="#ss多用户配置" class="headerlink" title="ss多用户配置"></a>ss多用户配置</h3><p>只开一个端口，用的人多了会相互挤占流量，所以多开几个为妥。配置很简单，只需要修改上述config.json文件：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"><span class="string">"server"</span>:<span class="string">"my_server_ip"</span>,</div><div class="line"><span class="string">"local_address"</span>: <span class="string">"127.0.0.1"</span>,</div><div class="line"><span class="string">"local_port"</span>:<span class="number">1080</span>,</div><div class="line"><span class="string">"port_password"</span>:&#123;</div><div class="line">  <span class="string">"8381"</span>: <span class="string">"12345678"</span>,</div><div class="line">  <span class="string">"8382"</span>: <span class="string">"12345678"</span>,</div><div class="line">  <span class="string">"8383"</span>: <span class="string">"12345678"</span></div><div class="line">&#125;,</div><div class="line"><span class="string">"timeout"</span>:<span class="number">300</span>,</div><div class="line"><span class="string">"method"</span>:<span class="string">"rc4-md5"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>如果是ubuntu/debian用户，ss多用户多端口的配置就到此结束了。但是对于centos用户仍会存在问题——centos默认的防火墙机制，会阻隔掉多端口配置。解决方法是，将这个端口打开tcp和udp通信。具体操作如下，参考<a href="http://blog.csdn.net/helinlin007/article/details/51469656" target="_blank" rel="external">这里</a>：</p>
-<ol>
-<li>打开<code>etc/firewalled/zones/public.xml</code>进行端口编辑，如<code>&lt;port protocol=&quot;tcp&quot; port=&quot;443&quot;/&gt;   &lt;portprotocol=&quot;udp&quot; port=&quot;443&quot;/&gt;</code>，即可添加tcp和udp的权限。</li>
-<li><code>systemctl firewall restart</code>重启防火墙</li>
-</ol>
-<h3 id="225-ss-速度优化"><a href="#ss-速度优化" class="header-anchor"></a>2.2.5. <a href="#ss-速度优化" class="headerlink" title="ss 速度优化"></a>ss 速度优化</h3><p>基于kvm架构vps的优化<br>这方面SS给出了非常详尽的优化指南，主要有：优化内核参数，开启TCP Fast Open<br>这里只给出优化内核参数/优化加密方式的方法。更多、更详细的策略方法请参考<a href="https://github.com/iMeiji/shadowsocks_install/wiki/shadowsocks-optimize" target="_blank" rel="external">shadowsocks optimize</a></p>
-<h4 id="2251-内核参数优化"><a href="#内核参数优化" class="header-anchor"></a>2.2.5.1. <a href="#内核参数优化" class="headerlink" title="内核参数优化"></a>内核参数优化</h4><p>创建<code>/etc/sysctl.d/local.conf</code>并写入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># max open files</span></div><div class="line">fs.file-max = 1024000</div><div class="line"><span class="comment"># max read buffer</span></div><div class="line">net.core.rmem_max = 67108864</div><div class="line"><span class="comment"># max write buffer</span></div><div class="line">net.core.wmem_max = 67108864</div><div class="line"><span class="comment"># default read buffer</span></div><div class="line">net.core.rmem_default = 65536</div><div class="line"><span class="comment"># default write buffer</span></div><div class="line">net.core.wmem_default = 65536</div><div class="line"><span class="comment"># max processor input queue</span></div><div class="line">net.core.netdev_max_backlog = 4096</div><div class="line"><span class="comment"># max backlog</span></div><div class="line">net.core.somaxconn = 4096</div><div class="line"></div><div class="line"><span class="comment"># resist SYN flood attacks</span></div><div class="line">net.ipv4.tcp_syncookies = 1</div><div class="line"><span class="comment"># reuse timewait sockets when safe</span></div><div class="line">net.ipv4.tcp_tw_reuse = 1</div><div class="line"><span class="comment"># turn off fast timewait sockets recycling</span></div><div class="line">net.ipv4.tcp_tw_recycle = 0</div><div class="line"><span class="comment"># short FIN timeout</span></div><div class="line">net.ipv4.tcp_fin_timeout = 30</div><div class="line"><span class="comment"># short keepalive time</span></div><div class="line">net.ipv4.tcp_keepalive_time = 1200</div><div class="line"><span class="comment"># outbound port range</span></div><div class="line">net.ipv4.ip_local_port_range = 10000 65000</div><div class="line"><span class="comment"># max SYN backlog</span></div><div class="line">net.ipv4.tcp_max_syn_backlog = 4096</div><div class="line"><span class="comment"># max timewait sockets held by system simultaneously</span></div><div class="line">net.ipv4.tcp_max_tw_buckets = 5000</div><div class="line"><span class="comment"># TCP receive buffer</span></div><div class="line">net.ipv4.tcp_rmem = 4096 87380 67108864</div><div class="line"><span class="comment"># TCP write buffer</span></div><div class="line">net.ipv4.tcp_wmem = 4096 65536 67108864</div><div class="line"><span class="comment"># turn on path MTU discovery</span></div><div class="line">net.ipv4.tcp_mtu_probing = 1</div><div class="line"></div><div class="line"><span class="comment"># for high-latency network</span></div><div class="line">net.ipv4.tcp_congestion_control = htcp</div><div class="line"><span class="comment"># forward ipv4</span></div><div class="line">net.ipv4.ip_forward = 1</div></pre></td></tr></table></figure></p>
-<p>其中最后的<code>hybla</code>是为高延迟网络（如美国，欧洲）准备的算法，需要内核支持，测试内核是否支持，在终端输入：<code>sysctl net.ipv4.tcp_available_congestion_control</code><br>如果结果中有<code>hybla</code>，则证明你的内核已开启<code>hybla</code>，如果没有<code>hybla</code>，可以用命令<code>modprobe tcp_hybla</code>开启。</p>
-<p>对于低延迟的网络（如日本，香港等），可以使用<code>htcp</code>，可以非常显著的提高速度，首先使用<code>modprobe tcp_htcp</code>开启，再将<code>net.ipv4.tcp_congestion_control = hybla改为net.ipv4.tcp_congestion_control = htcp</code>，建议EC2日本用户使用这个算法。</p>
-<p>使配置生效：sysctl –system<br>note: 经过手机Andoid客户端测试, 速度确实有提升（之前手机端速度感觉已经很快了！），YouTube上1080p的高清视频一点不卡，甚至于还没有缓冲到的时间点直接点击在3秒之内都可以缓冲出来（这个时候的即时速度可以到3M/s）。<img src="/images/scenery.jpg"><br>YouTube 1080p高清测试视频，<a href="https://youtu.be/6v2L2UGZJAM" target="_blank" rel="external">Planet Earth: Amazing nature scenery</a></p>
-<h4 id="2252-tcp优化"><a href="#tcp优化" class="header-anchor"></a>2.2.5.2. <a href="#TCP优化" class="headerlink" title="TCP优化"></a>TCP优化</h4><p>1.修改文件句柄数限制<br>如果是ubuntu/centos均可修改/etc/sysctl.d/local.conf<br>找到fs.file-max这一行，修改其值为1024000，并保存退出。然后执行<code>sysctl -p</code>使其生效<br>修改vi /etc/security/limits.conf文件，加入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">*               soft    nofile           512000</div><div class="line">*               hard    nofile          1024000</div></pre></td></tr></table></figure></p>
-<p>2.修改vi /etc/profile文件，加入<br><code>ulimit -SHn 1024000</code><br>然后重启服务器执行<code>ulimit -n</code>，查询返回1024000即可。</p>
-<h3 id="226-ss-加密优化"><a href="#ss-加密优化" class="header-anchor"></a>2.2.6. <a href="#ss-加密优化" class="headerlink" title="ss 加密优化"></a>ss 加密优化</h3><ol>
-<li>装M2Crypto 这个可以提高SS的加密速度，安装办法：<br>Debian/Ubuntu<br><code>apt-get install python-m2crypto</code><br>安装之后重启SS，速度将会有一定的提升</li>
-<li>装 gevent 安装 gevent可以提高 Shadowsocks 的性能。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install python-dev libevent-dev python-setuptools python-gevent easy_install greenlet gevent</div></pre></td></tr></table></figure>
-</li>
-</ol>
+        <p>linux 常用命令，比较杂<br>PS: 部分fork自<a href="http://timchen314.com/2017/07/31/linux_command/#more" target="_blank" rel="external">大师兄个人网站</a><br><a id="more"></a></p>
+<h1 id="1-一句一命令系列"><a href="#一句一命令系列" class="header-anchor"></a>1. <a href="#一句一命令系列" class="headerlink" title="一句一命令系列"></a>一句一命令系列</h1><p><code>tac</code>: cat倒过来写，将文件以line为单位反向输出。<br><code>join</code>: 将两个文件里指定栏同样的行拼接起来，即依照两个文件里共有的一列，将相应的行拼起来。<code>join file1 file2</code> 默认两个文件的第一列为匹配域。具体用法可以参考[这里]（<a href="http://www.cnblogs.com/mfryf/p/3402200.html）" target="_blank" rel="external">http://www.cnblogs.com/mfryf/p/3402200.html）</a></p>
+<h1 id="2-命令"><a href="#命令" class="header-anchor"></a>2. <a href="#！命令" class="headerlink" title="！命令"></a>！命令</h1><p><code>!#</code>，引用当前的命令行，例如：cp filename filename.bak 可以写为 cp filename !#:1.bak note: <code>:1</code> 表示选择当前行命令的第一个参数<br><code>!-n</code> 重复执行倒数第 n 条命令，n 为正整数<br><code>!!</code> 重复执行上一条命令。该命令等价于 !-1<br><code>!^</code> 重用上一条命令的第一个参数 <code>ls /usr/share/doc /usr/share/man; cd !^# 即 cd /usr/share/doc</code><br><code>!*</code> 重用上一条命令的所有参数 <code>touch t1 t2 t3</code>， <code>rm !*</code>即<code>rm t1 t2 t3</code><br><code>!!:n</code> 重用上一条命令中的第n个参数，n为正整数。<code>touch t1 t2 t3</code>，<code>rm !!:2</code>即<code>touch t2</code><br><code>!str:x-y</code> 重用上一条以str开头的命令的第x到第y个参数。<code>touch t1 t2 t3</code>，<code>rm !touch:2:3</code>即<code>rm t2 t3</code><br><code>!?str:n*</code> 重用上一条包含 str 的命令的从第 n 个到最后一个参数</p>
+<p>&lt;持续更新……&gt;</p>
 
       
     </div>
@@ -562,9 +509,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/VPS/" rel="tag"># VPS</a>
-          
-            <a href="/tags/Shadowsocks/" rel="tag"># Shadowsocks</a>
+            <a href="/tags/linux/" rel="tag"># linux</a>
           
         </div>
       
@@ -577,8 +522,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017-07-day/Hexo/" rel="next" title="Hexo Configuration">
-                <i class="fa fa-chevron-left"></i> Hexo Configuration
+              <a href="/2017-11-day/vim/" rel="next" title="vim">
+                <i class="fa fa-chevron-left"></i> vim
               </a>
             
           </div>
@@ -586,10 +531,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017-07-day/Ubuntu_Rescue_Mode_Repair/" rel="prev" title="Linux与Windows双系统启动引导恢复">
-                Linux与Windows双系统启动引导恢复 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -758,7 +699,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-shadowsocks-简介"><span class="nav-text">1. Shadowsocks 简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-ss-搭建"><span class="nav-text">2. ss 搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#21-安装-ss"><span class="nav-text">2.1. 安装 ss</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#22-server端配置-ss"><span class="nav-text">2.2. server端配置 ss</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#221-即时启动"><span class="nav-text">2.2.1. 即时启动：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#222-使用配置文件启动"><span class="nav-text">2.2.2. 使用配置文件启动：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#223-开机启动"><span class="nav-text">2.2.3. 开机启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#224-ss多用户配置"><span class="nav-text">2.2.4. ss多用户配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#225-ss-速度优化"><span class="nav-text">2.2.5. ss 速度优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2251-内核参数优化"><span class="nav-text">2.2.5.1. 内核参数优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2252-tcp优化"><span class="nav-text">2.2.5.2. TCP优化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#226-ss-加密优化"><span class="nav-text">2.2.6. ss 加密优化</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-一句一命令系列"><span class="nav-text">1. 一句一命令系列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-命令"><span class="nav-text">2. ！命令</span></a></li></ol></div>
             
 
           </div>
@@ -926,9 +867,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://www.jiaxm.me/2017-07-day/Shadowsocks_Configuration/';
-          this.page.identifier = '2017-07-day/Shadowsocks_Configuration/';
-          this.page.title = 'Shadowsocks 的搭建';
+          this.page.url = 'http://www.jiaxm.me/2017-11-day/LinuxCommand/';
+          this.page.identifier = '2017-11-day/LinuxCommand/';
+          this.page.title = 'linux 常用命令';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://jiaxm-me.disqus.com/embed.js';
