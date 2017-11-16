@@ -16,6 +16,13 @@
     </url>
 
     <url>
+        <loc>http://www.jiaxm.me/tags/python/</loc>
+        <lastmod>2017-08-06T07:42:51.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://www.jiaxm.me/tags/linux/</loc>
         <lastmod>2017-08-06T07:42:51.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -67,13 +74,6 @@
     <url>
         <loc>http://www.jiaxm.me/tags/fortran/</loc>
         <lastmod>2017-09-25T08:53:43.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://www.jiaxm.me/tags/python/</loc>
-        <lastmod>2017-11-16T07:09:21.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
