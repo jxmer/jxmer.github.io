@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
-    <url>%2F2017-11-day%2Ftest%2F</url>
-    <content type="text"><![CDATA[1. 解法 $\frac{m{so}}{2630}+\frac{m{so}}{2700}=1-\frac{378}{3100}-\frac{159}{1000}-0.01\times1$ (1)$\frac{m{so}}{m{so}+m{go}}\times100=34$ (2)简单的方法是通过（2）式解出$m{so}$与$m{go}$的关系：$\frac{m{so}}{m{so}+m{go}}\times100=34$$m{so}\times100=34\times(m{so}+m{go})$$m{so}\times100=34\times m{so}+34\times m{go}$$66\times m{so}=34\times m{go}$$m{so}=\frac{34}{66} m{go} = \frac{17}{33}m{go}$ (3)将（3）式得到的$m{so}$与$m{go}$关系式带入（1）式：$\frac{\frac{17}{33}m{go}}{2630}+\frac{m{go}}{2700}=1-\frac{378}{3100}-\frac{159}{1000}-0.01\times1$$m{go}\times(\frac{\frac{17}{33}}{2630}+\frac{1}{2700})=1-\frac{378}{3100}-\frac{159}{1000}-0.01\times1$$m{go}=\frac{1-\frac{378}{3100}-\frac{159}{1000}-0.01\times1}{\frac{\frac{17}{33}}{2630}+\frac{1}{2700}}$$m{go}=1252.2210811520424$所以$m{so}=\frac{17}{33} m{go} = 645.0835872601431$]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[一些软件的安装步骤(hoomd, gromacs, cuda，etc.)]]></title>
     <url>%2F2017-11-day%2FInstallationManual%2F</url>
     <content type="text"><![CDATA[一些软件的安装步骤，以及此过程中遇到的问题的解决办法。 1. 服务器软件的安装1.1. 安装cuda 安装cuda经常会遇到问题，但大部分都与如何禁用nouveau驱动相关，所以step-1，需要禁用nouveau驱动。123456789101112131. 在配置文件中禁用nouveauvi /etc/modprobe.d/blacklist.conf 添加：blacklist nouveau CentOS 7: vim /usr/lib/modprobe.d/dist-blacklist.conf$ 或 vim /lib/modprobe.d/dist-blacklist.conf 并且在加上blacklist nouveau之后还要加上一行options nouveau modeset=02. 备份原来的 initramfs nouveau image镜像mv /boot/initramfs-$(uname -r).img /boot/initramfs-$(uname -r)-nouveau.img 3. 创建新的 initramfs image镜像dracut /boot/initramfs-$(uname -r).img $(uname -r) 注：重启后会发现终端界面字体变大了，不清晰了，表示nouveau禁用成功。4. 所有安装已经完成，重新启动机器。 2.单独安装nvidia驱动 ./NVIDIA-Linux-x86_64-384.90-1080ti.run需要注意几点：（1）cuda安装包本身包含两个部分：cuda-toolkit和nvidia driver，再安装cuda的时候是可以选择只安装cuda-toolkit，而省略nvidia driver的（甚至可以从cuda中抽出单独的部分作为一个安装包）（2）1080Ti的显卡需要较新的驱动384.90来支持（3）安装完成后一定要用命令查看一下显卡状态nvidia-smi，如果有错误提示，则安装有问题。 安装cuda ./cuda_9.0.176_384.81_linux-run 不需要装driver1.2. hoomd123456(1) mkdir build 然后进入build(2) cmake -Wno-dev ../ -DCMAKE_INSTALL_PREFIX=$HOME/.local/hoomd -DCMAKE_BUILD_TYPE=Release -DENABLE_CUDA=On -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda -DENABLE_MPI_CUDA=On -DENABLE_MPI=On -DPYTHON_EXECUTABLE=`which python2`(3) make install -j8注意事项：1. 确保默认python的是用系统自带的python22. 如果编译并行版本的话，需要安装openmpi，并且做好环境变量]]></content>
@@ -50,7 +45,7 @@
   </entry>
   <entry>
     <title><![CDATA[Markdown Writing]]></title>
-    <url>%2F2017-07-day%2FMarkdown%20Writing%2F</url>
+    <url>%2F2017-07-day%2FMarkdown_Writing%2F</url>
     <content type="text"><![CDATA[Markdown语法测试 1. 任务列表在任务项目前面加[]。用[x]表示此项已完成。123- [x] Finish my changes- [ ] Push my commits to GitHub- [ ] Open a pull request Finish my changes Push my commits to GitHub Open a pull request 注意如果项目内容以（）开始要对（加转义字符\1- [ ] \(Optional) Open a followup issue (Optional) Open a followup issue]]></content>
       <categories>
         <category>markdown</category>
@@ -61,7 +56,7 @@
   </entry>
   <entry>
     <title><![CDATA[Markdown Writing]]></title>
-    <url>%2F2017-07-day%2FMarkdown_Writing%2F</url>
+    <url>%2F2017-07-day%2FMarkdown%20Writing%2F</url>
     <content type="text"><![CDATA[Markdown语法测试 1. 任务列表在任务项目前面加[]。用[x]表示此项已完成。123- [x] Finish my changes- [ ] Push my commits to GitHub- [ ] Open a pull request Finish my changes Push my commits to GitHub Open a pull request 注意如果项目内容以（）开始要对（加转义字符\1- [ ] \(Optional) Open a followup issue (Optional) Open a followup issue]]></content>
       <categories>
         <category>markdown</category>
