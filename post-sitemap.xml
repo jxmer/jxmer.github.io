@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://www.jiaxm.me/2018-01-day/vim_familiar/</loc>
+        <lastmod>2018-01-30T10:35:54.656Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://www.jiaxm.me/2017-07-day/Hexo/</loc>
         <lastmod>2017-11-17T15:35:59.550Z</lastmod>
         <changefreq>weekly</changefreq>

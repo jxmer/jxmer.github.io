@@ -94,7 +94,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python,编码," />
+  <meta name="keywords" content="vim," />
 
 
 
@@ -110,18 +110,18 @@
 
 
 
-<meta name="description" content="在windows上默认以gbk编码。保存一个文件到本地，会被改成gbk的编码，即使在输出内容在写入到文件前已经做了utf-8的编码，最后还是会被转成gbk编码。本例中就是从糗百上抓的文本，其本身是utf-8编码的。读取的时候encode用gbk，输出用gbk。既然最后一定要用gbk，那前面就不可以用utf-8来encode，否则会报错，i.e.，有些字符找不到对应的编码。">
-<meta name="keywords" content="python,编码">
+<meta name="description" content="1. 不熟悉的vim操作2. 行内移动2.1. f, t, F, T命令f 行内向后搜索匹配字符 F为反向 （光标停在搜索到的字符上）t 行内向后搜索匹配字符 T为反向 （光标停在搜索到的字符前）在f, t, F, T命令前可以加数字表示搜索第几个字符。;可以在搜索到的字符上往后跳，,反向跳  f, t, F, T命令与删除d配合。dfx即从当前字符删除到搜索到的第一个字符，d3fx表示从当前字符">
+<meta name="keywords" content="vim">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python3 学习爬虫遇到的一点编码问题">
-<meta property="og:url" content="http://www.jiaxm.me/2017-07-day/python_code/index.html">
+<meta property="og:title" content="vim使用技巧">
+<meta property="og:url" content="http://www.jiaxm.me/2018-01-day/vim_familiar/index.html">
 <meta property="og:site_name" content="Memories">
-<meta property="og:description" content="在windows上默认以gbk编码。保存一个文件到本地，会被改成gbk的编码，即使在输出内容在写入到文件前已经做了utf-8的编码，最后还是会被转成gbk编码。本例中就是从糗百上抓的文本，其本身是utf-8编码的。读取的时候encode用gbk，输出用gbk。既然最后一定要用gbk，那前面就不可以用utf-8来encode，否则会报错，i.e.，有些字符找不到对应的编码。">
+<meta property="og:description" content="1. 不熟悉的vim操作2. 行内移动2.1. f, t, F, T命令f 行内向后搜索匹配字符 F为反向 （光标停在搜索到的字符上）t 行内向后搜索匹配字符 T为反向 （光标停在搜索到的字符前）在f, t, F, T命令前可以加数字表示搜索第几个字符。;可以在搜索到的字符上往后跳，,反向跳  f, t, F, T命令与删除d配合。dfx即从当前字符删除到搜索到的第一个字符，d3fx表示从当前字符">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-16T16:35:09.595Z">
+<meta property="og:updated_time" content="2018-01-30T10:35:54.656Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python3 学习爬虫遇到的一点编码问题">
-<meta name="twitter:description" content="在windows上默认以gbk编码。保存一个文件到本地，会被改成gbk的编码，即使在输出内容在写入到文件前已经做了utf-8的编码，最后还是会被转成gbk编码。本例中就是从糗百上抓的文本，其本身是utf-8编码的。读取的时候encode用gbk，输出用gbk。既然最后一定要用gbk，那前面就不可以用utf-8来encode，否则会报错，i.e.，有些字符找不到对应的编码。">
+<meta name="twitter:title" content="vim使用技巧">
+<meta name="twitter:description" content="1. 不熟悉的vim操作2. 行内移动2.1. f, t, F, T命令f 行内向后搜索匹配字符 F为反向 （光标停在搜索到的字符上）t 行内向后搜索匹配字符 T为反向 （光标停在搜索到的字符前）在f, t, F, T命令前可以加数字表示搜索第几个字符。;可以在搜索到的字符上往后跳，,反向跳  f, t, F, T命令与删除d配合。dfx即从当前字符删除到搜索到的第一个字符，d3fx表示从当前字符">
 
 
 
@@ -149,14 +149,14 @@
 
 
 
-  <link rel="canonical" href="http://www.jiaxm.me/2017-07-day/python_code/"/>
+  <link rel="canonical" href="http://www.jiaxm.me/2018-01-day/vim_familiar/"/>
 
 
 
 
 
 
-  <title>python3 学习爬虫遇到的一点编码问题 | Memories</title>
+  <title>vim使用技巧 | Memories</title>
   
 
 
@@ -358,7 +358,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.jiaxm.me/2017-07-day/python_code/">
+    <link itemprop="mainEntityOfPage" href="http://www.jiaxm.me/2018-01-day/vim_familiar/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="jxm">
@@ -375,7 +375,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">python3 学习爬虫遇到的一点编码问题</h2>
+          <h2 class="post-title" itemprop="name headline">vim使用技巧</h2>
         
 
         <div class="post-meta">
@@ -387,8 +387,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-02T14:36:06+08:00">
-                2017-07-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-30T09:55:00+08:00">
+                2018-01-30
               </time>
             
 
@@ -410,8 +410,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
+                  <a href="/categories/vim/" itemprop="url" rel="index">
+                    <span itemprop="name">vim</span>
                   </a>
                 </span>
 
@@ -428,9 +428,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017-07-day/python_code/#comments" itemprop="discussionUrl">
+                <a href="/2018-01-day/vim_familiar/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017-07-day/python_code/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018-01-day/vim_familiar/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -460,8 +460,11 @@
       
 
       
-        <p>在windows上默认以gbk编码。保存一个文件到本地，会被改成gbk的编码，即使在输出内容在写入到文件前已经做了utf-8的编码，最后还是会被转成gbk编码。<br>本例中就是从糗百上抓的文本，其本身是utf-8编码的。读取的时候encode用gbk，输出用gbk。既然最后一定要用gbk，那前面就不可以用utf-8来encode，否则会报错，i.e.，有些字符找不到对应的编码。<br><a id="more"></a></p>
-<h1 id="python3-学习爬虫遇到的一点编码问题"><a href="#python3-学习爬虫遇到的一点编码问题" class="header-anchor"></a>1. <a href="#python3-学习爬虫遇到的一点编码问题" class="headerlink" title="python3 学习爬虫遇到的一点编码问题"></a>python3 学习爬虫遇到的一点编码问题</h1><h2 id="上解决代码"><a href="#上解决代码" class="header-anchor"></a>1.1. <a href="#上解决代码：" class="headerlink" title="上解决代码："></a>上解决代码：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding='utf-8'</span></div><div class="line"><span class="keyword">import</span> chardet</div><div class="line"><span class="keyword">import</span> requests, re, sys</div><div class="line">headers = &#123;</div><div class="line"><span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_\</span></div><div class="line">4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 S\</div><div class="line">afari/537.36'&#125;</div><div class="line">r = requests.get(<span class="string">"https://www.qiushibaike.com"</span>, headers=headers)</div><div class="line">pattern=re.compile(<span class="string">'&lt;div class="author.*?&lt;h2&gt;(.*?)&lt;/h2&gt;.*?Icon"&gt;(.*?)&lt;/div&gt;.*?&lt;div class="content"&gt;.*?&lt;span&gt;(.*?)&lt;/span&gt;.*?&lt;span.*?stats-vote.*?number"&gt;(.*?)&lt;/i&gt;.*?stats-comments.*?number"&gt;(.*?)&lt;/i&gt;.*?up.*?number hidden"&gt;(.*?)&lt;/span&gt;.*?down.*?number hidden"&gt;(.*?)&lt;/span&gt;'</span>,re.S)</div><div class="line">items = re.findall(pattern, r.text)</div><div class="line">fout = open(<span class="string">"qiubai.txt"</span>, <span class="string">'w'</span>)</div><div class="line"><span class="keyword">for</span> i, item <span class="keyword">in</span> enumerate(items):</div><div class="line">    fout.write(<span class="string">"=========================================\n"</span>)</div><div class="line">    name = item[<span class="number">0</span>]</div><div class="line">    age = int(item[<span class="number">1</span>])</div><div class="line">    up = int(item[<span class="number">3</span>])</div><div class="line">    comment = int(item[<span class="number">4</span>])</div><div class="line">    down = -int(item[<span class="number">-1</span>])</div><div class="line">    tot = int(item[<span class="number">5</span>])</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    s = item[<span class="number">2</span>].split(<span class="string">"&lt;br/&gt;"</span>)</div><div class="line">    print(item)</div><div class="line">    <span class="keyword">for</span> l <span class="keyword">in</span> s:</div><div class="line">        gl = l.encode(<span class="string">'gbk'</span>,<span class="string">'ignore'</span>)</div><div class="line">        fout.write(<span class="string">"%s\n"</span>%(gl.decode(<span class="string">'gbk'</span>)))</div><div class="line">    fout.write(<span class="string">"ID: %s\nAge: %d\n顶: %d\n踩: %d\n评论:%d\n"</span>%(name, age, up, comment, down))</div><div class="line">    fout.write(<span class="string">"\n"</span>)</div></pre></td></tr></table></figure>
+        <h1 id="不熟悉的vim操作"><a href="#不熟悉的vim操作" class="header-anchor"></a>1. <a href="#不熟悉的vim操作" class="headerlink" title="不熟悉的vim操作"></a>不熟悉的vim操作</h1><h1 id="行内移动"><a href="#行内移动" class="header-anchor"></a>2. <a href="#行内移动" class="headerlink" title="行内移动"></a>行内移动</h1><h2 id="f-t-f-t命令"><a href="#f-t-f-t命令" class="header-anchor"></a>2.1. <a href="#f-t-F-T命令" class="headerlink" title="f, t, F, T命令"></a><code>f, t, F, T</code>命令</h2><p><code>f</code> 行内向后搜索匹配字符 <code>F</code>为反向 （光标停在搜索到的字符上）<br><code>t</code> 行内向后搜索匹配字符 <code>T</code>为反向 （光标停在搜索到的字符前）<br>在<code>f, t, F, T</code>命令前可以加数字表示搜索第几个字符。<br><code>;</code>可以在搜索到的字符上往后跳，<code>,</code>反向跳</p>
+<p> <code>f, t, F, T</code>命令与删除<code>d</code>配合。<code>dfx</code>即从当前字符删除到搜索到的第一个字符，<code>d3fx</code>表示从当前字符删除到搜索到的第三个字符。<br> 其中<code>t</code>,<code>T</code>有一个好用的tip：<br> 比如有下面一句话 <code>init.create_random(N=40000, phi_p=1.57, min_dist=0.1)</code><br> 光标停在i第一个字符上，我们想删除<code>.</code>之前的<code>init</code>，可以通过<code>dt.</code>。</p>
+<p><code>f, t, F, T</code>命令与yank命令<code>y</code>配合。与<code>d</code>的原理完全相同，只不过从删除标成了复制。</p>
+<h2 id="关于esc插入模式到正常模式"><a href="#关于esc插入模式到正常模式" class="header-anchor"></a>2.2. <a href="#关于ESC-插入模式到正常模式" class="headerlink" title="关于ESC[插入模式到正常模式]"></a>关于ESC[插入模式到正常模式]</h2><p>从插入模式进入到正常模式有很多方法的，esc是广为人知的而已，其实最快的是<c-c>，还有其他的<c-o>,<c-[>，这三种使用起来，比Esc快多了，这些还是有一些区别的，C-c这个组合键会取消当前的任何操作，而C-[是比较标准的进入正常模式的按键，比如ACE的vim模式，就是用C-[来进入正常模式的。比如C-v，纵向选择4列文字，然后输入A，在第一行前面插入一个字符”，这时候，使用C-c就进入正常模式，使用C-[也进入正常模式，不过区别是，你输入的”在你前面选中的5行都会这么一个字符。</c-[></c-o></c-c></p>
+<p>官方user文档中提议用 &lt; CTRL-[ &gt; 来取代 &lt; ESC &gt;<br><strong>小结：用C-c代替Esc键</strong></p>
 
       
     </div>
@@ -507,9 +510,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag"># python</a>
-          
-            <a href="/tags/编码/" rel="tag"># 编码</a>
+            <a href="/tags/vim/" rel="tag"># vim</a>
           
         </div>
       
@@ -522,15 +523,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017-11-day/LinuxCommand/" rel="next" title="linux 常用命令">
+                <i class="fa fa-chevron-left"></i> linux 常用命令
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017-07-day/VPS/" rel="prev" title="VPS Configuration">
-                VPS Configuration <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -699,7 +700,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#python3-学习爬虫遇到的一点编码问题"><span class="nav-text">1. python3 学习爬虫遇到的一点编码问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#上解决代码"><span class="nav-text">1.1. 上解决代码：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#不熟悉的vim操作"><span class="nav-text">1. 不熟悉的vim操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#行内移动"><span class="nav-text">2. 行内移动</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#f-t-f-t命令"><span class="nav-text">2.1. f, t, F, T命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于esc插入模式到正常模式"><span class="nav-text">2.2. 关于ESC[插入模式到正常模式]</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -867,9 +868,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://www.jiaxm.me/2017-07-day/python_code/';
-          this.page.identifier = '2017-07-day/python_code/';
-          this.page.title = 'python3 学习爬虫遇到的一点编码问题';
+          this.page.url = 'http://www.jiaxm.me/2018-01-day/vim_familiar/';
+          this.page.identifier = '2018-01-day/vim_familiar/';
+          this.page.title = 'vim使用技巧';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://jiaxm-me.disqus.com/embed.js';
