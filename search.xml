@@ -26,7 +26,7 @@
   <entry>
     <title><![CDATA[vim使用技巧]]></title>
     <url>%2F2018-01-day%2Fvim_familiar%2F</url>
-    <content type="text"><![CDATA[1. 不熟悉的vim操作2. 行内移动2.1. f, t, F, T命令f 行内向后搜索匹配字符 F为反向 （光标停在搜索到的字符上）t 行内向后搜索匹配字符 T为反向 （光标停在搜索到的字符前）在f, t, F, T命令前可以加数字表示搜索第几个字符。;可以在搜索到的字符上往后跳，,反向跳 f, t, F, T命令与删除d配合。dfx即从当前字符删除到搜索到的第一个字符，d3fx表示从当前字符删除到搜索到的第三个字符。 其中t,T有一个好用的tip： 比如有下面一句话 init.create_random(N=40000, phi_p=1.57, min_dist=0.1) 光标停在i第一个字符上，我们想删除.之前的init，可以通过dt.。 f, t, F, T命令与yank命令y配合。与d的原理完全相同，只不过从删除标成了复制。 2.2. 关于ESC[插入模式到正常模式]从插入模式进入到正常模式有很多方法的，esc是广为人知的而已，其实最快的是，还有其他的,，这三种使用起来，比Esc快多了，这些还是有一些区别的，C-c这个组合键会取消当前的任何操作，而C-[是比较标准的进入正常模式的按键，比如ACE的vim模式，就是用C-[来进入正常模式的。比如C-v，纵向选择4列文字，然后输入A，在第一行前面插入一个字符”，这时候，使用C-c就进入正常模式，使用C-[也进入正常模式，不过区别是，你输入的”在你前面选中的5行都会这么一个字符。 官方user文档中提议用 &lt; CTRL-[ &gt; 来取代 &lt; ESC &gt;小结：用C-c代替Esc键]]></content>
+    <content type="text"><![CDATA[vim实用技巧，biubiubiu~~~~ 1. 不熟悉的vim操作2. 行内移动2.1. f, t, F, T命令f 行内向后搜索匹配字符 F为反向 （光标停在搜索到的字符上）t 行内向后搜索匹配字符 T为反向 （光标停在搜索到的字符前）在f, t, F, T命令前可以加数字表示搜索第几个字符。;可以在搜索到的字符上往后跳，,反向跳 f, t, F, T命令与删除d配合。dfx即从当前字符删除到搜索到的第一个字符，d3fx表示从当前字符删除到搜索到的第三个字符。 其中t,T有一个好用的tip： 比如有下面一句话 init.create_random(N=40000, phi_p=1.57, min_dist=0.1) 光标停在i第一个字符上，我们想删除.之前的init，可以通过dt.。 f, t, F, T命令与yank命令y配合。与d的原理完全相同，只不过从删除标成了复制。 2.2. 关于ESC[插入模式到正常模式]从插入模式进入到正常模式有很多方法的，esc是广为人知的而已，其实最快的是，还有其他的,，这三种使用起来，比Esc快多了，这些还是有一些区别的，C-c这个组合键会取消当前的任何操作，而C-[是比较标准的进入正常模式的按键，比如ACE的vim模式，就是用C-[来进入正常模式的。比如C-v，纵向选择4列文字，然后输入A，在第一行前面插入一个字符”，这时候，使用C-c就进入正常模式，使用C-[也进入正常模式，不过区别是，你输入的”在你前面选中的5行都会这么一个字符。 官方user文档中提议用 &lt; CTRL-[ &gt; 来取代 &lt; ESC &gt;小结：用C-c代替Esc键]]></content>
       <categories>
         <category>vim</category>
       </categories>
@@ -47,7 +47,7 @@
   </entry>
   <entry>
     <title><![CDATA[vim 8.0的编译安装]]></title>
-    <url>%2F2017-11-day%2Fvim%2F</url>
+    <url>%2F2017-11-day%2Fvim8.0_install%2F</url>
     <content type="text"><![CDATA[vim 相关~ 1. vim-8.0的安装和配置1.1. 编译 vim-8.0 1. ./configure --with-features=huge --enable-multibyte --enable-rubyinterp=yes --enable-pythoninterp=yes --with-python-config-dir=/usr/lib/python2.7/config --enable-python3interp=yes --with-python3-config-dir=$HOME/.local/software/anaconda3/lib/python3.5/config --enable-perlinterp=yes --enable-luainterp=yes --enable-gui=gtk2 --enable-cscope --prefix=$HOME/.local/software/vim-8.0 2. make install -j 48 3. 加一下vim-8.0的环境变量 （如果已经把自己的~/.local/bin目录加了环境变量的目录，直接ln -s Installpath/vim-8.0/bin/vim . 就可以） 1.2. 编译 YouCompelteMe~/.vim/bundle 下的Youcompelte要进行编译 ./install.py --clang-completer 1.3. 格式化代码工具安装首先vim支持一键格式化是这样实现的，vim安装插件vim-autoformat，可以调用相应的格式化代码软件读文件进行操作。https://github.com/Chiel92/vim-autoformat 这里是vim-autoformat的框架，然后各个programming language的autoformat工具是通过这个框架去实现在vim中自动格式化的，链接中有推荐的populate autoformat tools python代码格式化 - yapf: ~/.vim/下有yapf的源文件目录，python setup.py install –user。然后yapf命令被自动copy到~/.local/bin fortran代码格式化 - frettify: python setup.py install –user。note: 需要conda已经安装了future c++代码格式化 - clang -clang-format:下载llvm-libs llvm clang包from www.rpmfind.net/ 下载的时候看好系统版本，要一样。yum localinstall llvm-libs-3.4.2-7.el7.x86_64.rpm yum localinstall llvm-3.4.2-7.el7.x86_64.rpm yum localinstall clang-3.4.2-7.el7.x86_64.rpm note: (or rpm -ivh filename.rpm)]]></content>
       <categories>
         <category>技术学习</category>

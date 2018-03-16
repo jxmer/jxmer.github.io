@@ -42,20 +42,6 @@
     </url>
 
     <url>
-        <loc>http://www.jiaxm.me/categories/vim/</loc>
-        <lastmod>2018-01-30T10:35:54.656Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://www.jiaxm.me/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/</loc>
-        <lastmod>2018-01-30T10:43:58.804Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://www.jiaxm.me/categories/xshell/</loc>
         <lastmod>2018-03-16T09:46:57.751Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -71,7 +57,21 @@
 
     <url>
         <loc>http://www.jiaxm.me/categories/next/</loc>
-        <lastmod>2018-03-16T17:33:49.837Z</lastmod>
+        <lastmod>2018-03-16T17:34:44.401Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.jiaxm.me/categories/vim/</loc>
+        <lastmod>2018-03-16T17:37:14.325Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.jiaxm.me/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/</loc>
+        <lastmod>2018-03-16T17:37:16.509Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

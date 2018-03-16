@@ -4,12 +4,52 @@
 
     
   <url>
+    <loc>http://www.jiaxm.me/2017-11-day/vim8.0_install/</loc>
+    <lastmod>2018-03-16T17:37:16.509Z</lastmod>
+    <data>
+        <display>
+        <title>vim 8.0的编译安装</title>
+        <pubTime>2017-11-16T08:00:04.000Z</pubTime>
+        
+        <tag>vim</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术学习" url="http://www.jiaxm.me/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.jiaxm.me/2018-01-day/vim_familiar/</loc>
+    <lastmod>2018-03-16T17:37:14.325Z</lastmod>
+    <data>
+        <display>
+        <title>vim使用技巧</title>
+        <pubTime>2018-01-30T01:55:00.000Z</pubTime>
+        
+        <tag>vim</tag>
+         
+         
+           
+             
+              <breadCrumb title="vim" url="http://www.jiaxm.me/categories/vim/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.jiaxm.me/2018-03-day/NextAdjust/</loc>
-    <lastmod>2018-03-16T17:33:49.837Z</lastmod>
+    <lastmod>2018-03-16T17:34:44.401Z</lastmod>
     <data>
         <display>
         <title>Next主题从头调整</title>
-        <pubTime>2018-03-16T17:33:49.837Z</pubTime>
+        <pubTime>2018-03-16T17:34:44.401Z</pubTime>
         
         <tag>next</tag>
          
@@ -81,46 +121,6 @@
            
              
               <breadCrumb title="xshell" url="http://www.jiaxm.me/categories/xshell/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.jiaxm.me/2017-11-day/vim/</loc>
-    <lastmod>2018-01-30T10:43:58.804Z</lastmod>
-    <data>
-        <display>
-        <title>vim 8.0的编译安装</title>
-        <pubTime>2017-11-16T08:00:04.000Z</pubTime>
-        
-        <tag>vim</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术学习" url="http://www.jiaxm.me/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.jiaxm.me/2018-01-day/vim_familiar/</loc>
-    <lastmod>2018-01-30T10:35:54.656Z</lastmod>
-    <data>
-        <display>
-        <title>vim使用技巧</title>
-        <pubTime>2018-01-30T01:55:00.000Z</pubTime>
-        
-        <tag>vim</tag>
-         
-         
-           
-             
-              <breadCrumb title="vim" url="http://www.jiaxm.me/categories/vim/"/>
           
         </display>
     </data>
