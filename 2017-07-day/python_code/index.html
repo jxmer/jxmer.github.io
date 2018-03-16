@@ -191,7 +191,8 @@
 
 
 
-</head>
+<link rel="stylesheet" href="/css/prism-atom-dark.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -461,36 +462,36 @@
 
       
         <p>在windows上默认以gbk编码。保存一个文件到本地，会被改成gbk的编码，即使在输出内容在写入到文件前已经做了utf-8的编码，最后还是会被转成gbk编码。<br>本例中就是从糗百上抓的文本，其本身是utf-8编码的。读取的时候encode用gbk，输出用gbk。既然最后一定要用gbk，那前面就不可以用utf-8来encode，否则会报错，i.e.，有些字符找不到对应的编码。<br><a id="more"></a></p>
-<h1 id="python3-学习爬虫遇到的一点编码问题"><a href="#python3-学习爬虫遇到的一点编码问题" class="header-anchor"></a>1. <a href="#python3-学习爬虫遇到的一点编码问题" class="headerlink" title="python3 学习爬虫遇到的一点编码问题"></a>python3 学习爬虫遇到的一点编码问题</h1><h2 id="上解决代码"><a href="#上解决代码" class="header-anchor"></a>1.1. <a href="#上解决代码：" class="headerlink" title="上解决代码："></a>上解决代码：</h2><pre><code class="python">#coding=&#39;utf-8&#39;
-import chardet
-import requests, re, sys
-headers = {
-&#39;User-Agent&#39;: &#39;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_\
-4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 S\
-afari/537.36&#39;}
-r = requests.get(&quot;https://www.qiushibaike.com&quot;, headers=headers)
-pattern=re.compile(&#39;&lt;div class=&quot;author.*?&lt;h2&gt;(.*?)&lt;/h2&gt;.*?Icon&quot;&gt;(.*?)&lt;/div&gt;.*?&lt;div class=&quot;content&quot;&gt;.*?&lt;span&gt;(.*?)&lt;/span&gt;.*?&lt;span.*?stats-vote.*?number&quot;&gt;(.*?)&lt;/i&gt;.*?stats-comments.*?number&quot;&gt;(.*?)&lt;/i&gt;.*?up.*?number hidden&quot;&gt;(.*?)&lt;/span&gt;.*?down.*?number hidden&quot;&gt;(.*?)&lt;/span&gt;&#39;,re.S)
-items = re.findall(pattern, r.text)
-fout = open(&quot;qiubai.txt&quot;, &#39;w&#39;)
-for i, item in enumerate(items):
-    fout.write(&quot;=========================================\n&quot;)
-    name = item[0]
-    age = int(item[1])
-    up = int(item[3])
-    comment = int(item[4])
-    down = -int(item[-1])
-    tot = int(item[5])
+<h1 id="python3-学习爬虫遇到的一点编码问题"><a href="#python3-学习爬虫遇到的一点编码问题" class="header-anchor"></a>1. <a href="#python3-学习爬虫遇到的一点编码问题" class="headerlink" title="python3 学习爬虫遇到的一点编码问题"></a>python3 学习爬虫遇到的一点编码问题</h1><h2 id="上解决代码"><a href="#上解决代码" class="header-anchor"></a>1.1. <a href="#上解决代码：" class="headerlink" title="上解决代码："></a>上解决代码：</h2><pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true">#coding='utf-8'</span>
+<span class="token keyword">import</span> chardet
+<span class="token keyword">import</span> requests<span class="token punctuation">,</span> re<span class="token punctuation">,</span> sys
+headers <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token string">'User-Agent'</span><span class="token punctuation">:</span> 'Mozilla<span class="token operator">/</span><span class="token number">5.0</span> <span class="token punctuation">(</span>Macintosh<span class="token punctuation">;</span> Intel Mac OS X 10_11_\
+<span class="token number">4</span><span class="token punctuation">)</span> AppleWebKit<span class="token operator">/</span><span class="token number">537.36</span> <span class="token punctuation">(</span>KHTML<span class="token punctuation">,</span> like Gecko<span class="token punctuation">)</span> Chrome<span class="token operator">/</span><span class="token number">52.0</span><span class="token punctuation">.</span><span class="token number">2743.116</span> S\
+afari<span class="token operator">/</span><span class="token number">537.36</span>'<span class="token punctuation">}</span>
+r <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"https://www.qiushibaike.com"</span><span class="token punctuation">,</span> headers<span class="token operator">=</span>headers<span class="token punctuation">)</span>
+pattern<span class="token operator">=</span>re<span class="token punctuation">.</span>compile<span class="token punctuation">(</span><span class="token string">'&lt;div class="author.*?&lt;h2>(.*?)&lt;/h2>.*?Icon">(.*?)&lt;/div>.*?&lt;div class="content">.*?&lt;span>(.*?)&lt;/span>.*?&lt;span.*?stats-vote.*?number">(.*?)&lt;/i>.*?stats-comments.*?number">(.*?)&lt;/i>.*?up.*?number hidden">(.*?)&lt;/span>.*?down.*?number hidden">(.*?)&lt;/span>'</span><span class="token punctuation">,</span>re<span class="token punctuation">.</span>S<span class="token punctuation">)</span>
+items <span class="token operator">=</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span>pattern<span class="token punctuation">,</span> r<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
+fout <span class="token operator">=</span> open<span class="token punctuation">(</span><span class="token string">"qiubai.txt"</span><span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> i<span class="token punctuation">,</span> item <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>items<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    fout<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">"=========================================\n"</span><span class="token punctuation">)</span>
+    name <span class="token operator">=</span> item<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    age <span class="token operator">=</span> int<span class="token punctuation">(</span>item<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    up <span class="token operator">=</span> int<span class="token punctuation">(</span>item<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    comment <span class="token operator">=</span> int<span class="token punctuation">(</span>item<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    down <span class="token operator">=</span> <span class="token operator">-</span>int<span class="token punctuation">(</span>item<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    tot <span class="token operator">=</span> int<span class="token punctuation">(</span>item<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
 
 
-    s = item[2].split(&quot;&lt;br/&gt;&quot;)
-    print(item)
-    for l in s:
-        gl = l.encode(&#39;gbk&#39;,&#39;ignore&#39;)
-        fout.write(&quot;%s\n&quot;%(gl.decode(&#39;gbk&#39;)))
-    fout.write(&quot;ID: %s\nAge: %d\n顶: %d\n踩: %d\n评论:%d\n&quot;%(name, age, up, comment, down))
-    fout.write(&quot;\n&quot;)
-</code></pre>
+    s <span class="token operator">=</span> item<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">"&lt;br/>"</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> l <span class="token keyword">in</span> s<span class="token punctuation">:</span>
+        gl <span class="token operator">=</span> l<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'gbk'</span><span class="token punctuation">,</span><span class="token string">'ignore'</span><span class="token punctuation">)</span>
+        fout<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">"%s\n"</span><span class="token operator">%</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">'gbk'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    fout<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">"ID: %s\nAge: %d\n顶: %d\n踩: %d\n评论:%d\n"</span><span class="token operator">%</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">,</span> up<span class="token punctuation">,</span> comment<span class="token punctuation">,</span> down<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    fout<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
       
     </div>

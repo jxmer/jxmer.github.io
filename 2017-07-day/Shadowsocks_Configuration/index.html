@@ -193,7 +193,8 @@
 
 
 
-</head>
+<link rel="stylesheet" href="/css/prism-atom-dark.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -456,23 +457,23 @@
 <li>Android客户端配置</li>
 </ol>
 <h2 id="安装-ss"><a href="#安装-ss" class="header-anchor"></a>2.1. <a href="#安装-ss" class="headerlink" title="安装 ss"></a>安装 ss</h2><p>以Ubuntu 17.04为例。</p>
-<pre><code class="bash">sudo apt-get update
-sudo apt-get install python-pip
-sudo pip install shadowsocks
-sudo apt-get install python-m2crypto # encrypt method
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> update
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> python-pip
+<span class="token function">sudo</span> pip <span class="token function">install</span> shadowsocks
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> python-m2crypto <span class="token comment" spellcheck="true"># encrypt method</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="server端配置-ss"><a href="#server端配置-ss" class="header-anchor"></a>2.2. <a href="#server端配置-ss" class="headerlink" title="server端配置 ss"></a>server端配置 ss</h2><h3 id="即时启动"><a href="#即时启动" class="header-anchor"></a>2.2.1. <a href="#即时启动：" class="headerlink" title="即时启动："></a>即时启动：</h3><p><code>sudo ssserver -p 8388 -k password -m rc4-md5 -d start</code></p>
 <h3 id="使用配置文件启动"><a href="#使用配置文件启动" class="header-anchor"></a>2.2.2. <a href="#使用配置文件启动：" class="headerlink" title="使用配置文件启动："></a>使用配置文件启动：</h3><p>编辑/etc/shadowsocks/config.json文件（如果没有可以创建此文件）</p>
-<pre><code class="json">{
-&quot;server&quot;:&quot;my_server_ip&quot;,
-&quot;server_port&quot;:8388,
-&quot;local_address&quot;: &quot;127.0.0.1&quot;,
-&quot;local_port&quot;:1080,
-&quot;password&quot;:&quot;mypassword&quot;,
-&quot;timeout&quot;:300,
-&quot;method&quot;:&quot;rc4-md5&quot;
-}
-</code></pre>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
+<span class="token property">"server"</span><span class="token operator">:</span><span class="token string">"my_server_ip"</span><span class="token punctuation">,</span>
+<span class="token property">"server_port"</span><span class="token operator">:</span><span class="token number">8388</span><span class="token punctuation">,</span>
+<span class="token property">"local_address"</span><span class="token operator">:</span> <span class="token string">"127.0.0.1"</span><span class="token punctuation">,</span>
+<span class="token property">"local_port"</span><span class="token operator">:</span><span class="token number">1080</span><span class="token punctuation">,</span>
+<span class="token property">"password"</span><span class="token operator">:</span><span class="token string">"mypassword"</span><span class="token punctuation">,</span>
+<span class="token property">"timeout"</span><span class="token operator">:</span><span class="token number">300</span><span class="token punctuation">,</span>
+<span class="token property">"method"</span><span class="token operator">:</span><span class="token string">"rc4-md5"</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>字段含义：</p>
 <table>
 <thead>
@@ -513,57 +514,57 @@ sudo apt-get install python-m2crypto # encrypt method
 </blockquote>
 <p>config.json文件创建完毕后，赋予755权限<br><code>sudo chmod 755 /etc/shadowsocks/config.json</code><br>使用配置文件，后台运行：<br><code>sudo ssserver -c /etc/shadowsocks/config.json -d start</code></p>
 <h3 id="开机启动"><a href="#开机启动" class="header-anchor"></a>2.2.3. <a href="#开机启动" class="headerlink" title="开机启动"></a>开机启动</h3><p>上述两种方法都是在机器没有重启的情况下用的，每次重启后都手动去开启ss服务有点麻烦，所以设置开机启动可以省点事。<br>创建 /etc/init.d/shadowsocks 文件 <code>sudo vim /etc/init.d/shadowsocks</code><br>添加以下内容：</p>
-<pre><code class="bash">#!/bin/sh
-### BEGIN INIT INFO
-# Provides:          shadowsocks
-# Required-Start:    $remote_fs $syslog
-# Required-Stop:     $remote_fs $syslog
-# Default-Start:     2 3 4 5
-# Default-Stop:      0 1 6
-# Short-Description: start shadowsocks
-# Description:       start shadowsocks
-### END INIT INFO
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/sh</span>
+<span class="token comment" spellcheck="true">### BEGIN INIT INFO</span>
+<span class="token comment" spellcheck="true"># Provides:          shadowsocks</span>
+<span class="token comment" spellcheck="true"># Required-Start:    $remote_fs $syslog</span>
+<span class="token comment" spellcheck="true"># Required-Stop:     $remote_fs $syslog</span>
+<span class="token comment" spellcheck="true"># Default-Start:     2 3 4 5</span>
+<span class="token comment" spellcheck="true"># Default-Stop:      0 1 6</span>
+<span class="token comment" spellcheck="true"># Short-Description: start shadowsocks</span>
+<span class="token comment" spellcheck="true"># Description:       start shadowsocks</span>
+<span class="token comment" spellcheck="true">### END INIT INFO</span>
 
-start(){
+start<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     ssserver -c /etc/shadowsocks/config.json -d start
-}
+<span class="token punctuation">}</span>
 
-stop(){
+stop<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     ssserver -c /etc/shadowsocks/config.json -d stop
-}
+<span class="token punctuation">}</span>
 
-case &quot;$1&quot; in
-start)
+<span class="token keyword">case</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token keyword">in</span>
+start<span class="token punctuation">)</span>
     start
-    ;;
-stop)
+    <span class="token punctuation">;</span><span class="token punctuation">;</span>
+stop<span class="token punctuation">)</span>
     stop
-    ;;
-reload)
+    <span class="token punctuation">;</span><span class="token punctuation">;</span>
+reload<span class="token punctuation">)</span>
      stop
      start
-     ;;
-*)
-    echo &quot;Usage: $0 {start|reload|stop}&quot;
-    exit 1
-    ;;
+     <span class="token punctuation">;</span><span class="token punctuation">;</span>
+*<span class="token punctuation">)</span>
+    <span class="token keyword">echo</span> <span class="token string">"Usage: <span class="token variable">$0</span> {start|reload|stop}"</span>
+    <span class="token keyword">exit</span> 1
+    <span class="token punctuation">;</span><span class="token punctuation">;</span>
 esac
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>增加这个文件的可执行权限 <code>sudo chmod +x /etc/init.d/shadowsocks</code><br>在rc.d中新增<code>sudo update-rc.d shadowsocks defaults</code>，添加到开机启动中<br>以后就可以通过<code>sudo service shadowsocks {start|reload|stop}</code>来管理了。</p>
 <h3 id="ss多用户配置"><a href="#ss多用户配置" class="header-anchor"></a>2.2.4. <a href="#ss多用户配置" class="headerlink" title="ss多用户配置"></a>ss多用户配置</h3><p>只开一个端口，用的人多了会相互挤占流量，所以多开几个为妥。配置很简单，只需要修改上述config.json文件：</p>
-<pre><code class="js">{
-&quot;server&quot;:&quot;my_server_ip&quot;,
-&quot;local_address&quot;: &quot;127.0.0.1&quot;,
-&quot;local_port&quot;:1080,
-&quot;port_password&quot;:{
-  &quot;8381&quot;: &quot;12345678&quot;,
-  &quot;8382&quot;: &quot;12345678&quot;,
-  &quot;8383&quot;: &quot;12345678&quot;
-},
-&quot;timeout&quot;:300,
-&quot;method&quot;:&quot;rc4-md5&quot;
-}
-</code></pre>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token punctuation">{</span>
+<span class="token string">"server"</span><span class="token punctuation">:</span><span class="token string">"my_server_ip"</span><span class="token punctuation">,</span>
+<span class="token string">"local_address"</span><span class="token punctuation">:</span> <span class="token string">"127.0.0.1"</span><span class="token punctuation">,</span>
+<span class="token string">"local_port"</span><span class="token punctuation">:</span><span class="token number">1080</span><span class="token punctuation">,</span>
+<span class="token string">"port_password"</span><span class="token punctuation">:</span><span class="token punctuation">{</span>
+  <span class="token string">"8381"</span><span class="token punctuation">:</span> <span class="token string">"12345678"</span><span class="token punctuation">,</span>
+  <span class="token string">"8382"</span><span class="token punctuation">:</span> <span class="token string">"12345678"</span><span class="token punctuation">,</span>
+  <span class="token string">"8383"</span><span class="token punctuation">:</span> <span class="token string">"12345678"</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token string">"timeout"</span><span class="token punctuation">:</span><span class="token number">300</span><span class="token punctuation">,</span>
+<span class="token string">"method"</span><span class="token punctuation">:</span><span class="token string">"rc4-md5"</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>如果是ubuntu/debian用户，ss多用户多端口的配置就到此结束了。但是对于centos用户仍会存在问题——centos默认的防火墙机制，会阻隔掉多端口配置。解决方法是，将这个端口打开tcp和udp通信。具体操作如下，参考<a href="http://blog.csdn.net/helinlin007/article/details/51469656" target="_blank" rel="external">这里</a>：</p>
 <ol>
 <li>打开<code>etc/firewalled/zones/public.xml</code>进行端口编辑，如<code>&lt;port protocol=&quot;tcp&quot; port=&quot;443&quot;/&gt;   &lt;portprotocol=&quot;udp&quot; port=&quot;443&quot;/&gt;</code>，即可添加tcp和udp的权限。</li>
@@ -571,56 +572,56 @@ esac
 </ol>
 <h3 id="ss-速度优化"><a href="#ss-速度优化" class="header-anchor"></a>2.2.5. <a href="#ss-速度优化" class="headerlink" title="ss 速度优化"></a>ss 速度优化</h3><p>基于kvm架构vps的优化<br>这方面SS给出了非常详尽的优化指南，主要有：优化内核参数，开启TCP Fast Open<br>这里只给出优化内核参数/优化加密方式的方法。更多、更详细的策略方法请参考<a href="https://github.com/iMeiji/shadowsocks_install/wiki/shadowsocks-optimize" target="_blank" rel="external">shadowsocks optimize</a></p>
 <h4 id="内核参数优化"><a href="#内核参数优化" class="header-anchor"></a>2.2.5.1. <a href="#内核参数优化" class="headerlink" title="内核参数优化"></a>内核参数优化</h4><p>创建<code>/etc/sysctl.d/local.conf</code>并写入</p>
-<pre><code class="bash"># max open files
-fs.file-max = 1024000
-# max read buffer
-net.core.rmem_max = 67108864
-# max write buffer
-net.core.wmem_max = 67108864
-# default read buffer
-net.core.rmem_default = 65536
-# default write buffer
-net.core.wmem_default = 65536
-# max processor input queue
-net.core.netdev_max_backlog = 4096
-# max backlog
-net.core.somaxconn = 4096
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># max open files</span>
+fs.file-max <span class="token operator">=</span> 1024000
+<span class="token comment" spellcheck="true"># max read buffer</span>
+net.core.rmem_max <span class="token operator">=</span> 67108864
+<span class="token comment" spellcheck="true"># max write buffer</span>
+net.core.wmem_max <span class="token operator">=</span> 67108864
+<span class="token comment" spellcheck="true"># default read buffer</span>
+net.core.rmem_default <span class="token operator">=</span> 65536
+<span class="token comment" spellcheck="true"># default write buffer</span>
+net.core.wmem_default <span class="token operator">=</span> 65536
+<span class="token comment" spellcheck="true"># max processor input queue</span>
+net.core.netdev_max_backlog <span class="token operator">=</span> 4096
+<span class="token comment" spellcheck="true"># max backlog</span>
+net.core.somaxconn <span class="token operator">=</span> 4096
 
-# resist SYN flood attacks
-net.ipv4.tcp_syncookies = 1
-# reuse timewait sockets when safe
-net.ipv4.tcp_tw_reuse = 1
-# turn off fast timewait sockets recycling
-net.ipv4.tcp_tw_recycle = 0
-# short FIN timeout
-net.ipv4.tcp_fin_timeout = 30
-# short keepalive time
-net.ipv4.tcp_keepalive_time = 1200
-# outbound port range
-net.ipv4.ip_local_port_range = 10000 65000
-# max SYN backlog
-net.ipv4.tcp_max_syn_backlog = 4096
-# max timewait sockets held by system simultaneously
-net.ipv4.tcp_max_tw_buckets = 5000
-# TCP receive buffer
-net.ipv4.tcp_rmem = 4096 87380 67108864
-# TCP write buffer
-net.ipv4.tcp_wmem = 4096 65536 67108864
-# turn on path MTU discovery
-net.ipv4.tcp_mtu_probing = 1
+<span class="token comment" spellcheck="true"># resist SYN flood attacks</span>
+net.ipv4.tcp_syncookies <span class="token operator">=</span> 1
+<span class="token comment" spellcheck="true"># reuse timewait sockets when safe</span>
+net.ipv4.tcp_tw_reuse <span class="token operator">=</span> 1
+<span class="token comment" spellcheck="true"># turn off fast timewait sockets recycling</span>
+net.ipv4.tcp_tw_recycle <span class="token operator">=</span> 0
+<span class="token comment" spellcheck="true"># short FIN timeout</span>
+net.ipv4.tcp_fin_timeout <span class="token operator">=</span> 30
+<span class="token comment" spellcheck="true"># short keepalive time</span>
+net.ipv4.tcp_keepalive_time <span class="token operator">=</span> 1200
+<span class="token comment" spellcheck="true"># outbound port range</span>
+net.ipv4.ip_local_port_range <span class="token operator">=</span> 10000 65000
+<span class="token comment" spellcheck="true"># max SYN backlog</span>
+net.ipv4.tcp_max_syn_backlog <span class="token operator">=</span> 4096
+<span class="token comment" spellcheck="true"># max timewait sockets held by system simultaneously</span>
+net.ipv4.tcp_max_tw_buckets <span class="token operator">=</span> 5000
+<span class="token comment" spellcheck="true"># TCP receive buffer</span>
+net.ipv4.tcp_rmem <span class="token operator">=</span> 4096 87380 67108864
+<span class="token comment" spellcheck="true"># TCP write buffer</span>
+net.ipv4.tcp_wmem <span class="token operator">=</span> 4096 65536 67108864
+<span class="token comment" spellcheck="true"># turn on path MTU discovery</span>
+net.ipv4.tcp_mtu_probing <span class="token operator">=</span> 1
 
-# for high-latency network
-net.ipv4.tcp_congestion_control = htcp
-# forward ipv4
-net.ipv4.ip_forward = 1
-</code></pre>
+<span class="token comment" spellcheck="true"># for high-latency network</span>
+net.ipv4.tcp_congestion_control <span class="token operator">=</span> htcp
+<span class="token comment" spellcheck="true"># forward ipv4</span>
+net.ipv4.ip_forward <span class="token operator">=</span> 1
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>其中最后的<code>hybla</code>是为高延迟网络（如美国，欧洲）准备的算法，需要内核支持，测试内核是否支持，在终端输入：<code>sysctl net.ipv4.tcp_available_congestion_control</code><br>如果结果中有<code>hybla</code>，则证明你的内核已开启<code>hybla</code>，如果没有<code>hybla</code>，可以用命令<code>modprobe tcp_hybla</code>开启。</p>
 <p>对于低延迟的网络（如日本，香港等），可以使用<code>htcp</code>，可以非常显著的提高速度，首先使用<code>modprobe tcp_htcp</code>开启，再将<code>net.ipv4.tcp_congestion_control = hybla改为net.ipv4.tcp_congestion_control = htcp</code>，建议EC2日本用户使用这个算法。</p>
 <p>使配置生效：sysctl –system<br>note: 经过手机Andoid客户端测试, 速度确实有提升（之前手机端速度感觉已经很快了！），YouTube上1080p的高清视频一点不卡，甚至于还没有缓冲到的时间点直接点击在3秒之内都可以缓冲出来（这个时候的即时速度可以到3M/s）。<img src="/images/scenery.jpg"><br>YouTube 1080p高清测试视频，<a href="https://youtu.be/6v2L2UGZJAM" target="_blank" rel="external">Planet Earth: Amazing nature scenery</a></p>
 <h4 id="tcp优化"><a href="#tcp优化" class="header-anchor"></a>2.2.5.2. <a href="#TCP优化" class="headerlink" title="TCP优化"></a>TCP优化</h4><p>1.修改文件句柄数限制<br>如果是ubuntu/centos均可修改/etc/sysctl.d/local.conf<br>找到fs.file-max这一行，修改其值为1024000，并保存退出。然后执行<code>sysctl -p</code>使其生效<br>修改vi /etc/security/limits.conf文件，加入</p>
-<pre><code class="bash">*               soft    nofile           512000
+<pre class="line-numbers language-bash"><code class="language-bash">*               soft    nofile           512000
 *               hard    nofile          1024000
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>2.修改vi /etc/profile文件，加入<br><code>ulimit -SHn 1024000</code><br>然后重启服务器执行<code>ulimit -n</code>，查询返回1024000即可。</p>
 <h3 id="ss-加密优化"><a href="#ss-加密优化" class="header-anchor"></a>2.2.6. <a href="#ss-加密优化" class="headerlink" title="ss 加密优化"></a>ss 加密优化</h3><ol>
 <li>装M2Crypto 这个可以提高SS的加密速度，安装办法：<br>Debian/Ubuntu<br><code>apt-get install python-m2crypto</code><br>安装之后重启SS，速度将会有一定的提升</li>
