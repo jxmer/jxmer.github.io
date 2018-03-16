@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Next主题从头调整]]></title>
     <url>%2F2018-03-day%2FNextAdjust%2F</url>
-    <content type="text"><![CDATA[基于官方原始next主题包进行如下调整，方便记录修改。 1. 基础设定1.1. 选择SchemeScheme 是 NexT 提供的一种特性，借助于 Scheme，NexT 为你提供多种不同的外观。同时，几乎所有的配置都可以 在 Scheme 之间共用。目前 NexT 支持三种 Scheme，他们是： Muse - 默认 Scheme，这是 NexT 最初的版本，黑白主调，大量留白 Mist - Muse 的紧凑版本，整洁有序的单栏外观 Pisces - 双栏 Scheme，小家碧玉似的清新 Germini 最新的Scheme（有点不太协调啊~~~） Scheme的切换通过站点配置文件 1.2. 设置语言]]></content>
+    <content type="text"><![CDATA[基于官方原始next主题包进行如下调整，方便记录修改。 1. 基础设定1.1. 选择SchemeScheme 是 NexT 提供的一种特性，借助于 Scheme，NexT 为你提供多种不同的外观。同时，几乎所有的配置都可以 在 Scheme 之间共用。目前 NexT 支持三种 Scheme，他们是： Muse - 默认 Scheme，这是 NexT 最初的版本，黑白主调，大量留白 Mist - Muse 的紧凑版本，整洁有序的单栏外观 Pisces - 双栏 Scheme，小家碧玉似的清新 Germini 最新的Scheme（有点不太协调啊~~~）Scheme的切换通过站点配置文件 1.2. 设置语言]]></content>
       <categories>
         <category>next</category>
       </categories>
