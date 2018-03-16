@@ -81,7 +81,7 @@
   
     
     
-    <link href="//www.googlefonts.cn/css?family=Moda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Courgette:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//www.googlefonts.cn/css?family=Moda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|font.im:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -462,7 +462,7 @@
 
       
         <p>在windows上默认以gbk编码。保存一个文件到本地，会被改成gbk的编码，即使在输出内容在写入到文件前已经做了utf-8的编码，最后还是会被转成gbk编码。<br>本例中就是从糗百上抓的文本，其本身是utf-8编码的。读取的时候encode用gbk，输出用gbk。既然最后一定要用gbk，那前面就不可以用utf-8来encode，否则会报错，i.e.，有些字符找不到对应的编码。<br><a id="more"></a></p>
-<h1 id="python3-学习爬虫遇到的一点编码问题"><a href="#python3-学习爬虫遇到的一点编码问题" class="header-anchor"></a>1. <a href="#python3-学习爬虫遇到的一点编码问题" class="headerlink" title="python3 学习爬虫遇到的一点编码问题"></a>python3 学习爬虫遇到的一点编码问题</h1><h2 id="上解决代码"><a href="#上解决代码" class="header-anchor"></a>1.1. <a href="#上解决代码：" class="headerlink" title="上解决代码："></a>上解决代码：</h2><pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true">#coding='utf-8'</span>
+<h1 id="1-python3-学习爬虫遇到的一点编码问题"><a href="#python3-学习爬虫遇到的一点编码问题" class="header-anchor"></a>1. <a href="#python3-学习爬虫遇到的一点编码问题" class="headerlink" title="python3 学习爬虫遇到的一点编码问题"></a>python3 学习爬虫遇到的一点编码问题</h1><h2 id="11-上解决代码"><a href="#上解决代码" class="header-anchor"></a>1.1. <a href="#上解决代码：" class="headerlink" title="上解决代码："></a>上解决代码：</h2><pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true">#coding='utf-8'</span>
 <span class="token keyword">import</span> chardet
 <span class="token keyword">import</span> requests<span class="token punctuation">,</span> re<span class="token punctuation">,</span> sys
 headers <span class="token operator">=</span> <span class="token punctuation">{</span>
@@ -733,7 +733,7 @@ fout <span class="token operator">=</span> open<span class="token punctuation">(
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#python3-学习爬虫遇到的一点编码问题"><span class="nav-text">1. python3 学习爬虫遇到的一点编码问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#上解决代码"><span class="nav-text">1.1. 上解决代码：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-python3-学习爬虫遇到的一点编码问题"><span class="nav-text">1. python3 学习爬虫遇到的一点编码问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#11-上解决代码"><span class="nav-text">1.1. 上解决代码：</span></a></li></ol></li></ol></div>
             
 
           </div>
