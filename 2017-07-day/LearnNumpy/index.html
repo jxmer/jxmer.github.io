@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="NumPy, which stands for Numerical Python, is a library consisting of multidimensional array objects and a collection of routines for processing those arrays. Using NumPy, mathematical and logical oper">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Learn Numpy The Hard Way">
+<meta property="og:url" content="http://www.jiaxm.me/2017-07-day/LearnNumpy/index.html">
+<meta property="og:site_name" content="Memories">
+<meta property="og:description" content="NumPy, which stands for Numerical Python, is a library consisting of multidimensional array objects and a collection of routines for processing those arrays. Using NumPy, mathematical and logical oper">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-16T16:35:09.417Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Learn Numpy The Hard Way">
+<meta name="twitter:description" content="NumPy, which stands for Numerical Python, is a library consisting of multidimensional array objects and a collection of routines for processing those arrays. Using NumPy, mathematical and logical oper">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.jiaxm.me/2017-07-day/LearnNumpy/"/>
+
+
+
+
+
+  <title>Learn Numpy The Hard Way | Memories</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/prism-coy.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Memories</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">a corner of the world</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.jiaxm.me/2017-07-day/LearnNumpy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jxm">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Memories">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Learn Numpy The Hard Way</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-19T09:55:00+08:00">
+                2017-07-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>NumPy, which stands for Numerical Python, is a library consisting of multidimensional array objects and a collection of routines for processing those arrays. Using NumPy, mathematical and logical operations on arrays can be performed<br>一些参考资料：<br><a href="http://scipy-lectures.github.io/intro/numpy/index.html" target="_blank" rel="external">Basics of numpy</a><br><a href="http://scipy-lectures.github.io/intro/numpy/exercises.html" target="_blank" rel="external">Some numpy exercises</a><br><a href="http://scipy-lectures.github.io/advanced/advanced_numpy/" target="_blank" rel="external">Advanced numpy</a><br><a href="http://docs.scipy.org/doc/numpy/reference/" target="_blank" rel="external">Numpy reference</a></p>
+<a id="more"></a>
+<h1 id="numpy的前世今生"><a href="#numpy的前世今生" class="header-anchor"></a>1. <a href="#Numpy的前世今生" class="headerlink" title="Numpy的前世今生"></a>Numpy的前世今生</h1><p><strong>Numeric</strong>, the ancestor of NumPy, was developed by Jim Hugunin. Another package Numarray was also developed, having some additional functionalities. In 2005, Travis Oliphant created NumPy package by incorporating the features of Numarray into Numeric package. There are many contributors to this open source project.</p>
+<h1 id="numpy数值类型"><a href="#numpy数值类型" class="header-anchor"></a>2. <a href="#Numpy数值类型" class="headerlink" title="Numpy数值类型"></a>Numpy数值类型</h1><p>NumPy中的基本数据类型</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">bool</td>
+<td style="text-align:left">用一个字节存储的布尔类型（True或False）</td>
+</tr>
+<tr>
+<td style="text-align:left">inti</td>
+<td style="text-align:left">由所在平台决定其大小的整数（一般为int32或int64）</td>
+</tr>
+<tr>
+<td style="text-align:left">int8</td>
+<td style="text-align:left">一个字节大小，-128 至 127</td>
+</tr>
+<tr>
+<td style="text-align:left">int16</td>
+<td style="text-align:left">整数，-32768 至 32767</td>
+</tr>
+<tr>
+<td style="text-align:left">int32</td>
+<td style="text-align:left">整数，-2 <strong> 31 至 2 </strong> 32 -1</td>
+</tr>
+<tr>
+<td style="text-align:left">int64</td>
+<td style="text-align:left">整数，-2 <strong> 63 至 2 </strong> 63 - 1</td>
+</tr>
+<tr>
+<td style="text-align:left">uint8</td>
+<td style="text-align:left">无符号整数，0 至 255</td>
+</tr>
+<tr>
+<td style="text-align:left">uint16</td>
+<td style="text-align:left">无符号整数，0 至 65535</td>
+</tr>
+<tr>
+<td style="text-align:left">uint32</td>
+<td style="text-align:left">无符号整数，0 至 2 ** 32 - 1</td>
+</tr>
+<tr>
+<td style="text-align:left">uint64</td>
+<td style="text-align:left">无符号整数，0 至 2 ** 64 - 1</td>
+</tr>
+<tr>
+<td style="text-align:left">float16</td>
+<td style="text-align:left">半精度浮点数：16位，正负号1位，指数5位，精度10位</td>
+</tr>
+<tr>
+<td style="text-align:left">float32</td>
+<td style="text-align:left">单精度浮点数：32位，正负号1位，指数8位，精度23位</td>
+</tr>
+<tr>
+<td style="text-align:left">float64或float</td>
+<td style="text-align:left">双精度浮点数：64位，正负号1位，指数11位，精度52位</td>
+</tr>
+<tr>
+<td style="text-align:left">complex64</td>
+<td style="text-align:left">复数，分别用两个32位浮点数表示实部和虚部</td>
+</tr>
+<tr>
+<td style="text-align:left">complex128或complex</td>
+<td style="text-align:left">复数，分别用两个64位浮点数表示实部和虚部</td>
+</tr>
+</tbody>
+</table>
+<h1 id="numpy数组的初始化"><a href="#numpy数组的初始化" class="header-anchor"></a>3. <a href="#Numpy数组的初始化" class="headerlink" title="Numpy数组的初始化"></a>Numpy数组的初始化</h1><p>Numpy的主要数据类型是ndarray，即多维数组。它有以下几个属性：<br>ndarray.ndim：数组的维数<br>ndarray.shape：数组每一维的大小<br>ndarray.size：数组中全部元素的数量<br>ndarray.dtype：数组中元素的类型（numpy.int32, numpy.int16, and numpy.float64等）<br>ndarray.itemsize：每个元素占几个字节</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+
+np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">24</span><span class="token punctuation">)</span><span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># np.arange初始化数组并reshape</span>
+
+<span class="token comment" spellcheck="true">#生成数组赋特殊值：</span>
+np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token number">24</span><span class="token punctuation">)</span>
+np<span class="token punctuation">.</span>ones<span class="token punctuation">(</span><span class="token number">24</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 由于numpy可以按index取值，所以zeros/ones方法可以用来创建bool数组用于取值</span>
+<span class="token operator">>></span><span class="token operator">></span> np<span class="token punctuation">.</span>ones<span class="token punctuation">(</span><span class="token number">24</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>bool<span class="token punctuation">)</span>
+array<span class="token punctuation">(</span><span class="token punctuation">[</span> <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">True</span><span class="token punctuation">,</span>
+        <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">True</span><span class="token punctuation">,</span>
+        <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">True</span><span class="token punctuation">,</span>  <span class="token boolean">True</span><span class="token punctuation">]</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>bool<span class="token punctuation">)</span>
+
+<span class="token operator">>></span><span class="token operator">></span> np<span class="token punctuation">.</span>empty<span class="token punctuation">(</span><span class="token number">24</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 随机数，取决于内存情况</span>
+array<span class="token punctuation">(</span><span class="token punctuation">[</span>  <span class="token number">6.89818397e-310</span><span class="token punctuation">,</span>   <span class="token number">6.89818397e-310</span><span class="token punctuation">,</span>   <span class="token number">6.89817518e-310</span><span class="token punctuation">,</span>
+         <span class="token number">6.89817518e-310</span><span class="token punctuation">,</span>   <span class="token number">6.89817384e-310</span><span class="token punctuation">,</span>   <span class="token number">6.89817852e-310</span><span class="token punctuation">,</span>
+         <span class="token number">6.89818486e-310</span><span class="token punctuation">,</span>   <span class="token number">6.89818483e-310</span><span class="token punctuation">,</span>   <span class="token number">6.89817852e-310</span><span class="token punctuation">,</span>
+         <span class="token number">6.89817384e-310</span><span class="token punctuation">,</span>   <span class="token number">6.89818483e-310</span><span class="token punctuation">,</span>   <span class="token number">6.89817384e-310</span><span class="token punctuation">,</span>
+         <span class="token number">6.89818486e-310</span><span class="token punctuation">,</span>   <span class="token number">6.89818486e-310</span><span class="token punctuation">,</span>   <span class="token number">6.89818483e-310</span><span class="token punctuation">,</span>
+         <span class="token number">6.89817518e-310</span><span class="token punctuation">,</span>   <span class="token number">6.89818486e-310</span><span class="token punctuation">,</span>   <span class="token number">6.89818484e-310</span><span class="token punctuation">,</span>
+         <span class="token number">6.89817518e-310</span><span class="token punctuation">,</span>   <span class="token number">6.89818488e-310</span><span class="token punctuation">,</span>   <span class="token number">6.89817518e-310</span><span class="token punctuation">,</span>
+         <span class="token number">6.89818486e-310</span><span class="token punctuation">,</span>   <span class="token number">6.89818488e-310</span><span class="token punctuation">,</span>   <span class="token number">6.89818484e-310</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token string">'np.arange() （最小值，最大值，步长）（左闭右开） '</span>
+<span class="token string">'np.linspace（最小值，最大值，元素数量）'</span>
+<span class="token operator">>></span><span class="token operator">></span> np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token operator">*</span>np<span class="token punctuation">.</span>pi<span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span>
+array<span class="token punctuation">(</span><span class="token punctuation">[</span> <span class="token number">0</span><span class="token punctuation">.</span>        <span class="token punctuation">,</span>  <span class="token number">0.33069396</span><span class="token punctuation">,</span>  <span class="token number">0.66138793</span><span class="token punctuation">,</span>  <span class="token number">0.99208189</span><span class="token punctuation">,</span>  <span class="token number">1.32277585</span><span class="token punctuation">,</span>
+        <span class="token number">1.65346982</span><span class="token punctuation">,</span>  <span class="token number">1.98416378</span><span class="token punctuation">,</span>  <span class="token number">2.31485774</span><span class="token punctuation">,</span>  <span class="token number">2.64555171</span><span class="token punctuation">,</span>  <span class="token number">2.97624567</span><span class="token punctuation">,</span>
+        <span class="token number">3.30693964</span><span class="token punctuation">,</span>  <span class="token number">3.6376336</span> <span class="token punctuation">,</span>  <span class="token number">3.96832756</span><span class="token punctuation">,</span>  <span class="token number">4.29902153</span><span class="token punctuation">,</span>  <span class="token number">4.62971549</span><span class="token punctuation">,</span>
+        <span class="token number">4.96040945</span><span class="token punctuation">,</span>  <span class="token number">5.29110342</span><span class="token punctuation">,</span>  <span class="token number">5.62179738</span><span class="token punctuation">,</span>  <span class="token number">5.95249134</span><span class="token punctuation">,</span>  <span class="token number">6.28318531</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="numpy-数组的寻址索引和遍历"><a href="#numpy-数组的寻址索引和遍历" class="header-anchor"></a>4. <a href="#Numpy-数组的寻址，索引和遍历" class="headerlink" title="Numpy 数组的寻址，索引和遍历"></a>Numpy 数组的寻址，索引和遍历</h1><p>多维数组的访问通过给每一维指定一个索引，顺序是先高维再低维：</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token number">10</span><span class="token operator">*</span>x <span class="token operator">+</span> y
+<span class="token operator">>></span><span class="token operator">></span> np<span class="token punctuation">.</span>fromfunction<span class="token punctuation">(</span>f<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>np<span class="token punctuation">.</span>int<span class="token punctuation">)</span>
+array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">1</span><span class="token punctuation">,</span>  <span class="token number">2</span><span class="token punctuation">,</span>  <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+       <span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+       <span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">21</span><span class="token punctuation">,</span> <span class="token number">22</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+       <span class="token punctuation">[</span><span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">,</span> <span class="token number">33</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+       <span class="token punctuation">[</span><span class="token number">40</span><span class="token punctuation">,</span> <span class="token number">41</span><span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">,</span> <span class="token number">43</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> b<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span>
+array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+              <span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">21</span><span class="token punctuation">,</span> <span class="token number">22</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>…符号表示将所有未指定索引的维度均赋为：，：表示索引该维度范围所有元素</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> c <span class="token operator">=</span>  np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">24</span><span class="token punctuation">)</span><span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span>
+array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">1</span><span class="token punctuation">,</span>  <span class="token number">2</span><span class="token punctuation">,</span>  <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">[</span> <span class="token number">4</span><span class="token punctuation">,</span>  <span class="token number">5</span><span class="token punctuation">,</span>  <span class="token number">6</span><span class="token punctuation">,</span>  <span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">[</span> <span class="token number">8</span><span class="token punctuation">,</span>  <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+       <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">[</span><span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">21</span><span class="token punctuation">,</span> <span class="token number">22</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> c<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span>
+array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+       <span class="token punctuation">[</span><span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+       <span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">21</span><span class="token punctuation">,</span> <span class="token number">22</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>遍历数组的方法可以用循环/迭代器等。如果需要flatten数组然后访问，可以用c.flat做一个迭代器，也可以用c.flatten（）函数将数组先一维展开。</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">for</span> i <span class="token keyword">in</span> c<span class="token punctuation">.</span>flat<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+  <span class="token comment" spellcheck="true">#即可打印所有元素</span>
+<span class="token operator">>></span><span class="token operator">></span> c<span class="token punctuation">.</span>flatten<span class="token punctuation">(</span><span class="token punctuation">)</span>
+array<span class="token punctuation">(</span><span class="token punctuation">[</span> <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">1</span><span class="token punctuation">,</span>  <span class="token number">2</span><span class="token punctuation">,</span>  <span class="token number">3</span><span class="token punctuation">,</span>  <span class="token number">4</span><span class="token punctuation">,</span>  <span class="token number">5</span><span class="token punctuation">,</span>  <span class="token number">6</span><span class="token punctuation">,</span>  <span class="token number">7</span><span class="token punctuation">,</span>  <span class="token number">8</span><span class="token punctuation">,</span>  <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span>
+       <span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">21</span><span class="token punctuation">,</span> <span class="token number">22</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017-07-day/Ubuntu_Rescue_Mode_Repair/" rel="next" title="Linux与Windows双系统启动引导恢复">
+                <i class="fa fa-chevron-left"></i> Linux与Windows双系统启动引导恢复
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017-07-day/Markdown_Writing/" rel="prev" title="Markdown Writing">
+                Markdown Writing <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="jxm" />
+            
+              <p class="site-author-name" itemprop="name">jxm</p>
+              <p class="site-description motion-element" itemprop="description">keep moving</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://jxmer.github.io" title="镜像网站jxmer.github.io" target="_blank">镜像网站jxmer.github.io</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://timchen314.com/" title="大师兄" target="_blank">大师兄</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https:/yangxi1209.github.io/" title="学霸师姐" target="_blank">学霸师姐</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.shirui.me/" title="大仙" target="_blank">大仙</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#numpy的前世今生"><span class="nav-number">1.</span> <span class="nav-text">1. Numpy的前世今生</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#numpy数值类型"><span class="nav-number">2.</span> <span class="nav-text">2. Numpy数值类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#numpy数组的初始化"><span class="nav-number">3.</span> <span class="nav-text">3. Numpy数组的初始化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#numpy-数组的寻址索引和遍历"><span class="nav-number">4.</span> <span class="nav-text">4. Numpy 数组的寻址，索引和遍历</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jxm</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

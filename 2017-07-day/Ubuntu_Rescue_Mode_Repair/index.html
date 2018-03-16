@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="linux,grub," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="由grub引导的Linux与Windows共存的双系统环境中，Windows版本更新的时候常会出现grub引导失败，造成系统无法正常启动的问题。这是因为Windows更新的过程中导致MBR损坏导致无法找到/boot/grub部分，无法进一步引导系统。而这种情况下启动界面上会启动grub rescue模式，本文即在此模式下恢复grub引导。">
+<meta name="keywords" content="linux,grub">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux与Windows双系统启动引导恢复">
+<meta property="og:url" content="http://www.jiaxm.me/2017-07-day/Ubuntu_Rescue_Mode_Repair/index.html">
+<meta property="og:site_name" content="Memories">
+<meta property="og:description" content="由grub引导的Linux与Windows共存的双系统环境中，Windows版本更新的时候常会出现grub引导失败，造成系统无法正常启动的问题。这是因为Windows更新的过程中导致MBR损坏导致无法找到/boot/grub部分，无法进一步引导系统。而这种情况下启动界面上会启动grub rescue模式，本文即在此模式下恢复grub引导。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-16T16:35:09.740Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux与Windows双系统启动引导恢复">
+<meta name="twitter:description" content="由grub引导的Linux与Windows共存的双系统环境中，Windows版本更新的时候常会出现grub引导失败，造成系统无法正常启动的问题。这是因为Windows更新的过程中导致MBR损坏导致无法找到/boot/grub部分，无法进一步引导系统。而这种情况下启动界面上会启动grub rescue模式，本文即在此模式下恢复grub引导。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.jiaxm.me/2017-07-day/Ubuntu_Rescue_Mode_Repair/"/>
+
+
+
+
+
+  <title>Linux与Windows双系统启动引导恢复 | Memories</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/prism-coy.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Memories</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">a corner of the world</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.jiaxm.me/2017-07-day/Ubuntu_Rescue_Mode_Repair/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jxm">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Memories">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux与Windows双系统启动引导恢复</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-18T00:00:00+08:00">
+                2017-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>由grub引导的Linux与Windows共存的双系统环境中，Windows版本更新的时候常会出现grub引导失败，造成系统无法正常启动的问题。这是因为Windows更新的过程中导致MBR损坏导致无法找到/boot/grub部分，无法进一步引导系统。而这种情况下启动界面上会启动<code>grub rescue</code>模式，本文即在此模式下恢复grub引导。<br><a id="more"></a></p>
+<h1 id="术语简述"><a href="#术语简述" class="header-anchor"></a>1. <a href="#术语简述" class="headerlink" title="术语简述"></a>术语简述</h1><h2 id="bios"><a href="#bios" class="header-anchor"></a>1.1. <a href="#BIOS" class="headerlink" title="BIOS"></a>BIOS</h2><p>“Basic Input Output System”，中文名称就是”基本输入输出系统”。其实，它是一组固化到计算机内主板上一个ROM芯片上的程序，它保存着计算机最重要的基本输入输出的程序、系统设置信息、开机后自检程序和系统自启动程序。 其主要功能是为计算机提供最底层的、最直接的硬件设置和控制。</p>
+<h2 id="mbr"><a href="#mbr" class="header-anchor"></a>1.2. <a href="#MBR" class="headerlink" title="MBR"></a>MBR</h2><p>“Master Boot Record” 硬盘的物理扇区，也叫主引导记录！因为BIOS 很小无法承载启动的运行程序，所以在bios检测到一个硬盘后，将硬盘的0柱面、0磁头、1扇区的内容经过简单判断后， 至内存中的指定位置，然后跳转至这个位置，开始从这个位置运行，大小为512个byte，其中主要存放引导程序和该硬盘的分区表。</p>
+<h2 id="grub"><a href="#grub" class="header-anchor"></a>1.3. <a href="#grub" class="headerlink" title="grub"></a>grub</h2><p>“GRand Unified Bootloade” 多重操作系统启动管理器，就是运行这个GRUB之后可以通过它来引导进入其它的系统，包括window以及linux</p>
+<p>小结：PC 首先启动到BIOS ，然后检测硬盘的MBR，将MBR这块扇区的内容(也就是写在上面的GRUB)装入内存运行，再通过运行GRUB得到的结果实现新的跳转启动！</p>
+<h1 id="出现grub-resuce情况下修复grub2"><a href="#出现grub-resuce情况下修复grub2" class="header-anchor"></a>2. <a href="#出现grub-resuce情况下修复grub2" class="headerlink" title="出现grub resuce情况下修复grub2"></a>出现grub resuce情况下修复grub2</h1><p>grub2分为两部分，一部分写入MBR，另一部分存在linux系统的/boot/grub目录下。出现<code>grub rescue&gt;</code>即MBR部分无法正常运作grub程序，找不到/boot/grub部分，于是启动grub救援模式。</p>
+<p>grub rescue命令行有以下可用命令：<br>set, ls, insmod, root, prefix（设置启动路径）</p>
+<ol>
+<li>ls查看所有分区，列出：<br>（hd0），（hd0，msdos8），（hd0，msdos7），（hd0，msdos6），（hd0，msdos5），（hd0，msdos3），（hd0，msdos1）<br>需要找到ubuntu的安装分区，通过 <code>ls (hd0, msdos4)/boot</code>直到不出现<code>error: unknown filesystem</code></li>
+<li>找到之后通过如下命令设置一次性启动参数：<pre class="line-numbers language-bash"><code class="language-bash">grub rescue<span class="token operator">></span>set root<span class="token operator">=</span><span class="token punctuation">(</span>hd0,msdos8<span class="token punctuation">)</span>
+grub rescue<span class="token operator">></span>set prefix<span class="token operator">=</span><span class="token punctuation">(</span>hd0,msdos8<span class="token punctuation">)</span>/boot/grub
+grub rescue<span class="token operator">></span>insmod /boot/grub/i386-pc/normal.mod
+grub resuce<span class="token operator">></span> normal
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+其中<code>/boot/grub/i386-pc/normal.mod</code>路径是在Ubuntu 17.04的系统下的。</li>
+<li>如果/boot/grub没有损坏，就能进入Ubuntu系统正常启动界面。If not， 需要手动引导：<br>进入grub命令行：<pre class="line-numbers language-bash"><code class="language-bash">grub<span class="token operator">></span> root <span class="token punctuation">(</span>hd0,4<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">## 指定包含vmlinuz-2.6.18-274.7.1.el5和initrd-2.6.18-274.7.1.el5.img的partition</span>
+grub<span class="token operator">></span> kernel /boot/vmlinuz-2.6.18-274.7.1.el5 ro root<span class="token operator">=</span>/dev/sda8 <span class="token comment" spellcheck="true">## root= 是指定包含/sbin/init的partition，即挂载/的partition（以Linux的角度）</span>
+grub<span class="token operator">></span> initrd /boot/initrd-2.6.18-274.7.1.el5.img <span class="token comment" spellcheck="true">## 据说这项可以省略</span>
+grub<span class="token operator">></span> boot
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+在正确进入了ubuntu之后，需要更新MBR的grub部分来适应新的分区情况：<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> update-grub2 <span class="token comment" spellcheck="true"># update /boot/grub/grub.cfg</span>
+<span class="token function">sudo</span> grub-install /dev/sda <span class="token comment" spellcheck="true"># install grub into MBR of Mater Disk</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<h1 id="livecd-修复方法"><a href="#livecd-修复方法" class="header-anchor"></a>3. <a href="#liveCD-修复方法" class="headerlink" title="liveCD 修复方法"></a>liveCD 修复方法</h1><p>用启动盘进入try ubuntu界面，手动更新grub</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> update-grub2
+<span class="token function">sudo</span> grub-install /dev/sda8
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>参考：</p>
+<ol>
+<li><a href="http://blog.csdn.net/jscese/article/details/36865449" target="_blank" rel="external">csdn-jscese</a></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/grub/" rel="tag"># grub</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017-07-day/Shadowsocks_Configuration/" rel="next" title="Shadowsocks 的搭建">
+                <i class="fa fa-chevron-left"></i> Shadowsocks 的搭建
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017-07-day/LearnNumpy/" rel="prev" title="Learn Numpy The Hard Way">
+                Learn Numpy The Hard Way <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="jxm" />
+            
+              <p class="site-author-name" itemprop="name">jxm</p>
+              <p class="site-description motion-element" itemprop="description">keep moving</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://jxmer.github.io" title="镜像网站jxmer.github.io" target="_blank">镜像网站jxmer.github.io</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://timchen314.com/" title="大师兄" target="_blank">大师兄</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https:/yangxi1209.github.io/" title="学霸师姐" target="_blank">学霸师姐</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.shirui.me/" title="大仙" target="_blank">大仙</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#术语简述"><span class="nav-number">1.</span> <span class="nav-text">1. 术语简述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bios"><span class="nav-number">1.1.</span> <span class="nav-text">1.1. BIOS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mbr"><span class="nav-number">1.2.</span> <span class="nav-text">1.2. MBR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#grub"><span class="nav-number">1.3.</span> <span class="nav-text">1.3. grub</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#出现grub-resuce情况下修复grub2"><span class="nav-number">2.</span> <span class="nav-text">2. 出现grub resuce情况下修复grub2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#livecd-修复方法"><span class="nav-number">3.</span> <span class="nav-text">3. liveCD 修复方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jxm</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
