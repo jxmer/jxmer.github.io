@@ -126,7 +126,7 @@
 <meta property="og:image" content="http://res.cloudinary.com/jiaxm/image/upload/v1500807064/Solariedlight_d6h4xb.jpg">
 <meta property="og:image" content="http://res.cloudinary.com/jiaxm/image/upload/v1500807064/tomorrow_liekgg.jpg">
 <meta property="og:image" content="http://res.cloudinary.com/jiaxm/image/upload/v1500807064/twilight_wlpsfk.jpg">
-<meta property="og:updated_time" content="2017-11-17T15:35:59.550Z">
+<meta property="og:updated_time" content="2018-03-16T10:42:50.094Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo Configuration">
 <meta name="twitter:description" content="Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。本文为Hexo相关的东西，大部分与特性配置有关。">
@@ -477,7 +477,7 @@
 <li>git安装</li>
 <li>拷贝原来的文件 包括<strong>:<br><code>_config.yml</code>: 站点配置文件<br><code>/theme</code>: 主题及其配置<br><code>source</code>: 文章源文件及404页面<br><code>scaffolds</code>: Hexo所提供的模板文件<br><code>package.json</code>: 说明站点使用了哪些包<br><code>gitignore</code>: 放置在git端时忽略的文件<br>需要删除:<br>.git, public, .deploy_</strong>git, db_json<br><code>git</code>：git的配置，关联文件夹等，由于我们已经换了电脑，所以之前的配置应该被舍弃掉；<br><code>node_modules/</code>: 注意这个并不需要删除，上面1-3安装完成后<code>npm install</code>命令即可加载所有的文件<br><code>public/</code>：在用hexo generate时会重新生成；<br><code>.deploy_git/</code>：在用hexo deploy时会重新生成；<br><code>db.json</code>：站点的一些数据文件；</li>
 <li>git init</li>
-<li>npm install </li>
+<li>npm install</li>
 <li>重新配置全局默认邮箱和用户名</li>
 </ol>
 <h1 id="特性配置"><a href="#特性配置" class="header-anchor"></a>2. <a href="#特性配置" class="headerlink" title="特性配置"></a>特性配置</h1><h2 id="添加邮箱链接控制"><a href="#添加邮箱链接控制" class="header-anchor"></a>2.1. <a href="#添加邮箱链接控制" class="headerlink" title="添加邮箱链接控制"></a>添加邮箱链接控制</h2><p>安装插件<code>hexo-email-obfuscate</code>，参考<a href="https://www.npmjs.com/package/hexo-email-obfuscate" target="_blank" rel="external">这里</a></p>
@@ -864,6 +864,66 @@ $content<span class="token operator">-</span>desktop<span class="token operator"
 <li>在next主题配置文件中添加：<code>favicon: images/favicon.ico</code>;或者直接把<code>favicon.ico</code>放到站点source文件夹</li>
 </ol>
 <h2 id="设置emoji"><a href="#设置emoji" class="header-anchor"></a>2.23. <a href="#设置emoji" class="headerlink" title="设置emoji"></a>设置emoji</h2><p>to test this plugin! :simple_smile:</p>
+<h2 id="版权声明"><a href="#版权声明" class="header-anchor"></a>2.24. <a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h2><p>主题默认的版权声明配置在themes\next_config.yml文件中。</p>
+<pre class="line-numbers language-json"><code class="language-json"># Declare license on posts
+post_copyright<span class="token operator">:</span>
+  enable<span class="token operator">:</span> <span class="token boolean">false</span>
+  license<span class="token operator">:</span> CC BY-NC-SA <span class="token number">3.0</span>
+  license_url<span class="token operator">:</span> https<span class="token operator">:</span>//creativecommons.org/licenses/by-nc-sa/<span class="token number">3.0</span>/
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p> 将’enable’ 改为’true’即可<br> 或者自己魔改，配置如下（参考<a href="http://www.crocutax.com/2017/05/20/Hexo%E6%8C%81%E7%BB%AD%E4%BC%98%E5%8C%96-%E5%9C%A8%E6%96%87%E7%AB%A0%E5%B0%BE%E9%83%A8%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9D%83%E5%A3%B0%E6%98%8E%E4%BF%A1%E6%81%AF/" target="_blank" rel="external">Crocutax’s Blog</a>）</p>
+<p> 定位到themes\next\layout_macro\post.swig文件，找到<footer class="post-footer">节点，该节点包括了每篇文章底部的tag、span分割线等标签，可以根据自己的需要放置【版权声明】的位置。</footer></p>
+<pre class="line-numbers language-json"><code class="language-json"> &lt;footer class=<span class="token string">"post-footer"</span>>
+
+
+     &lt;div>    
+      <span class="token punctuation">{</span>% if not is_index %<span class="token punctuation">}</span>
+      &lt;ul class=<span class="token string">"post-copyright"</span>>
+         &lt;li class=<span class="token string">"post-copyright-link"</span>>
+          &lt;strong>本文作者：&lt;/strong>
+          &lt;a href=<span class="token string">"/"</span> title=<span class="token string">"欢迎访问 {{ theme.author }} 的个人博客"</span>><span class="token punctuation">{</span><span class="token punctuation">{</span> theme.author <span class="token punctuation">}</span><span class="token punctuation">}</span>&lt;/a>
+        &lt;/li>
+
+        &lt;li class=<span class="token string">"post-copyright-link"</span>>
+          &lt;strong>本文标题：&lt;/strong>
+          &lt;a href=<span class="token string">"{{ url_for(post.permalink) }}"</span> title=<span class="token string">"{{ post.title }}"</span>><span class="token punctuation">{</span><span class="token punctuation">{</span> post.title <span class="token punctuation">}</span><span class="token punctuation">}</span>&lt;/a>
+        &lt;/li>
+
+        &lt;li class=<span class="token string">"post-copyright-link"</span>>
+          &lt;strong>本文链接：&lt;/strong>
+          &lt;a href=<span class="token string">"{{ url_for(post.permalink) }}"</span> title=<span class="token string">"{{ post.title }}"</span>><span class="token punctuation">{</span><span class="token punctuation">{</span> post.permalink <span class="token punctuation">}</span><span class="token punctuation">}</span>&lt;/a>
+        &lt;/li>
+
+        &lt;li class=<span class="token string">"post-copyright-date"</span>>
+            &lt;strong>发布时间：&lt;/strong><span class="token punctuation">{</span><span class="token punctuation">{</span> post.date.format(<span class="token string">"YYYY年M月D日 - HH时MM分"</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
+        &lt;/li>  
+
+        &lt;li class=<span class="token string">"post-copyright-license"</span>>
+          &lt;strong>版权声明： &lt;/strong>
+          本文由 <span class="token punctuation">{</span><span class="token punctuation">{</span>theme.author<span class="token punctuation">}</span><span class="token punctuation">}</span> 原创，采用 &lt;a href=<span class="token string">"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh"</span> rel=<span class="token string">"license"</span> target=<span class="token string">"_blank"</span>>保留署名-非商业性使用-禁止演绎 <span class="token number">4.0</span>-国际许可协议&lt;/a> &lt;br>转载请保留以上声明信息！
+        &lt;/li>
+      &lt;/ul>
+    <span class="token punctuation">{</span>% endif %<span class="token punctuation">}</span>
+  &lt;/div>
+...
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p> 里面都是基础的HTML代码，使用了一个无序列表用于展示版权声明的各项信息，这里可以随意diy。<br> 当然里面涉及一些属性，比如：</p>
+<ul>
+<li>theme.author ： 作者名</li>
+<li>post.title ：文章标题</li>
+<li>post.path　：文章相对路径</li>
+<li>post.permalink : 文章绝对路径</li>
+<li><p>post.date : 日期</p>
+<blockquote>
+<ul>
+<li>这里用<code>page</code>和<code>post</code>效果一样，比如<code>page.title</code> , <code>page.path</code></li>
+<li>这里基本都做成了超链接形式，也可以做成文本形式</li>
+</ul>
+</blockquote>
+<p>然后，定位到themes\next\source\css_custom\custom.styl 文件，通过类选择器添加CSS样式<br>```json<br>// Custom styles.</p>
+</li>
+</ul>
+<p>.post-copyright {<br>    margin: 2em 0 0;<br>    padding: 0.5em 1em;<br>    border-left: 3px solid #FF1700;<br>    background-color: #F9F9F9;<br>    list-style: none;<br>}<br> ```</p>
 <h1 id="主题配置参考"><a href="#主题配置参考" class="header-anchor"></a>3. <a href="#主题配置参考" class="headerlink" title="主题配置参考"></a>主题配置参考</h1><ol>
 <li><a href="http://chitanda.me/2015/06/11/tips-for-setup-hexo/" target="_blank" rel="external">markdown table</a></li>
 </ol>
@@ -1126,7 +1186,7 @@ $content<span class="token operator">-</span>desktop<span class="token operator"
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo在不同电脑间的迁移"><span class="nav-text">1. Hexo在不同电脑间的迁移</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#特性配置"><span class="nav-text">2. 特性配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加邮箱链接控制"><span class="nav-text">2.1. 添加邮箱链接控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文章中添加居中模块"><span class="nav-text">2.2. 文章中添加居中模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐藏网页底部powered-by-hexo-强力驱动"><span class="nav-text">2.3. 隐藏网页底部powered By Hexo / 强力驱动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#友情链接设置"><span class="nav-text">2.4. 友情链接设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码高亮问题"><span class="nav-text">2.5. 代码高亮问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码高亮prism"><span class="nav-text">2.6. 代码高亮prism</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#install"><span class="nav-text">2.6.1. Install:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#usage"><span class="nav-text">2.6.2. Usage:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码高亮主题测试"><span class="nav-text">2.6.3. 代码高亮主题测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文章内插入图片"><span class="nav-text">2.7. 文章内插入图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#鼠标点击小红心的设置"><span class="nav-text">2.8. 鼠标点击小红心的设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改文章内链接文本样式"><span class="nav-text">2.9. 修改文章内链接文本样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置字体"><span class="nav-text">2.10. 设置字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置菜单"><span class="nav-text">2.11. 设置菜单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加并美化本地搜索"><span class="nav-text">2.12. 添加并美化本地搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#侧边栏头像修饰"><span class="nav-text">2.13. 侧边栏头像修饰</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cloudinary-在线图片服务"><span class="nav-text">2.14. Cloudinary 在线图片服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置文章置顶"><span class="nav-text">2.15. 设置文章置顶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#next主题宽度调整"><span class="nav-text">2.16. next主题宽度调整</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置disqus"><span class="nav-text">2.17. 设置disqus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给github添加readme"><span class="nav-text">2.18. 给github添加README</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#markdown里-table-的语法"><span class="nav-text">2.19. MarkDown里 table 的语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#去除b2t-sidebar"><span class="nav-text">2.20. 去除b2t sidebar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调整b2t样式"><span class="nav-text">2.21. 调整b2t样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置网站图标logo"><span class="nav-text">2.22. 设置网站图标Logo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置emoji"><span class="nav-text">2.23. 设置emoji</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主题配置参考"><span class="nav-text">3. 主题配置参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo在不同电脑间的迁移"><span class="nav-text">1. Hexo在不同电脑间的迁移</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#特性配置"><span class="nav-text">2. 特性配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加邮箱链接控制"><span class="nav-text">2.1. 添加邮箱链接控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文章中添加居中模块"><span class="nav-text">2.2. 文章中添加居中模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐藏网页底部powered-by-hexo-强力驱动"><span class="nav-text">2.3. 隐藏网页底部powered By Hexo / 强力驱动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#友情链接设置"><span class="nav-text">2.4. 友情链接设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码高亮问题"><span class="nav-text">2.5. 代码高亮问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码高亮prism"><span class="nav-text">2.6. 代码高亮prism</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#install"><span class="nav-text">2.6.1. Install:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#usage"><span class="nav-text">2.6.2. Usage:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码高亮主题测试"><span class="nav-text">2.6.3. 代码高亮主题测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文章内插入图片"><span class="nav-text">2.7. 文章内插入图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#鼠标点击小红心的设置"><span class="nav-text">2.8. 鼠标点击小红心的设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改文章内链接文本样式"><span class="nav-text">2.9. 修改文章内链接文本样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置字体"><span class="nav-text">2.10. 设置字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置菜单"><span class="nav-text">2.11. 设置菜单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加并美化本地搜索"><span class="nav-text">2.12. 添加并美化本地搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#侧边栏头像修饰"><span class="nav-text">2.13. 侧边栏头像修饰</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cloudinary-在线图片服务"><span class="nav-text">2.14. Cloudinary 在线图片服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置文章置顶"><span class="nav-text">2.15. 设置文章置顶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#next主题宽度调整"><span class="nav-text">2.16. next主题宽度调整</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置disqus"><span class="nav-text">2.17. 设置disqus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给github添加readme"><span class="nav-text">2.18. 给github添加README</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#markdown里-table-的语法"><span class="nav-text">2.19. MarkDown里 table 的语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#去除b2t-sidebar"><span class="nav-text">2.20. 去除b2t sidebar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调整b2t样式"><span class="nav-text">2.21. 调整b2t样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置网站图标logo"><span class="nav-text">2.22. 设置网站图标Logo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置emoji"><span class="nav-text">2.23. 设置emoji</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版权声明"><span class="nav-text">2.24. 版权声明</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主题配置参考"><span class="nav-text">3. 主题配置参考</span></a></li></ol></div>
             
 
           </div>

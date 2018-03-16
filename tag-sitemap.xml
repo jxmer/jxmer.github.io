@@ -79,20 +79,6 @@
     </url>
 
     <url>
-        <loc>http://www.jiaxm.me/tags/next/</loc>
-        <lastmod>2017-11-17T15:35:59.550Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://www.jiaxm.me/tags/hexo/</loc>
-        <lastmod>2017-11-17T15:35:59.550Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://www.jiaxm.me/tags/vim/</loc>
         <lastmod>2018-01-30T10:43:58.804Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -109,6 +95,20 @@
     <url>
         <loc>http://www.jiaxm.me/tags/xshell/</loc>
         <lastmod>2018-03-16T09:46:57.751Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.jiaxm.me/tags/next/</loc>
+        <lastmod>2018-03-16T10:42:50.094Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.jiaxm.me/tags/hexo/</loc>
+        <lastmod>2018-03-16T10:42:50.094Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
