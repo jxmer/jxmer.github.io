@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://www.jiaxm.me/2018-03-day/NextAdjust/</loc>
+        <lastmod>2018-03-16T18:02:57.644Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://www.jiaxm.me/2017-11-day/vim8.0_install/</loc>
         <lastmod>2018-03-16T17:37:16.509Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -17,14 +25,6 @@
     <url>
         <loc>http://www.jiaxm.me/2018-01-day/vim_familiar/</loc>
         <lastmod>2018-03-16T17:37:14.325Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.jiaxm.me/2018-03-day/NextAdjust/</loc>
-        <lastmod>2018-03-16T17:34:44.401Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
