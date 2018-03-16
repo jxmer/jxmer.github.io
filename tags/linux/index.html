@@ -74,6 +74,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Memories" type="application/atom+xml" />
+
 
 
 
@@ -107,9 +109,9 @@
       author: '博主'
     },
     algolia: {
-      applicationID: '1PBG7RXMQN',
+      applicationID: '',
       apiKey: '',
-      indexName: 'hexoalgolia',
+      indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
@@ -495,6 +497,13 @@
 
           </nav>
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           
