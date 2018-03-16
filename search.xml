@@ -49,7 +49,7 @@
   <entry>
     <title><![CDATA[Xshell 相关]]></title>
     <url>%2F2017-11-day%2FXshell%2F</url>
-    <content type="text"><![CDATA[关于Xshell的设置技巧、使用中遇到的问题~ 1. Xshell设置技巧1.1. Little Tips 透明度设置 属性-外观-字体 Dejavu San Mono 配色方案 xterm 鼠标右键复制-粘贴 隧道转发X11 启动默认连接some servers2. 内置上传下载的工具XMODEM、YMODEM、ZMODEM（sx/rx, sb/rb, sz/rz）note: ‘lrzsz’这个包对应ZMODEM，centos7自带。以sz/rz为例：sz表示send a file ， 后面加文件名字‘sz filename.dat’ 会出现选择传输到本地目录的界面rz表示receive a file‘rz’ 会出现本地目录以选择需要上传的文件ps: 在Xshell里面可以设置默认的下载目录，所以在终端sz filename可以直接下载到本地，比如桌面，非常方便。]]></content>
+    <content type="text"><![CDATA[关于Xshell的设置技巧、使用中遇到的问题~ 1. Xshell设置技巧1.1. Little Tips 透明度设置 属性-外观-字体 Dejavu San Mono 配色方案 xterm 鼠标右键复制-粘贴 隧道转发X11 启动默认连接some servers 2. 内置上传下载的工具XMODEM、YMODEM、ZMODEM（sx/rx, sb/rb, sz/rz）note: ‘lrzsz’这个包对应ZMODEM，centos7自带。以sz/rz为例：sz表示send a file ， 后面加文件名字‘sz filename.dat’ 会出现选择传输到本地目录的界面rz表示receive a file‘rz’ 会出现本地目录以选择需要上传的文件ps: 在Xshell里面可以设置默认的下载目录，所以在终端sz filename可以直接下载到本地，比如桌面，非常方便。]]></content>
       <categories>
         <category>xshell</category>
       </categories>
