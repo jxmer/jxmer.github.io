@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Next主题从头调整]]></title>
+    <url>%2F2018-03-day%2FNextAdjust%2F</url>
+    <content type="text"><![CDATA[基于官方原始next主题包进行如下调整，方便记录修改。 1. 基础设定1.1. 选择SchemeScheme 是 NexT 提供的一种特性，借助于 Scheme，NexT 为你提供多种不同的外观。同时，几乎所有的配置都可以 在 Scheme 之间共用。目前 NexT 支持三种 Scheme，他们是： Muse - 默认 Scheme，这是 NexT 最初的版本，黑白主调，大量留白 Mist - Muse 的紧凑版本，整洁有序的单栏外观 Pisces - 双栏 Scheme，小家碧玉似的清新 Germini 最新的Scheme（有点不太协调啊~~~） Scheme的切换通过站点配置文件 1.2. 设置语言]]></content>
+      <categories>
+        <category>next</category>
+      </categories>
+      <tags>
+        <tag>next</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Linux命令行快捷键]]></title>
     <url>%2F2018-03-day%2FLinuxTerminalCommand%2F</url>
     <content type="text"><![CDATA[涉及在Linux命令行下进行快速移动光标、命令编辑、编辑后执行历史命令、Bang(!)命令、控制命令等。让basher更有效率。 1. 常用ctrl+左右键:在单词之间跳转 ctrl+a:跳到本行的行首 ctrl+e:跳到页尾 Ctrl+u：删除当前光标前面的文字 （还有剪切功能） ctrl+k：删除当前光标后面的文字(还有剪切功能) Ctrl+L：进行清屏操作 Ctrl+y:粘贴Ctrl+u或ctrl+k剪切的内容 Ctrl+w:删除光标前面的单词的字符 Alt – d ：由光标位置开始，往右删除单词。往行尾删 2. 移动光标Ctrl-a ：移到行首 Ctrl-e ：移到行尾 Ctrl-b ：往回(左)移动一个字符 Ctrl-f ：往后(右)移动一个字符 Alt-b ：往回(左)移动一个单词 Alt-f ：往后(右)移动一个单词 Ctrl-xx ：在命令行尾和光标之间移动 M-b ：往回(左)移动一个单词 M-f ：往后(右)移动一个单词 3. 编辑命令Ctrl-h ：向前删除字符 删除光标左方位置的字符 Ctrl-d ：向后删除字符 删除光标右方位置的字符（注意：当前命令行没有任何字符时，会注销系统或结束终端） Ctrl-w ：删除到行首 Ctrl-u ：删除到行首 同由光标所在位置开始，删除左方所有的字符，直到该行开始。 Ctrl-k ：删除到行尾 由光标所在位置开始，删除右方所有的字符，直到该行结束。 Ctrl-y ：粘贴之前删除的内容到光标后。 Ctrl-t ：交换光标处和之前两个字符的位置。 Alt+. ：使用上一条命令的最后一个参数。 Ctrl-_ ：回复之前的状态。撤销操作。 4. Bang(!)命令!! ：执行上一条命令。 ^foo^bar ：把上一条命令里的foo替换为bar，并执行。 !wget ：执行最近的以wget开头的命令。 !wget:p ：仅打印最近的以wget开头的命令，不执行。 !$ ：上一条命令的最后一个参数， 与 Alt - . 和 $_ 相同。 !* ：上一条命令的所有参数 !*:p ：打印上一条命令是所有参数，也即 !*的内容。 ^abc ：删除上一条命令中的abc。 ^foo^bar ：将上一条命令中的 foo 替换为 bar ^foo^bar^ ：将上一条命令中的 foo 替换为 bar !-n ：执行前n条命令，执行上一条命令： !-1， 执行前5条命令的格式是： !-5 5. 查找历史命令Ctrl-p ：显示当前命令的上一条历史命令 Ctrl-n ：显示当前命令的下一条历史命令 Ctrl-r ：搜索历史命令，随着输入会显示历史命令中的一条匹配命令，Enter键执行匹配命令；ESC键在命令行显示而不执行匹配命令。 Ctrl-g ：从历史搜索模式（Ctrl – r）退出。 6. 控制命令Ctrl-l ：清除屏幕，然后，在最上面重新显示目前光标所在的这一行的内容。 Ctrl-o ：执行当前命令，并选择上一条命令。 Ctrl-s ：阻止屏幕输出 Ctrl-q ：允许屏幕输出 Ctrl-c ：终止命令 Ctrl-z ：挂起命令 7. 重复执行操作动作M – 操作次数 操作动作 ： 指定操作次数，重复执行指定的操作。]]></content>
