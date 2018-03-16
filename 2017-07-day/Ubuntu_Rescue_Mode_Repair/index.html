@@ -469,16 +469,26 @@
 <p>grub rescue命令行有以下可用命令：<br>set, ls, insmod, root, prefix（设置启动路径）</p>
 <ol>
 <li>ls查看所有分区，列出：<br>（hd0），（hd0，msdos8），（hd0，msdos7），（hd0，msdos6），（hd0，msdos5），（hd0，msdos3），（hd0，msdos1）<br>需要找到ubuntu的安装分区，通过 <code>ls (hd0, msdos4)/boot</code>直到不出现<code>error: unknown filesystem</code></li>
-<li>找到之后通过如下命令设置一次性启动参数：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">grub rescue&gt;<span class="built_in">set</span> root=(hd0,msdos8)</div><div class="line">grub rescue&gt;<span class="built_in">set</span> prefix=(hd0,msdos8)/boot/grub</div><div class="line">grub rescue&gt;insmod /boot/grub/i386-pc/normal.mod</div><div class="line">grub resuce&gt; normal</div></pre></td></tr></table></figure>
+<li>找到之后通过如下命令设置一次性启动参数：<pre><code class="bash">grub rescue&gt;set root=(hd0,msdos8)
+grub rescue&gt;set prefix=(hd0,msdos8)/boot/grub
+grub rescue&gt;insmod /boot/grub/i386-pc/normal.mod
+grub resuce&gt; normal
+</code></pre>
+其中<code>/boot/grub/i386-pc/normal.mod</code>路径是在Ubuntu 17.04的系统下的。</li>
+<li>如果/boot/grub没有损坏，就能进入Ubuntu系统正常启动界面。If not， 需要手动引导：<br>进入grub命令行：<pre><code class="bash">grub&gt; root (hd0,4) ## 指定包含vmlinuz-2.6.18-274.7.1.el5和initrd-2.6.18-274.7.1.el5.img的partition
+grub&gt; kernel /boot/vmlinuz-2.6.18-274.7.1.el5 ro root=/dev/sda8 ## root= 是指定包含/sbin/init的partition，即挂载/的partition（以Linux的角度）
+grub&gt; initrd /boot/initrd-2.6.18-274.7.1.el5.img ## 据说这项可以省略
+grub&gt; boot
+</code></pre>
+在正确进入了ubuntu之后，需要更新MBR的grub部分来适应新的分区情况：<pre><code class="bash">sudo update-grub2 # update /boot/grub/grub.cfg
+sudo grub-install /dev/sda # install grub into MBR of Mater Disk
+</code></pre>
 </li>
 </ol>
-<p>其中<code>/boot/grub/i386-pc/normal.mod</code>路径是在Ubuntu 17.04的系统下的。</p>
-<ol>
-<li>如果/boot/grub没有损坏，就能进入Ubuntu系统正常启动界面。If not， 需要手动引导：<br>进入grub命令行：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">grub&gt; root (hd0,4) <span class="comment">## 指定包含vmlinuz-2.6.18-274.7.1.el5和initrd-2.6.18-274.7.1.el5.img的partition</span></div><div class="line">grub&gt; kernel /boot/vmlinuz-2.6.18-274.7.1.el5 ro root=/dev/sda8 <span class="comment">## root= 是指定包含/sbin/init的partition，即挂载/的partition（以Linux的角度）</span></div><div class="line">grub&gt; initrd /boot/initrd-2.6.18-274.7.1.el5.img <span class="comment">## 据说这项可以省略</span></div><div class="line">grub&gt; boot</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>在正确进入了ubuntu之后，需要更新MBR的grub部分来适应新的分区情况：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo update-grub2 <span class="comment"># update /boot/grub/grub.cfg</span></div><div class="line">sudo grub-install /dev/sda <span class="comment"># install grub into MBR of Mater Disk</span></div></pre></td></tr></table></figure></p>
-<h1 id="livecd-修复方法"><a href="#livecd-修复方法" class="header-anchor"></a>3. <a href="#liveCD-修复方法" class="headerlink" title="liveCD 修复方法"></a>liveCD 修复方法</h1><p>用启动盘进入try ubuntu界面，手动更新grub<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo update-grub2</div><div class="line">sudo grub-install /dev/sda8</div></pre></td></tr></table></figure></p>
+<h1 id="livecd-修复方法"><a href="#livecd-修复方法" class="header-anchor"></a>3. <a href="#liveCD-修复方法" class="headerlink" title="liveCD 修复方法"></a>liveCD 修复方法</h1><p>用启动盘进入try ubuntu界面，手动更新grub</p>
+<pre><code class="bash">sudo update-grub2
+sudo grub-install /dev/sda8
+</code></pre>
 <p>参考：</p>
 <ol>
 <li><a href="http://blog.csdn.net/jscese/article/details/36865449" target="_blank" rel="external">csdn-jscese</a></li>

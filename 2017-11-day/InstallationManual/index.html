@@ -462,17 +462,45 @@
       
         <p>一些软件的安装步骤，以及此过程中遇到的问题的解决办法。<br><a id="more"></a></p>
 <h1 id="服务器软件的安装"><a href="#服务器软件的安装" class="header-anchor"></a>1. <a href="#服务器软件的安装" class="headerlink" title="服务器软件的安装"></a>服务器软件的安装</h1><h2 id="安装cuda"><a href="#安装cuda" class="header-anchor"></a>1.1. <a href="#安装cuda" class="headerlink" title="安装cuda"></a>安装cuda</h2><ol>
-<li><p>安装cuda经常会遇到问题，但大部分都与如何禁用nouveau驱动相关，所以step-1，需要禁用nouveau驱动。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">1. 在配置文件中禁用nouveau</div><div class="line">vi /etc/modprobe.d/blacklist.conf  添加：blacklist nouveau</div><div class="line">    CentOS 7:</div><div class="line">     vim /usr/lib/modprobe.d/dist-blacklist.conf$</div><div class="line">    或</div><div class="line">     vim /lib/modprobe.d/dist-blacklist.conf</div><div class="line">    并且在加上blacklist nouveau之后还要加上一行options nouveau modeset=0</div><div class="line">2. 备份原来的 initramfs nouveau image镜像</div><div class="line">mv /boot/initramfs-$(uname -r).img /boot/initramfs-$(uname -r)-nouveau.img  </div><div class="line">3. 创建新的 initramfs image镜像</div><div class="line">dracut /boot/initramfs-$(uname -r).img $(uname -r)  </div><div class="line">注：重启后会发现终端界面字体变大了，不清晰了，表示nouveau禁用成功。</div><div class="line">4. 所有安装已经完成，重新启动机器。</div></pre></td></tr></table></figure>
-</li>
-<li><p>单独安装nvidia驱动 <code>./NVIDIA-Linux-x86_64-384.90-1080ti.run</code><br>需要注意几点：<br>（1）cuda安装包本身包含两个部分：cuda-toolkit和nvidia driver，再安装cuda的时候是可以选择只安装cuda-toolkit，而省略nvidia driver的（甚至可以从cuda中抽出单独的部分作为一个安装包）<br>（2）1080Ti的显卡需要较新的驱动384.90来支持<br>（3）安装完成后一定要用命令查看一下显卡状态<code>nvidia-smi</code>，如果有错误提示，则安装有问题。</p>
-</li>
+<li>安装cuda经常会遇到问题，但大部分都与如何禁用nouveau驱动相关，所以step-1，需要禁用nouveau驱动。<br>```sh</li>
+<li>在配置文件中禁用nouveau<br>vi /etc/modprobe.d/blacklist.conf  添加：blacklist nouveau<br> CentOS 7:<br>  vim /usr/lib/modprobe.d/dist-blacklist.conf$<br> 或<br>  vim /lib/modprobe.d/dist-blacklist.conf<br> 并且在加上blacklist nouveau之后还要加上一行options nouveau modeset=0</li>
+<li>备份原来的 initramfs nouveau image镜像<br>mv /boot/initramfs-$(uname -r).img /boot/initramfs-$(uname -r)-nouveau.img  </li>
+<li>创建新的 initramfs image镜像<br>dracut /boot/initramfs-$(uname -r).img $(uname -r)<br>注：重启后会发现终端界面字体变大了，不清晰了，表示nouveau禁用成功。</li>
+<li>所有安装已经完成，重新启动机器。<br>```</li>
+<li>单独安装nvidia驱动 <code>./NVIDIA-Linux-x86_64-384.90-1080ti.run</code><br>需要注意几点：<br>（1）cuda安装包本身包含两个部分：cuda-toolkit和nvidia driver，再安装cuda的时候是可以选择只安装cuda-toolkit，而省略nvidia driver的（甚至可以从cuda中抽出单独的部分作为一个安装包）<br>（2）1080Ti的显卡需要较新的驱动384.90来支持<br>（3）安装完成后一定要用命令查看一下显卡状态<code>nvidia-smi</code>，如果有错误提示，则安装有问题。</li>
 <li>安装cuda <code>./cuda_9.0.176_384.81_linux-run</code> 不需要装driver</li>
 </ol>
-<h2 id="hoomd"><a href="#hoomd" class="header-anchor"></a>1.2. <a href="#hoomd" class="headerlink" title="hoomd"></a>hoomd</h2><h3 id="本地编译hoomd-133及以下版本"><a href="#本地编译hoomd-133及以下版本" class="header-anchor"></a>1.2.1. <a href="#本地编译hoomd-1-3-3及以下版本" class="headerlink" title="本地编译hoomd-1.3.3及以下版本"></a>本地编译hoomd-1.3.3及以下版本</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(1) mkdir build 然后进入build</div><div class="line">(2) cmake -Wno-dev ../ -DCMAKE_INSTALL_PREFIX=<span class="variable">$HOME</span>/.<span class="built_in">local</span>/hoomd -DCMAKE_BUILD_TYPE=Release -DENABLE_CUDA=On -DCUDA_TOOLKIT_ROOT_DIR=/usr/<span class="built_in">local</span>/cuda -DENABLE_MPI_CUDA=On -DENABLE_MPI=On -DPYTHON_EXECUTABLE=`<span class="built_in">which</span> python2`</div><div class="line">(3) make install -j8</div><div class="line">注意事项：</div><div class="line">1. 确保默认python的是用系统自带的python2</div><div class="line">2. 如果编译并行版本的话，需要安装openmpi，并且做好环境变量</div></pre></td></tr></table></figure>
-<h3 id="anaconda安装hoomd"><a href="#anaconda安装hoomd" class="header-anchor"></a>1.2.2. <a href="#anaconda安装hoomd" class="headerlink" title="anaconda安装hoomd"></a>anaconda安装hoomd</h3><p>anaconda安装的hoomd实际上是anaconda云端已经编译好的hoomd，任何相关包都是依赖于anaconda，如cuda、并行库等。<br><code>conda install hoomd=1.3.3</code> 可以将hoomd以一个子包的形式安装到anaconda的软件相关目录下，如果<code>hoomd=1.3.3</code>的版本号不加，则安装最新版（最新版与2.0之前的版本差别较大，新版本的发展已经失去了控制。。。，比如没有xml支持，这简直不能忍！）<br>当然有时候我们联网并不方便，因为服务器一般与外网是隔绝的，大概为了安全（这时候可以用proxychains联网）。这时候可以将hoomd相关包下载下来本地conda安装。<br>需要四个包<code>boost-1.59.0-glotzer_py35_6.tar.gz, hoomd-1.3.3-py35_1.tar.gz, mpich2-1.4.1p1-0.tar.gz, mpich-3.2-5.tar.gz</code><br>然后按顺序<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">conda install boost<span class="number">-1.59</span><span class="number">.0</span>-glotzer_py35_6.tar.gz</div><div class="line">conda install mpich2<span class="number">-1.4</span><span class="number">.1</span>p1<span class="number">-0.</span>tar.gz</div><div class="line">conda install mpich<span class="number">-3.2</span><span class="number">-5.</span>tar.gz</div><div class="line">conda install hoomd<span class="number">-1.3</span><span class="number">.3</span>-py35_1.tar.gz</div></pre></td></tr></table></figure></p>
-<h2 id="gromacs安装"><a href="#gromacs安装" class="header-anchor"></a>1.3. <a href="#gromacs安装" class="headerlink" title="gromacs安装"></a>gromacs安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$ ../configure --prefix=$HOME/.local/openmpi/ --enable-mpi-thread-multiple --with-cuda=/usr/local/cuda</div><div class="line">$ make -j24</div><div class="line">$ make install</div><div class="line"></div><div class="line">$  ../configure --enable-shared --enable-float --enable-mpi --enable-threads --enable-openmp --enable-sse2 --enable-avx --prefix=$HOME/.local/fftw</div><div class="line">$ gmake -j24</div><div class="line">$ gmake install</div><div class="line"></div><div class="line">$  cmake .. -DCMAKE_INSTALL_PREFIX=$HOME/.local/gromacs -DGMX_GPU=on -DGMX_MPI=on -DGMX_SIMD=AVX2_256 -DGMX_FFT_LIBRARY=fftw3 -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda -DCMAKE_PREFIX_PATH=$HOME/.local/fftw</div><div class="line">$ make -j24</div><div class="line">$ make install</div></pre></td></tr></table></figure>
-<p>note: 环境变量的设置<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> CPPFLAGS=-I/home/jxm/.<span class="built_in">local</span>/fftw/include</div><div class="line"><span class="built_in">export</span> LDFLAGS=-I/home/jxm/.<span class="built_in">local</span>/fftw/lib</div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$HOME</span>/.<span class="built_in">local</span>/openmpi/bin:/usr/<span class="built_in">local</span>/cuda/bin/:<span class="variable">$PATH</span></div><div class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="variable">$HOME</span>/.<span class="built_in">local</span>/openmpi/lib:<span class="variable">$LD_LIBRARY_PATH</span></div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$HOME</span>/.<span class="built_in">local</span>/gromacs/bin/:<span class="variable">$PATH</span></div></pre></td></tr></table></figure></p>
+<h2 id="hoomd"><a href="#hoomd" class="header-anchor"></a>1.2. <a href="#hoomd" class="headerlink" title="hoomd"></a>hoomd</h2><h3 id="本地编译hoomd-133及以下版本"><a href="#本地编译hoomd-133及以下版本" class="header-anchor"></a>1.2.1. <a href="#本地编译hoomd-1-3-3及以下版本" class="headerlink" title="本地编译hoomd-1.3.3及以下版本"></a>本地编译hoomd-1.3.3及以下版本</h3><pre><code class="sh">(1) mkdir build 然后进入build
+(2) cmake -Wno-dev ../ -DCMAKE_INSTALL_PREFIX=$HOME/.local/hoomd -DCMAKE_BUILD_TYPE=Release -DENABLE_CUDA=On -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda -DENABLE_MPI_CUDA=On -DENABLE_MPI=On -DPYTHON_EXECUTABLE=`which python2`
+(3) make install -j8
+注意事项：
+1. 确保默认python的是用系统自带的python2
+2. 如果编译并行版本的话，需要安装openmpi，并且做好环境变量
+</code></pre>
+<h3 id="anaconda安装hoomd"><a href="#anaconda安装hoomd" class="header-anchor"></a>1.2.2. <a href="#anaconda安装hoomd" class="headerlink" title="anaconda安装hoomd"></a>anaconda安装hoomd</h3><p>anaconda安装的hoomd实际上是anaconda云端已经编译好的hoomd，任何相关包都是依赖于anaconda，如cuda、并行库等。<br><code>conda install hoomd=1.3.3</code> 可以将hoomd以一个子包的形式安装到anaconda的软件相关目录下，如果<code>hoomd=1.3.3</code>的版本号不加，则安装最新版（最新版与2.0之前的版本差别较大，新版本的发展已经失去了控制。。。，比如没有xml支持，这简直不能忍！）<br>当然有时候我们联网并不方便，因为服务器一般与外网是隔绝的，大概为了安全（这时候可以用proxychains联网）。这时候可以将hoomd相关包下载下来本地conda安装。<br>需要四个包<code>boost-1.59.0-glotzer_py35_6.tar.gz, hoomd-1.3.3-py35_1.tar.gz, mpich2-1.4.1p1-0.tar.gz, mpich-3.2-5.tar.gz</code><br>然后按顺序</p>
+<pre><code class="python">conda install boost-1.59.0-glotzer_py35_6.tar.gz
+conda install mpich2-1.4.1p1-0.tar.gz
+conda install mpich-3.2-5.tar.gz
+conda install hoomd-1.3.3-py35_1.tar.gz
+</code></pre>
+<h2 id="gromacs安装"><a href="#gromacs安装" class="header-anchor"></a>1.3. <a href="#gromacs安装" class="headerlink" title="gromacs安装"></a>gromacs安装</h2><pre><code>$ ../configure --prefix=$HOME/.local/openmpi/ --enable-mpi-thread-multiple --with-cuda=/usr/local/cuda
+$ make -j24
+$ make install
+
+$  ../configure --enable-shared --enable-float --enable-mpi --enable-threads --enable-openmp --enable-sse2 --enable-avx --prefix=$HOME/.local/fftw
+$ gmake -j24
+$ gmake install
+
+$  cmake .. -DCMAKE_INSTALL_PREFIX=$HOME/.local/gromacs -DGMX_GPU=on -DGMX_MPI=on -DGMX_SIMD=AVX2_256 -DGMX_FFT_LIBRARY=fftw3 -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda -DCMAKE_PREFIX_PATH=$HOME/.local/fftw
+$ make -j24
+$ make install
+</code></pre><p>note: 环境变量的设置</p>
+<pre><code class="sh">export CPPFLAGS=-I/home/jxm/.local/fftw/include
+export LDFLAGS=-I/home/jxm/.local/fftw/lib
+export PATH=$HOME/.local/openmpi/bin:/usr/local/cuda/bin/:$PATH
+export LD_LIBRARY_PATH=$HOME/.local/openmpi/lib:$LD_LIBRARY_PATH
+export PATH=$HOME/.local/gromacs/bin/:$PATH
+</code></pre>
 
       
     </div>
