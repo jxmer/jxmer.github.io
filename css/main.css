@@ -1830,7 +1830,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #79f9af;
+  background: #f5bbff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3047,7 +3047,7 @@ hr {
   }
 }
 body {
-  background: url("https://source.unsplash.com/random/1600x900");
+  background: url("unsplash.com/photos/E9aetBe2w40");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50% 50%;
