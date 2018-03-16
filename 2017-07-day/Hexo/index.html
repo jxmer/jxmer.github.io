@@ -120,7 +120,7 @@
       author: '博主'
     },
     algolia: {
-      applicationID: '',
+      applicationID: '1PBG7RXMQN',
       apiKey: '9d65b79200ba9e2c58bf6d5dba4ab3d8',
       indexName: 'hexoalgolia',
       hits: {"per_page":10},
@@ -403,7 +403,7 @@
 
       
         <p><meta content="text/html; charset=UTF-8" http-equiv="content-type"><br>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。本文为Hexo相关的东西，大部分与特性配置有关。<br><a id="more"></a></p>
-<h1 id="hexo在不同电脑间的迁移"><a href="#hexo在不同电脑间的迁移" class="header-anchor"></a>1. <a href="#Hexo在不同电脑间的迁移" class="headerlink" title="Hexo在不同电脑间的迁移"></a>Hexo在不同电脑间的迁移</h1><ol>
+<h1 id="1-hexo在不同电脑间的迁移"><a href="#hexo在不同电脑间的迁移" class="header-anchor"></a>1. <a href="#Hexo在不同电脑间的迁移" class="headerlink" title="Hexo在不同电脑间的迁移"></a>Hexo在不同电脑间的迁移</h1><ol>
 <li>安装node.js</li>
 <li>安装hexo  <code>npm install -g hexo-cli</code></li>
 <li>git安装</li>
@@ -412,7 +412,7 @@
 <li>npm install</li>
 <li>重新配置全局默认邮箱和用户名</li>
 </ol>
-<h1 id="特性配置"><a href="#特性配置" class="header-anchor"></a>2. <a href="#特性配置" class="headerlink" title="特性配置"></a>特性配置</h1><h2 id="添加邮箱链接控制"><a href="#添加邮箱链接控制" class="header-anchor"></a>2.1. <a href="#添加邮箱链接控制" class="headerlink" title="添加邮箱链接控制"></a>添加邮箱链接控制</h2><p>安装插件<code>hexo-email-obfuscate</code>，参考<a href="https://www.npmjs.com/package/hexo-email-obfuscate" target="_blank" rel="external">这里</a></p>
+<h1 id="2-特性配置"><a href="#特性配置" class="header-anchor"></a>2. <a href="#特性配置" class="headerlink" title="特性配置"></a>特性配置</h1><h2 id="21-添加邮箱链接控制"><a href="#添加邮箱链接控制" class="header-anchor"></a>2.1. <a href="#添加邮箱链接控制" class="headerlink" title="添加邮箱链接控制"></a>添加邮箱链接控制</h2><p>安装插件<code>hexo-email-obfuscate</code>，参考<a href="https://www.npmjs.com/package/hexo-email-obfuscate" target="_blank" rel="external">这里</a></p>
 <pre class="line-numbers language-shell"><code class="language-shell">npm install hexo-email-obfuscate --save
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>在站点配置文件<code>_config.yml</code>中加入：</p>
@@ -421,28 +421,28 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>使用语法：<br>Markdown</p>
 <pre><code>[Contact Me](mailto:foo@bar.com)
-</code></pre><h2 id="文章中添加居中模块"><a href="#文章中添加居中模块" class="header-anchor"></a>2.2. <a href="#文章中添加居中模块" class="headerlink" title="文章中添加居中模块"></a>文章中添加居中模块</h2><p>文章Markdown中填写如下：</p>
+</code></pre><h2 id="22-文章中添加居中模块"><a href="#文章中添加居中模块" class="header-anchor"></a>2.2. <a href="#文章中添加居中模块" class="headerlink" title="文章中添加居中模块"></a>文章中添加居中模块</h2><p>文章Markdown中填写如下：</p>
 <pre class="line-numbers language-css"><code class="language-css">&lt;blockquote class=<span class="token string">"blockquote-center"</span>>优秀的人，不是不合群，而是他们合群的人里面没有你&lt;/blockquote>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="隐藏网页底部powered-by-hexo-强力驱动"><a href="#隐藏网页底部powered-by-hexo-强力驱动" class="header-anchor"></a>2.3. <a href="#隐藏网页底部powered-By-Hexo-强力驱动" class="headerlink" title="隐藏网页底部powered By Hexo / 强力驱动"></a>隐藏网页底部powered By Hexo / 强力驱动</h2><p>打开themes/next/layout/_partials/footer.swig,使用””隐藏之间的代码即可，或者直接删除。</p>
-<h2 id="友情链接设置"><a href="#友情链接设置" class="header-anchor"></a>2.4. <a href="#友情链接设置" class="headerlink" title="友情链接设置"></a>友情链接设置</h2><p>编辑站点的 _config.yml 添加：</p>
+<h2 id="23-隐藏网页底部powered-by-hexo-强力驱动"><a href="#隐藏网页底部powered-by-hexo-强力驱动" class="header-anchor"></a>2.3. <a href="#隐藏网页底部powered-By-Hexo-强力驱动" class="headerlink" title="隐藏网页底部powered By Hexo / 强力驱动"></a>隐藏网页底部powered By Hexo / 强力驱动</h2><p>打开themes/next/layout/_partials/footer.swig,使用””隐藏之间的代码即可，或者直接删除。</p>
+<h2 id="24-友情链接设置"><a href="#友情链接设置" class="header-anchor"></a>2.4. <a href="#友情链接设置" class="headerlink" title="友情链接设置"></a>友情链接设置</h2><p>编辑站点的 _config.yml 添加：</p>
 <pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># title, chinese available</span>
 <span class="token key atrule">links_title</span><span class="token punctuation">:</span> Links
 <span class="token comment" spellcheck="true"># links</span>
 <span class="token key atrule">links</span><span class="token punctuation">:</span>
   <span class="token key atrule">MacTalk</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//macshuo.com/
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="代码高亮问题"><a href="#代码高亮问题" class="header-anchor"></a>2.5. <a href="#代码高亮问题" class="headerlink" title="代码高亮问题"></a>代码高亮问题</h2><p>Hexo自带的highlight.js代码高亮并不好用，当在博客配置中将highlight的选项auto_detect设为true时，hexo g生成博客时报错<br>但是如果你不去设置这一项，代码高亮永远是<code>normal</code>主题。解决这个问题很简单，就是手动设置<code>auto_detect = false</code>:</p>
+<h2 id="25-代码高亮问题"><a href="#代码高亮问题" class="header-anchor"></a>2.5. <a href="#代码高亮问题" class="headerlink" title="代码高亮问题"></a>代码高亮问题</h2><p>Hexo自带的highlight.js代码高亮并不好用，当在博客配置中将highlight的选项auto_detect设为true时，hexo g生成博客时报错<br>但是如果你不去设置这一项，代码高亮永远是<code>normal</code>主题。解决这个问题很简单，就是手动设置<code>auto_detect = false</code>:</p>
 <pre class="line-numbers language-js"><code class="language-js">highlight<span class="token punctuation">:</span>
   enable<span class="token punctuation">:</span> <span class="token boolean">false</span>
   line_number<span class="token punctuation">:</span> <span class="token boolean">false</span>
   auto_detect<span class="token punctuation">:</span> <span class="token boolean">false</span>
   tab_replace<span class="token punctuation">:</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="代码高亮prism"><a href="#代码高亮prism" class="header-anchor"></a>2.6. <a href="#代码高亮prism" class="headerlink" title="代码高亮prism"></a>代码高亮prism</h2><p>由<a href="https://github.com/wayou/hexo-prism" target="_blank" rel="external">wayou</a>开发，代替hexo原生代码高亮。</p>
-<h3 id="install"><a href="#install" class="header-anchor"></a>2.6.1. <a href="#Install" class="headerlink" title="Install:"></a>Install:</h3><pre class="line-numbers language-sh"><code class="language-sh">npm i -S hexo-prism-plugin
+<h2 id="26-代码高亮prism"><a href="#代码高亮prism" class="header-anchor"></a>2.6. <a href="#代码高亮prism" class="headerlink" title="代码高亮prism"></a>代码高亮prism</h2><p>由<a href="https://github.com/wayou/hexo-prism" target="_blank" rel="external">wayou</a>开发，代替hexo原生代码高亮。</p>
+<h3 id="261-install"><a href="#install" class="header-anchor"></a>2.6.1. <a href="#Install" class="headerlink" title="Install:"></a>Install:</h3><pre class="line-numbers language-sh"><code class="language-sh">npm i -S hexo-prism-plugin
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="usage"><a href="#usage" class="header-anchor"></a>2.6.2. <a href="#Usage" class="headerlink" title="Usage:"></a>Usage:</h3><p>编辑站点配置文件<code>_config.yml</code>，加入</p>
+<h3 id="262-usage"><a href="#usage" class="header-anchor"></a>2.6.2. <a href="#Usage" class="headerlink" title="Usage:"></a>Usage:</h3><p>编辑站点配置文件<code>_config.yml</code>，加入</p>
 <pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true">### prism_plugin</span>
 <span class="token key atrule">prism_plugin</span><span class="token punctuation">:</span>
   <span class="token key atrule">mode</span><span class="token punctuation">:</span> <span class="token string">'preprocess'</span>    <span class="token comment" spellcheck="true"># realtime or preprocess</span>
@@ -457,19 +457,19 @@
   <span class="token key atrule">line_number</span><span class="token punctuation">:</span> <span class="token boolean important">true   </span><span class="token comment" spellcheck="true"># default false</span>
   <span class="token key atrule">auto_import_assets</span><span class="token punctuation">:</span> <span class="token boolean important">true   </span><span class="token comment" spellcheck="true"># default true</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="代码高亮主题测试"><a href="#代码高亮主题测试" class="header-anchor"></a>2.6.3. <a href="#代码高亮主题测试" class="headerlink" title="代码高亮主题测试"></a>代码高亮主题测试</h3><p>default:<br><img src="http://res.cloudinary.com/jiaxm/image/upload/v1500807063/default_kglgrh.jpg" alt=""><br>coy:<br><img src="http://res.cloudinary.com/jiaxm/image/upload/v1500807063/coy_vjozcy.jpg" alt=""><br>dark:<br><img src="http://res.cloudinary.com/jiaxm/image/upload/v1500807063/dark_lxldep.jpg" alt=""><br>funky:<br><img src="http://res.cloudinary.com/jiaxm/image/upload/v1500807064/funky_bvxgwk.jpg" alt=""><br>okaidia:<br><img src="http://res.cloudinary.com/jiaxm/image/upload/v1500807064/okaidia_jtwjxz.jpg" alt=""><br>solarizedlight:<br><img src="http://res.cloudinary.com/jiaxm/image/upload/v1500807064/Solariedlight_d6h4xb.jpg" alt=""><br>tomorrow:<br><img src="http://res.cloudinary.com/jiaxm/image/upload/v1500807064/tomorrow_liekgg.jpg" alt=""><br>twilight:<br><img src="http://res.cloudinary.com/jiaxm/image/upload/v1500807064/twilight_wlpsfk.jpg" alt=""><br>note:感觉有些主题怪怪的~~~</p>
-<h2 id="文章内插入图片"><a href="#文章内插入图片" class="header-anchor"></a>2.7. <a href="#文章内插入图片" class="headerlink" title="文章内插入图片"></a>文章内插入图片</h2><p>在文章中写入:</p>
+<h3 id="263-代码高亮主题测试"><a href="#代码高亮主题测试" class="header-anchor"></a>2.6.3. <a href="#代码高亮主题测试" class="headerlink" title="代码高亮主题测试"></a>代码高亮主题测试</h3><p>default:<br><img src="http://res.cloudinary.com/jiaxm/image/upload/v1500807063/default_kglgrh.jpg" alt=""><br>coy:<br><img src="http://res.cloudinary.com/jiaxm/image/upload/v1500807063/coy_vjozcy.jpg" alt=""><br>dark:<br><img src="http://res.cloudinary.com/jiaxm/image/upload/v1500807063/dark_lxldep.jpg" alt=""><br>funky:<br><img src="http://res.cloudinary.com/jiaxm/image/upload/v1500807064/funky_bvxgwk.jpg" alt=""><br>okaidia:<br><img src="http://res.cloudinary.com/jiaxm/image/upload/v1500807064/okaidia_jtwjxz.jpg" alt=""><br>solarizedlight:<br><img src="http://res.cloudinary.com/jiaxm/image/upload/v1500807064/Solariedlight_d6h4xb.jpg" alt=""><br>tomorrow:<br><img src="http://res.cloudinary.com/jiaxm/image/upload/v1500807064/tomorrow_liekgg.jpg" alt=""><br>twilight:<br><img src="http://res.cloudinary.com/jiaxm/image/upload/v1500807064/twilight_wlpsfk.jpg" alt=""><br>note:感觉有些主题怪怪的~~~</p>
+<h2 id="27-文章内插入图片"><a href="#文章内插入图片" class="header-anchor"></a>2.7. <a href="#文章内插入图片" class="headerlink" title="文章内插入图片"></a>文章内插入图片</h2><p>在文章中写入:</p>
 <pre class="line-numbers language-json"><code class="language-json">!<span class="token punctuation">[</span><span class="token punctuation">]</span>(/upload_image/<span class="token number">1</span>.jpg<span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>然后进入themes-主题名-source-upload_image目录下(自己创建)，将图片放到这个目录下，就可以了。</p>
 <blockquote>
 <p>说明：当执行hexo g命令时，会自动把图片复制到 public文件的upload_image目录下。</p>
 </blockquote>
-<h2 id="鼠标点击小红心的设置"><a href="#鼠标点击小红心的设置" class="header-anchor"></a>2.8. <a href="#鼠标点击小红心的设置" class="headerlink" title="鼠标点击小红心的设置"></a>鼠标点击小红心的设置</h2><p>将 <a href="https://github.com/Neveryu/Neveryu.github.io/blob/master/js/src/love.js" target="_blank" rel="external">love.js</a> 文件添加到 \themes\next\source\js\src 文件目录下。<br>找到 \themes\next\layout_layout.swing 文件， 在文件的后面， 标签之前 添加以下代码：</p>
+<h2 id="28-鼠标点击小红心的设置"><a href="#鼠标点击小红心的设置" class="header-anchor"></a>2.8. <a href="#鼠标点击小红心的设置" class="headerlink" title="鼠标点击小红心的设置"></a>鼠标点击小红心的设置</h2><p>将 <a href="https://github.com/Neveryu/Neveryu.github.io/blob/master/js/src/love.js" target="_blank" rel="external">love.js</a> 文件添加到 \themes\next\source\js\src 文件目录下。<br>找到 \themes\next\layout_layout.swing 文件， 在文件的后面， 标签之前 添加以下代码：</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 页面点击小红心 <span class="token operator">--</span><span class="token operator">></span>
 <span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span> src<span class="token operator">=</span><span class="token string">"/js/src/love.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="修改文章内链接文本样式"><a href="#修改文章内链接文本样式" class="header-anchor"></a>2.9. <a href="#修改文章内链接文本样式" class="headerlink" title="修改文章内链接文本样式"></a>修改文章内链接文本样式</h2><p>将链接文本设置为蓝色，鼠标划过时文字颜色加深，并显示下划线。<br>找到文件 themes\next\source\css_custom\custom.styl ，添加如下 css 样式：</p>
+<h2 id="29-修改文章内链接文本样式"><a href="#修改文章内链接文本样式" class="header-anchor"></a>2.9. <a href="#修改文章内链接文本样式" class="headerlink" title="修改文章内链接文本样式"></a>修改文章内链接文本样式</h2><p>将链接文本设置为蓝色，鼠标划过时文字颜色加深，并显示下划线。<br>找到文件 themes\next\source\css_custom\custom.styl ，添加如下 css 样式：</p>
 <pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token class">.post-body</span> p a </span><span class="token punctuation">{</span>
   <span class="token selector">color: <span class="token id">#0593d3</span>;
   border-bottom: none;
@@ -479,7 +479,7 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="设置字体"><a href="#设置字体" class="header-anchor"></a>2.10. <a href="#设置字体" class="headerlink" title="设置字体"></a>设置字体</h2><blockquote>
+<h2 id="210-设置字体"><a href="#设置字体" class="header-anchor"></a>2.10. <a href="#设置字体" class="headerlink" title="设置字体"></a>设置字体</h2><blockquote>
 <p>note: 此特性在版本 5.0.1 中引入，要使用此功能请确保所使用的 NexT 版本在此之后</p>
 </blockquote>
 <p>为了解决 Google Fonts API 不稳定的问题，NexT 在 5.0.1 中引入此特性。 通过此特性，你可以指定所使用的字体库外链地址；与此同时，NexT 开放了 5 个特定范围的字体设定，他们是：</p>
@@ -525,7 +525,7 @@
     family: Droid Sans Mono
     size: 25
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="设置菜单"><a href="#设置菜单" class="header-anchor"></a>2.11. <a href="#设置菜单" class="headerlink" title="设置菜单"></a>设置菜单</h2><p>菜单配置包括三个部分，第一是菜单项（名称和链接），第二是菜单项的显示文本，第三是菜单项对应的图标。 NexT 使用的是 <a href="http://fontawesome.io/" target="_blank" rel="external">Font Awesome</a> 提供的图标， Font Awesome 提供了 600+ 的图标，可以满足绝大的多数的场景。参考<a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">官方设置菜单配置</a><br>如添加一个新的页面“链接”：</p>
+<h2 id="211-设置菜单"><a href="#设置菜单" class="header-anchor"></a>2.11. <a href="#设置菜单" class="headerlink" title="设置菜单"></a>设置菜单</h2><p>菜单配置包括三个部分，第一是菜单项（名称和链接），第二是菜单项的显示文本，第三是菜单项对应的图标。 NexT 使用的是 <a href="http://fontawesome.io/" target="_blank" rel="external">Font Awesome</a> 提供的图标， Font Awesome 提供了 600+ 的图标，可以满足绝大的多数的场景。参考<a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">官方设置菜单配置</a><br>如添加一个新的页面“链接”：</p>
 <pre class="line-numbers language-shell"><code class="language-shell">hexo new page Links
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>即在<code>hexo/source/</code>目录下新建了<code>Links</code>目录，目录中包含<code>index.md</code>文件，文件内容：</p>
@@ -567,7 +567,7 @@
   commonweal: 公益404
   links: 链接
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="添加并美化本地搜索"><a href="#添加并美化本地搜索" class="header-anchor"></a>2.12. <a href="#添加并美化本地搜索" class="headerlink" title="添加并美化本地搜索"></a>添加并美化本地搜索</h2><p>NexT 主题内置了本地站内搜索，很方便添加。</p>
+<h2 id="212-添加并美化本地搜索"><a href="#添加并美化本地搜索" class="header-anchor"></a>2.12. <a href="#添加并美化本地搜索" class="headerlink" title="添加并美化本地搜索"></a>添加并美化本地搜索</h2><p>NexT 主题内置了本地站内搜索，很方便添加。</p>
 <ol>
 <li>首先安装<code>hexo-generator-search</code>插件，用于生成博客索引数据<br>在站点的根目录下执行以下命令进行安装：<pre class="line-numbers language-sh"><code class="language-sh">npm install hexo-generator-search --save
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -595,7 +595,7 @@ trigger: auto
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ol>
-<h2 id="侧边栏头像修饰"><a href="#侧边栏头像修饰" class="header-anchor"></a>2.13. <a href="#侧边栏头像修饰" class="headerlink" title="侧边栏头像修饰"></a>侧边栏头像修饰</h2><p>把侧边栏头像变成圆形，并且鼠标停留在上面发生旋转效果，参考<a href="odepub.cn/2016/03/20/Hexo-blog-theme-switching-from-Jacman-to-NexT-Mist/">这里</a>，具体修改文件的位置是<code>hexo\themes\next\source\css\_common\components\sidebar\sidebar-author.styl</code>中的内容如下:</p>
+<h2 id="213-侧边栏头像修饰"><a href="#侧边栏头像修饰" class="header-anchor"></a>2.13. <a href="#侧边栏头像修饰" class="headerlink" title="侧边栏头像修饰"></a>侧边栏头像修饰</h2><p>把侧边栏头像变成圆形，并且鼠标停留在上面发生旋转效果，参考<a href="odepub.cn/2016/03/20/Hexo-blog-theme-switching-from-Jacman-to-NexT-Mist/">这里</a>，具体修改文件的位置是<code>hexo\themes\next\source\css\_common\components\sidebar\sidebar-author.styl</code>中的内容如下:</p>
 <pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token class">.site-author-image</span> </span><span class="token punctuation">{</span>
   <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
   <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">0</span> auto<span class="token punctuation">;</span>
@@ -621,8 +621,8 @@ trigger: auto
 <span class="token punctuation">}</span>
 <span class="token comment" spellcheck="true">/* end */</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="cloudinary-在线图片服务"><a href="#cloudinary-在线图片服务" class="header-anchor"></a>2.14. <a href="#Cloudinary-在线图片服务" class="headerlink" title="Cloudinary 在线图片服务"></a>Cloudinary 在线图片服务</h2><p>除了在本地存储图片，还可以将图片上传到一些免费的CDN服务中。比如Cloudinary提供的图片CDN服务，在Cloudinary中上传图片后，会生成对应的url地址，将地址直接拿来引用即可。<br>在<a href="https://cloudinary.com" target="_blank" rel="external">Cloudinary</a>申请账号，上传图片(注意把upload选项中的unsigned signature选上)</p>
-<h2 id="设置文章置顶"><a href="#设置文章置顶" class="header-anchor"></a>2.15. <a href="#设置文章置顶" class="headerlink" title="设置文章置顶"></a>设置文章置顶</h2><blockquote>
+<h2 id="214-cloudinary-在线图片服务"><a href="#cloudinary-在线图片服务" class="header-anchor"></a>2.14. <a href="#Cloudinary-在线图片服务" class="headerlink" title="Cloudinary 在线图片服务"></a>Cloudinary 在线图片服务</h2><p>除了在本地存储图片，还可以将图片上传到一些免费的CDN服务中。比如Cloudinary提供的图片CDN服务，在Cloudinary中上传图片后，会生成对应的url地址，将地址直接拿来引用即可。<br>在<a href="https://cloudinary.com" target="_blank" rel="external">Cloudinary</a>申请账号，上传图片(注意把upload选项中的unsigned signature选上)</p>
+<h2 id="215-设置文章置顶"><a href="#设置文章置顶" class="header-anchor"></a>2.15. <a href="#设置文章置顶" class="headerlink" title="设置文章置顶"></a>设置文章置顶</h2><blockquote>
 <p>note: 参考<a href="http://www.netcan666.com/2015/11/22/%E8%A7%A3%E5%86%B3Hexo%E7%BD%AE%E9%A1%B6%E9%97%AE%E9%A2%98/" target="_blank" rel="external">解决文章置顶</a></p>
 </blockquote>
 <ol>
@@ -684,7 +684,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <span class="token property">categories</span><span class="token punctuation">:</span> vps
 <span class="token property">top</span><span class="token punctuation">:</span> <span class="token number">3</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="next主题宽度调整"><a href="#next主题宽度调整" class="header-anchor"></a>2.16. <a href="#next主题宽度调整" class="headerlink" title="next主题宽度调整"></a>next主题宽度调整</h2><p>编辑 <code>themes/next/source/css/_variables/custom.styl</code> 文件，新增变量：</p>
+<h2 id="216-next主题宽度调整"><a href="#next主题宽度调整" class="header-anchor"></a>2.16. <a href="#next主题宽度调整" class="headerlink" title="next主题宽度调整"></a>next主题宽度调整</h2><p>编辑 <code>themes/next/source/css/_variables/custom.styl</code> 文件，新增变量：</p>
 <pre class="line-numbers language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 修改成你期望的宽度</span>
 $content<span class="token operator">-</span>desktop <span class="token operator">=</span> 700px
 <span class="token comment" spellcheck="true">// 当视窗超过 1600px 后的宽度</span>
@@ -695,7 +695,7 @@ $content<span class="token operator">-</span>desktop<span class="token operator"
 <span class="token selector"><span class="token class">.container</span> <span class="token class">.main-inner</span> </span><span class="token punctuation">{</span> <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">1150</span>px<span class="token punctuation">;</span> <span class="token punctuation">}</span>
 <span class="token selector"><span class="token class">.content-wrap</span> </span><span class="token punctuation">{</span> <span class="token property">width</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span><span class="token number">100%</span> - <span class="token number">260</span>px<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h2 id="设置disqus"><a href="#设置disqus" class="header-anchor"></a>2.17. <a href="#设置disqus" class="headerlink" title="设置disqus"></a>设置disqus</h2><blockquote>
+<h2 id="217-设置disqus"><a href="#设置disqus" class="header-anchor"></a>2.17. <a href="#设置disqus" class="headerlink" title="设置disqus"></a>设置disqus</h2><blockquote>
 <p>note: “多说”评论功能应用广泛，但是据其公司的<a href="http://dev.duoshuo.com/threads/58d1169ae293b89a20c57241" target="_blank" rel="external">声明</a>，多说网已经关闭。</p>
 </blockquote>
 <p>hexo已经内置了对disqus的支持，配置也很简单</p>
@@ -709,8 +709,8 @@ $content<span class="token operator">-</span>desktop<span class="token operator"
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ol>
-<h2 id="给github添加readme"><a href="#给github添加readme" class="header-anchor"></a>2.18. <a href="#给github添加README" class="headerlink" title="给github添加README"></a>给github添加README</h2><p>hexo会把md文件都解析成html，但是github的readme只支持MD格式，最简单的方法是让hexo不对README.md做转换。<br>站点配置文件_config_xml中的<code>skip_render:</code>改为<code>skip_render: README.md</code><br>note: README.md放在 hexo/source/目录中即可</p>
-<h2 id="markdown里-table-的语法"><a href="#markdown里-table-的语法" class="header-anchor"></a>2.19. <a href="#MarkDown里-table-的语法" class="headerlink" title="MarkDown里 table 的语法"></a>MarkDown里 table 的语法</h2><p>MD的写法</p>
+<h2 id="218-给github添加readme"><a href="#给github添加readme" class="header-anchor"></a>2.18. <a href="#给github添加README" class="headerlink" title="给github添加README"></a>给github添加README</h2><p>hexo会把md文件都解析成html，但是github的readme只支持MD格式，最简单的方法是让hexo不对README.md做转换。<br>站点配置文件_config_xml中的<code>skip_render:</code>改为<code>skip_render: README.md</code><br>note: README.md放在 hexo/source/目录中即可</p>
+<h2 id="219-markdown里-table-的语法"><a href="#markdown里-table-的语法" class="header-anchor"></a>2.19. <a href="#MarkDown里-table-的语法" class="headerlink" title="MarkDown里 table 的语法"></a>MarkDown里 table 的语法</h2><p>MD的写法</p>
 <pre class="line-numbers language-python"><code class="language-python"><span class="token operator">|</span> I <span class="token operator">|</span> am <span class="token operator">|</span> table <span class="token operator">|</span>
 <span class="token operator">|</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">|</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token punctuation">:</span><span class="token operator">|</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token punctuation">:</span><span class="token operator">|</span>
 <span class="token operator">|</span>文本内容<span class="token operator">|</span> <span class="token operator">**</span>`是`<span class="token operator">**</span> <span class="token operator">|</span>table<span class="token operator">|</span>
@@ -749,7 +749,7 @@ $content<span class="token operator">-</span>desktop<span class="token operator"
 </tr>
 </tbody>
 </table>
-<h2 id="去除b2t-sidebar"><a href="#去除b2t-sidebar" class="header-anchor"></a>2.20. <a href="#去除b2t-sidebar" class="headerlink" title="去除b2t sidebar"></a>去除b2t sidebar</h2><p>找到<code>Hexo/themes/next/layout/_macro/sidebar.swig</code>文件，去掉其中关于b2t的部分：</p>
+<h2 id="220-去除b2t-sidebar"><a href="#去除b2t-sidebar" class="header-anchor"></a>2.20. <a href="#去除b2t-sidebar" class="headerlink" title="去除b2t sidebar"></a>去除b2t sidebar</h2><p>找到<code>Hexo/themes/next/layout/_macro/sidebar.swig</code>文件，去掉其中关于b2t的部分：</p>
 <pre class="line-numbers language-css"><code class="language-css"><span class="token punctuation">{</span><span class="token number">%</span> if theme<span class="token number">.</span>sidebar<span class="token number">.</span>b<span class="token number">2</span>t <span class="token number">%</span><span class="token punctuation">}</span>
   <span class="token selector">&lt;div class="back-to-top">
     &lt;i class="fa fa-arrow-up">&lt;/i>
@@ -759,7 +759,7 @@ $content<span class="token operator">-</span>desktop<span class="token operator"
   <span class="token selector">&lt;/div>
 </span><span class="token punctuation">{</span><span class="token number">%</span> endif <span class="token number">%</span><span class="token punctuation">}</span>
 &lt;/div><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="调整b2t样式"><a href="#调整b2t样式" class="header-anchor"></a>2.21. <a href="#调整b2t样式" class="headerlink" title="调整b2t样式"></a>调整b2t样式</h2><p><code>back-to-top</code>的控制文件为<code>/home/jxm/Hexo/themes/next/source/css/_common/components/back-to-top.styl</code><br>在文件中可以修改b2t bar的格式，如颜色，位置，大小等。</p>
+<h2 id="221-调整b2t样式"><a href="#调整b2t样式" class="header-anchor"></a>2.21. <a href="#调整b2t样式" class="headerlink" title="调整b2t样式"></a>调整b2t样式</h2><p><code>back-to-top</code>的控制文件为<code>/home/jxm/Hexo/themes/next/source/css/_common/components/back-to-top.styl</code><br>在文件中可以修改b2t bar的格式，如颜色，位置，大小等。</p>
 <pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token class">.back-to-top</span> </span><span class="token punctuation">{</span>
   <span class="token selector">box-sizing: border-box;
   position: fixed;
@@ -790,13 +790,13 @@ $content<span class="token operator">-</span>desktop<span class="token operator"
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="设置网站图标logo"><a href="#设置网站图标logo" class="header-anchor"></a>2.22. <a href="#设置网站图标Logo" class="headerlink" title="设置网站图标Logo"></a>设置网站图标Logo</h2><ol>
+<h2 id="222-设置网站图标logo"><a href="#设置网站图标logo" class="header-anchor"></a>2.22. <a href="#设置网站图标Logo" class="headerlink" title="设置网站图标Logo"></a>设置网站图标Logo</h2><ol>
 <li>通过网站<a href="http://tool.lu/favicon/" target="_blank" rel="external">favicon在线制作制作</a>favicon图片，logo最好设置32*32。</li>
 <li>next主题：将图片放在next主题source/images目录下</li>
 <li>在next主题配置文件中添加：<code>favicon: images/favicon.ico</code>;或者直接把<code>favicon.ico</code>放到站点source文件夹</li>
 </ol>
-<h2 id="设置emoji"><a href="#设置emoji" class="header-anchor"></a>2.23. <a href="#设置emoji" class="headerlink" title="设置emoji"></a>设置emoji</h2><p>to test this plugin! :simple_smile:</p>
-<h2 id="版权声明"><a href="#版权声明" class="header-anchor"></a>2.24. <a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h2><p>主题默认的版权声明配置在themes\next_config.yml文件中。</p>
+<h2 id="223-设置emoji"><a href="#设置emoji" class="header-anchor"></a>2.23. <a href="#设置emoji" class="headerlink" title="设置emoji"></a>设置emoji</h2><p>to test this plugin! :simple_smile:</p>
+<h2 id="224-版权声明"><a href="#版权声明" class="header-anchor"></a>2.24. <a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h2><p>主题默认的版权声明配置在themes\next_config.yml文件中。</p>
 <pre class="line-numbers language-json"><code class="language-json"># Declare license on posts
 post_copyright<span class="token operator">:</span>
   enable<span class="token operator">:</span> <span class="token boolean">false</span>
@@ -864,7 +864,7 @@ post_copyright<span class="token operator">:</span>
     list-style<span class="token operator">:</span> none<span class="token punctuation">;</span>
  <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="主题配置参考"><a href="#主题配置参考" class="header-anchor"></a>3. <a href="#主题配置参考" class="headerlink" title="主题配置参考"></a>主题配置参考</h1><ol>
+<h1 id="3-主题配置参考"><a href="#主题配置参考" class="header-anchor"></a>3. <a href="#主题配置参考" class="headerlink" title="主题配置参考"></a>主题配置参考</h1><ol>
 <li><a href="http://chitanda.me/2015/06/11/tips-for-setup-hexo/" target="_blank" rel="external">markdown table</a></li>
 </ol>
 
@@ -1080,7 +1080,7 @@ post_copyright<span class="token operator">:</span>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo在不同电脑间的迁移"><span class="nav-number">1.</span> <span class="nav-text">1. Hexo在不同电脑间的迁移</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#特性配置"><span class="nav-number">2.</span> <span class="nav-text">2. 特性配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加邮箱链接控制"><span class="nav-number">2.1.</span> <span class="nav-text">2.1. 添加邮箱链接控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文章中添加居中模块"><span class="nav-number">2.2.</span> <span class="nav-text">2.2. 文章中添加居中模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐藏网页底部powered-by-hexo-强力驱动"><span class="nav-number">2.3.</span> <span class="nav-text">2.3. 隐藏网页底部powered By Hexo / 强力驱动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#友情链接设置"><span class="nav-number">2.4.</span> <span class="nav-text">2.4. 友情链接设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码高亮问题"><span class="nav-number">2.5.</span> <span class="nav-text">2.5. 代码高亮问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码高亮prism"><span class="nav-number">2.6.</span> <span class="nav-text">2.6. 代码高亮prism</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#install"><span class="nav-number">2.6.1.</span> <span class="nav-text">2.6.1. Install:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#usage"><span class="nav-number">2.6.2.</span> <span class="nav-text">2.6.2. Usage:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码高亮主题测试"><span class="nav-number">2.6.3.</span> <span class="nav-text">2.6.3. 代码高亮主题测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文章内插入图片"><span class="nav-number">2.7.</span> <span class="nav-text">2.7. 文章内插入图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#鼠标点击小红心的设置"><span class="nav-number">2.8.</span> <span class="nav-text">2.8. 鼠标点击小红心的设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改文章内链接文本样式"><span class="nav-number">2.9.</span> <span class="nav-text">2.9. 修改文章内链接文本样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置字体"><span class="nav-number">2.10.</span> <span class="nav-text">2.10. 设置字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置菜单"><span class="nav-number">2.11.</span> <span class="nav-text">2.11. 设置菜单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加并美化本地搜索"><span class="nav-number">2.12.</span> <span class="nav-text">2.12. 添加并美化本地搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#侧边栏头像修饰"><span class="nav-number">2.13.</span> <span class="nav-text">2.13. 侧边栏头像修饰</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cloudinary-在线图片服务"><span class="nav-number">2.14.</span> <span class="nav-text">2.14. Cloudinary 在线图片服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置文章置顶"><span class="nav-number">2.15.</span> <span class="nav-text">2.15. 设置文章置顶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#next主题宽度调整"><span class="nav-number">2.16.</span> <span class="nav-text">2.16. next主题宽度调整</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置disqus"><span class="nav-number">2.17.</span> <span class="nav-text">2.17. 设置disqus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给github添加readme"><span class="nav-number">2.18.</span> <span class="nav-text">2.18. 给github添加README</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#markdown里-table-的语法"><span class="nav-number">2.19.</span> <span class="nav-text">2.19. MarkDown里 table 的语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#去除b2t-sidebar"><span class="nav-number">2.20.</span> <span class="nav-text">2.20. 去除b2t sidebar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调整b2t样式"><span class="nav-number">2.21.</span> <span class="nav-text">2.21. 调整b2t样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置网站图标logo"><span class="nav-number">2.22.</span> <span class="nav-text">2.22. 设置网站图标Logo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置emoji"><span class="nav-number">2.23.</span> <span class="nav-text">2.23. 设置emoji</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版权声明"><span class="nav-number">2.24.</span> <span class="nav-text">2.24. 版权声明</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主题配置参考"><span class="nav-number">3.</span> <span class="nav-text">3. 主题配置参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-hexo在不同电脑间的迁移"><span class="nav-number">1.</span> <span class="nav-text">1. Hexo在不同电脑间的迁移</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-特性配置"><span class="nav-number">2.</span> <span class="nav-text">2. 特性配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#21-添加邮箱链接控制"><span class="nav-number">2.1.</span> <span class="nav-text">2.1. 添加邮箱链接控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#22-文章中添加居中模块"><span class="nav-number">2.2.</span> <span class="nav-text">2.2. 文章中添加居中模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#23-隐藏网页底部powered-by-hexo-强力驱动"><span class="nav-number">2.3.</span> <span class="nav-text">2.3. 隐藏网页底部powered By Hexo / 强力驱动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#24-友情链接设置"><span class="nav-number">2.4.</span> <span class="nav-text">2.4. 友情链接设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-代码高亮问题"><span class="nav-number">2.5.</span> <span class="nav-text">2.5. 代码高亮问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#26-代码高亮prism"><span class="nav-number">2.6.</span> <span class="nav-text">2.6. 代码高亮prism</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#261-install"><span class="nav-number">2.6.1.</span> <span class="nav-text">2.6.1. Install:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#262-usage"><span class="nav-number">2.6.2.</span> <span class="nav-text">2.6.2. Usage:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#263-代码高亮主题测试"><span class="nav-number">2.6.3.</span> <span class="nav-text">2.6.3. 代码高亮主题测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#27-文章内插入图片"><span class="nav-number">2.7.</span> <span class="nav-text">2.7. 文章内插入图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#28-鼠标点击小红心的设置"><span class="nav-number">2.8.</span> <span class="nav-text">2.8. 鼠标点击小红心的设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#29-修改文章内链接文本样式"><span class="nav-number">2.9.</span> <span class="nav-text">2.9. 修改文章内链接文本样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#210-设置字体"><span class="nav-number">2.10.</span> <span class="nav-text">2.10. 设置字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#211-设置菜单"><span class="nav-number">2.11.</span> <span class="nav-text">2.11. 设置菜单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#212-添加并美化本地搜索"><span class="nav-number">2.12.</span> <span class="nav-text">2.12. 添加并美化本地搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#213-侧边栏头像修饰"><span class="nav-number">2.13.</span> <span class="nav-text">2.13. 侧边栏头像修饰</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#214-cloudinary-在线图片服务"><span class="nav-number">2.14.</span> <span class="nav-text">2.14. Cloudinary 在线图片服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#215-设置文章置顶"><span class="nav-number">2.15.</span> <span class="nav-text">2.15. 设置文章置顶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#216-next主题宽度调整"><span class="nav-number">2.16.</span> <span class="nav-text">2.16. next主题宽度调整</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#217-设置disqus"><span class="nav-number">2.17.</span> <span class="nav-text">2.17. 设置disqus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#218-给github添加readme"><span class="nav-number">2.18.</span> <span class="nav-text">2.18. 给github添加README</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#219-markdown里-table-的语法"><span class="nav-number">2.19.</span> <span class="nav-text">2.19. MarkDown里 table 的语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#220-去除b2t-sidebar"><span class="nav-number">2.20.</span> <span class="nav-text">2.20. 去除b2t sidebar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#221-调整b2t样式"><span class="nav-number">2.21.</span> <span class="nav-text">2.21. 调整b2t样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#222-设置网站图标logo"><span class="nav-number">2.22.</span> <span class="nav-text">2.22. 设置网站图标Logo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#223-设置emoji"><span class="nav-number">2.23.</span> <span class="nav-text">2.23. 设置emoji</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#224-版权声明"><span class="nav-number">2.24.</span> <span class="nav-text">2.24. 版权声明</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-主题配置参考"><span class="nav-number">3.</span> <span class="nav-text">3. 主题配置参考</span></a></li></ol></div>
             
 
           </div>

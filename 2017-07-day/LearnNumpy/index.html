@@ -111,7 +111,7 @@
       author: '博主'
     },
     algolia: {
-      applicationID: '',
+      applicationID: '1PBG7RXMQN',
       apiKey: '9d65b79200ba9e2c58bf6d5dba4ab3d8',
       indexName: 'hexoalgolia',
       hits: {"per_page":10},
@@ -395,8 +395,8 @@
       
         <p>NumPy, which stands for Numerical Python, is a library consisting of multidimensional array objects and a collection of routines for processing those arrays. Using NumPy, mathematical and logical operations on arrays can be performed<br>一些参考资料：<br><a href="http://scipy-lectures.github.io/intro/numpy/index.html" target="_blank" rel="external">Basics of numpy</a><br><a href="http://scipy-lectures.github.io/intro/numpy/exercises.html" target="_blank" rel="external">Some numpy exercises</a><br><a href="http://scipy-lectures.github.io/advanced/advanced_numpy/" target="_blank" rel="external">Advanced numpy</a><br><a href="http://docs.scipy.org/doc/numpy/reference/" target="_blank" rel="external">Numpy reference</a></p>
 <a id="more"></a>
-<h1 id="numpy的前世今生"><a href="#numpy的前世今生" class="header-anchor"></a>1. <a href="#Numpy的前世今生" class="headerlink" title="Numpy的前世今生"></a>Numpy的前世今生</h1><p><strong>Numeric</strong>, the ancestor of NumPy, was developed by Jim Hugunin. Another package Numarray was also developed, having some additional functionalities. In 2005, Travis Oliphant created NumPy package by incorporating the features of Numarray into Numeric package. There are many contributors to this open source project.</p>
-<h1 id="numpy数值类型"><a href="#numpy数值类型" class="header-anchor"></a>2. <a href="#Numpy数值类型" class="headerlink" title="Numpy数值类型"></a>Numpy数值类型</h1><p>NumPy中的基本数据类型</p>
+<h1 id="1-numpy的前世今生"><a href="#numpy的前世今生" class="header-anchor"></a>1. <a href="#Numpy的前世今生" class="headerlink" title="Numpy的前世今生"></a>Numpy的前世今生</h1><p><strong>Numeric</strong>, the ancestor of NumPy, was developed by Jim Hugunin. Another package Numarray was also developed, having some additional functionalities. In 2005, Travis Oliphant created NumPy package by incorporating the features of Numarray into Numeric package. There are many contributors to this open source project.</p>
+<h1 id="2-numpy数值类型"><a href="#numpy数值类型" class="header-anchor"></a>2. <a href="#Numpy数值类型" class="headerlink" title="Numpy数值类型"></a>Numpy数值类型</h1><p>NumPy中的基本数据类型</p>
 <table>
 <thead>
 <tr>
@@ -467,7 +467,7 @@
 </tr>
 </tbody>
 </table>
-<h1 id="numpy数组的初始化"><a href="#numpy数组的初始化" class="header-anchor"></a>3. <a href="#Numpy数组的初始化" class="headerlink" title="Numpy数组的初始化"></a>Numpy数组的初始化</h1><p>Numpy的主要数据类型是ndarray，即多维数组。它有以下几个属性：<br>ndarray.ndim：数组的维数<br>ndarray.shape：数组每一维的大小<br>ndarray.size：数组中全部元素的数量<br>ndarray.dtype：数组中元素的类型（numpy.int32, numpy.int16, and numpy.float64等）<br>ndarray.itemsize：每个元素占几个字节</p>
+<h1 id="3-numpy数组的初始化"><a href="#numpy数组的初始化" class="header-anchor"></a>3. <a href="#Numpy数组的初始化" class="headerlink" title="Numpy数组的初始化"></a>Numpy数组的初始化</h1><p>Numpy的主要数据类型是ndarray，即多维数组。它有以下几个属性：<br>ndarray.ndim：数组的维数<br>ndarray.shape：数组每一维的大小<br>ndarray.size：数组中全部元素的数量<br>ndarray.dtype：数组中元素的类型（numpy.int32, numpy.int16, and numpy.float64等）<br>ndarray.itemsize：每个元素占几个字节</p>
 <pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
 
 np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">24</span><span class="token punctuation">)</span><span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># np.arange初始化数组并reshape</span>
@@ -498,7 +498,7 @@ array<span class="token punctuation">(</span><span class="token punctuation">[</
         <span class="token number">3.30693964</span><span class="token punctuation">,</span>  <span class="token number">3.6376336</span> <span class="token punctuation">,</span>  <span class="token number">3.96832756</span><span class="token punctuation">,</span>  <span class="token number">4.29902153</span><span class="token punctuation">,</span>  <span class="token number">4.62971549</span><span class="token punctuation">,</span>
         <span class="token number">4.96040945</span><span class="token punctuation">,</span>  <span class="token number">5.29110342</span><span class="token punctuation">,</span>  <span class="token number">5.62179738</span><span class="token punctuation">,</span>  <span class="token number">5.95249134</span><span class="token punctuation">,</span>  <span class="token number">6.28318531</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="numpy-数组的寻址索引和遍历"><a href="#numpy-数组的寻址索引和遍历" class="header-anchor"></a>4. <a href="#Numpy-数组的寻址，索引和遍历" class="headerlink" title="Numpy 数组的寻址，索引和遍历"></a>Numpy 数组的寻址，索引和遍历</h1><p>多维数组的访问通过给每一维指定一个索引，顺序是先高维再低维：</p>
+<h1 id="4-numpy-数组的寻址索引和遍历"><a href="#numpy-数组的寻址索引和遍历" class="header-anchor"></a>4. <a href="#Numpy-数组的寻址，索引和遍历" class="headerlink" title="Numpy 数组的寻址，索引和遍历"></a>Numpy 数组的寻址，索引和遍历</h1><p>多维数组的访问通过给每一维指定一个索引，顺序是先高维再低维：</p>
 <pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> <span class="token number">10</span><span class="token operator">*</span>x <span class="token operator">+</span> y
 <span class="token operator">>></span><span class="token operator">></span> np<span class="token punctuation">.</span>fromfunction<span class="token punctuation">(</span>f<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>np<span class="token punctuation">.</span>int<span class="token punctuation">)</span>
@@ -744,7 +744,7 @@ array<span class="token punctuation">(</span><span class="token punctuation">[</
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#numpy的前世今生"><span class="nav-number">1.</span> <span class="nav-text">1. Numpy的前世今生</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#numpy数值类型"><span class="nav-number">2.</span> <span class="nav-text">2. Numpy数值类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#numpy数组的初始化"><span class="nav-number">3.</span> <span class="nav-text">3. Numpy数组的初始化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#numpy-数组的寻址索引和遍历"><span class="nav-number">4.</span> <span class="nav-text">4. Numpy 数组的寻址，索引和遍历</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-numpy的前世今生"><span class="nav-number">1.</span> <span class="nav-text">1. Numpy的前世今生</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-numpy数值类型"><span class="nav-number">2.</span> <span class="nav-text">2. Numpy数值类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-numpy数组的初始化"><span class="nav-number">3.</span> <span class="nav-text">3. Numpy数组的初始化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-numpy-数组的寻址索引和遍历"><span class="nav-number">4.</span> <span class="nav-text">4. Numpy 数组的寻址，索引和遍历</span></a></li></ol></div>
             
 
           </div>
