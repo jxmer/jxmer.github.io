@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://www.jiaxm.me/2017-07-day/Hexo/</loc>
+        <lastmod>2018-03-17T23:25:10.611Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://www.jiaxm.me/2018-03-day/btbyr/</loc>
         <lastmod>2018-03-17T11:03:46.155Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -33,14 +41,6 @@
     <url>
         <loc>http://www.jiaxm.me/2018-01-day/vim_familiar/</loc>
         <lastmod>2018-03-16T17:37:14.325Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.jiaxm.me/2017-07-day/Hexo/</loc>
-        <lastmod>2018-03-16T10:49:34.731Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
