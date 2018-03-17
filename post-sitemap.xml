@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://www.jiaxm.me/2017-11-day/InstallationManual/</loc>
+        <lastmod>2018-03-17T23:26:53.885Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://www.jiaxm.me/2017-07-day/Hexo/</loc>
         <lastmod>2018-03-17T23:25:10.611Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -121,14 +129,6 @@
     <url>
         <loc>http://www.jiaxm.me/2017-07-day/LearnNumpy/</loc>
         <lastmod>2017-11-16T16:35:09.417Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.jiaxm.me/2017-11-day/InstallationManual/</loc>
-        <lastmod>2017-11-16T16:35:09.404Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

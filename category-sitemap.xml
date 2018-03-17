@@ -49,13 +49,6 @@
     </url>
 
     <url>
-        <loc>http://www.jiaxm.me/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/</loc>
-        <lastmod>2018-03-16T17:37:16.509Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://www.jiaxm.me/categories/next/</loc>
         <lastmod>2018-03-17T08:17:51.109Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -72,6 +65,13 @@
     <url>
         <loc>http://www.jiaxm.me/categories/hexo/</loc>
         <lastmod>2018-03-17T23:25:10.611Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.jiaxm.me/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/</loc>
+        <lastmod>2018-03-17T23:26:53.885Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
