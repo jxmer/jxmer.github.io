@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://www.jiaxm.me/2017-11-day/InstallationManual/</loc>
+    <lastmod>2018-03-17T23:58:20.641Z</lastmod>
+    <data>
+        <display>
+        <title>一些软件的安装步骤(hoomd, gromacs, cuda，etc.)</title>
+        <pubTime>2017-11-16T06:00:00.000Z</pubTime>
+        
+        <tag>hoomd</tag>
+         
+        <tag>gromacs</tag>
+         
+        <tag>cuda</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术学习" url="http://www.jiaxm.me/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.jiaxm.me/2018-03-day/btbyr/</loc>
     <lastmod>2018-03-17T23:44:16.688Z</lastmod>
     <data>
@@ -36,30 +60,6 @@
            
              
               <breadCrumb title="hexo" url="http://www.jiaxm.me/categories/hexo/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.jiaxm.me/2017-11-day/InstallationManual/</loc>
-    <lastmod>2018-03-17T23:44:16.480Z</lastmod>
-    <data>
-        <display>
-        <title>一些软件的安装步骤(hoomd, gromacs, cuda，etc.)</title>
-        <pubTime>2017-11-16T06:00:00.000Z</pubTime>
-        
-        <tag>hoomd</tag>
-         
-        <tag>gromacs</tag>
-         
-        <tag>cuda</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术学习" url="http://www.jiaxm.me/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/"/>
           
         </display>
     </data>
