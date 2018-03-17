@@ -39,6 +39,31 @@
   </entry>
   
   <entry>
+    <title>北邮人能登陆，但是utorrent不能下载的解决方法</title>
+    <link href="http://www.jiaxm.me/2018-03-day/btbyr/"/>
+    <id>http://www.jiaxm.me/2018-03-day/btbyr/</id>
+    <published>2018-03-17T03:00:00.000Z</published>
+    <updated>2018-03-17T11:03:46.155Z</updated>
+    
+    <content type="html"><![CDATA[<p>这是win10的DNS解析发生了变化，找不到<code>tracker.byr.cn</code>。出现上述问题，在<code>utorrent</code>里面也能够看清楚的，就是在下载任务的<code>tracker</code>找不到。这样问题就好办了，解决问题的方法就是在<code>hosts</code>文件里面添加两行</p><pre><code>2001:da8:215:4078:250:56ff:fe97:654d bt.byr.cn2001:da8:215:4078:250:56ff:fe97:654d tracker.byr.cn</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;这是win10的DNS解析发生了变化，找不到&lt;code&gt;tracker.byr.cn&lt;/code&gt;。出现上述问题，在&lt;code&gt;utorrent&lt;/code&gt;里面也能够看清楚的，就是在下载任务的&lt;code&gt;tracker&lt;/code&gt;找不到。这样问题就好办了，解决问题的方法
+      
+    
+    </summary>
+    
+      <category term="python" scheme="http://www.jiaxm.me/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://www.jiaxm.me/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Linux命令行快捷键</title>
     <link href="http://www.jiaxm.me/2018-03-day/LinuxTerminalCommand/"/>
     <id>http://www.jiaxm.me/2018-03-day/LinuxTerminalCommand/</id>

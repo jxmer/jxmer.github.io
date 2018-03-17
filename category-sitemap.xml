@@ -21,13 +21,6 @@
     </url>
 
     <url>
-        <loc>http://www.jiaxm.me/categories/python/</loc>
-        <lastmod>2017-11-16T16:35:09.595Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://www.jiaxm.me/categories/linux/</loc>
         <lastmod>2017-11-16T16:35:09.740Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -72,6 +65,13 @@
     <url>
         <loc>http://www.jiaxm.me/categories/next/</loc>
         <lastmod>2018-03-17T08:17:51.109Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.jiaxm.me/categories/python/</loc>
+        <lastmod>2018-03-17T11:03:46.155Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
