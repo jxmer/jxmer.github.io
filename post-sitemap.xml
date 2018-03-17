@@ -7,16 +7,8 @@
     </url>
 
     <url>
-        <loc>http://www.jiaxm.me/2017-11-day/vim8_install/</loc>
-        <lastmod>2018-03-17T23:38:32.036Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.jiaxm.me/2017-11-day/InstallationManual/</loc>
-        <lastmod>2018-03-17T23:31:11.325Z</lastmod>
+        <loc>http://www.jiaxm.me/2018-03-day/btbyr/</loc>
+        <lastmod>2018-03-17T23:44:16.688Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -24,103 +16,15 @@
 
     <url>
         <loc>http://www.jiaxm.me/2017-07-day/Hexo/</loc>
-        <lastmod>2018-03-17T23:25:10.611Z</lastmod>
+        <lastmod>2018-03-17T23:44:16.663Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://www.jiaxm.me/2018-03-day/btbyr/</loc>
-        <lastmod>2018-03-17T11:03:46.155Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.jiaxm.me/2018-03-day/NextAdjust/</loc>
-        <lastmod>2018-03-17T08:17:51.109Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.jiaxm.me/2018-01-day/vim_familiar/</loc>
-        <lastmod>2018-03-16T17:37:14.325Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.jiaxm.me/2018-03-day/LinuxTerminalCommand/</loc>
-        <lastmod>2018-03-16T09:46:57.751Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.jiaxm.me/2017-11-day/Xshell/</loc>
-        <lastmod>2018-03-16T09:29:19.828Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.jiaxm.me/2017-07-day/VPS/</loc>
-        <lastmod>2017-11-16T16:35:09.850Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.jiaxm.me/2017-07-day/Ubuntu_Rescue_Mode_Repair/</loc>
-        <lastmod>2017-11-16T16:35:09.740Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.jiaxm.me/2017-07-day/Shadowsocks_Configuration/</loc>
-        <lastmod>2017-11-16T16:35:09.691Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.jiaxm.me/2017-08-day/ReinstallSystemBackup/</loc>
-        <lastmod>2017-11-16T16:35:09.658Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.jiaxm.me/2017-07-day/python_code/</loc>
-        <lastmod>2017-11-16T16:35:09.595Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.jiaxm.me/2017-07-day/Markdown_Writing/</loc>
-        <lastmod>2017-11-16T16:35:09.530Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.jiaxm.me/2017-07-day/Linux_Terminal_Shortcuts/</loc>
-        <lastmod>2017-11-16T16:35:09.489Z</lastmod>
+        <loc>http://www.jiaxm.me/2017-11-day/InstallationManual/</loc>
+        <lastmod>2018-03-17T23:44:16.480Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -128,15 +32,7 @@
 
     <url>
         <loc>http://www.jiaxm.me/2017-07-day/LearnNumpy/</loc>
-        <lastmod>2017-11-16T16:35:09.417Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.jiaxm.me/2017-09-day/fortran/</loc>
-        <lastmod>2017-11-16T16:35:09.301Z</lastmod>
+        <lastmod>2018-03-17T23:44:16.470Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -144,7 +40,111 @@
 
     <url>
         <loc>http://www.jiaxm.me/2017-11-day/LinuxCommand/</loc>
-        <lastmod>2017-11-16T13:36:21.000Z</lastmod>
+        <lastmod>2018-03-17T23:44:16.324Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.jiaxm.me/2018-03-day/LinuxTerminalCommand/</loc>
+        <lastmod>2018-03-17T23:44:16.293Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.jiaxm.me/2017-07-day/Linux_Terminal_Shortcuts/</loc>
+        <lastmod>2018-03-17T23:44:16.136Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.jiaxm.me/2017-07-day/Markdown_Writing/</loc>
+        <lastmod>2018-03-17T23:44:16.123Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.jiaxm.me/2018-03-day/NextAdjust/</loc>
+        <lastmod>2018-03-17T23:44:15.983Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.jiaxm.me/2018-03-day/PythonTricks/</loc>
+        <lastmod>2018-03-17T23:44:15.949Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.jiaxm.me/2017-07-day/python_code/</loc>
+        <lastmod>2018-03-17T23:44:15.794Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.jiaxm.me/2017-08-day/ReinstallSystemBackup/</loc>
+        <lastmod>2018-03-17T23:44:15.784Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.jiaxm.me/2017-07-day/VPS/</loc>
+        <lastmod>2018-03-17T23:44:15.646Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.jiaxm.me/2017-07-day/Shadowsocks_Configuration/</loc>
+        <lastmod>2018-03-17T23:44:15.614Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.jiaxm.me/2017-07-day/Ubuntu_Rescue_Mode_Repair/</loc>
+        <lastmod>2018-03-17T23:44:15.514Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.jiaxm.me/2017-11-day/vim8_install/</loc>
+        <lastmod>2018-03-17T23:44:15.398Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.jiaxm.me/2018-01-day/vim_familiar/</loc>
+        <lastmod>2018-03-17T23:44:15.303Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.jiaxm.me/2017-11-day/Xshell/</loc>
+        <lastmod>2018-03-17T23:44:15.223Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

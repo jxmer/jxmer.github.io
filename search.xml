@@ -15,6 +15,14 @@
     <title><![CDATA[北邮人能登陆，但是utorrent不能下载的解决方法]]></title>
     <url>%2F2018-03-day%2Fbtbyr%2F</url>
     <content type="text"><![CDATA[这是win10的DNS解析发生了变化，找不到tracker.byr.cn。出现上述问题，在utorrent里面也能够看清楚的，就是在下载任务的tracker找不到。这样问题就好办了，解决问题的方法就是在hosts文件里面添加两行 2001:da8:215:4078:250:56ff:fe97:654d bt.byr.cn 2001:da8:215:4078:250:56ff:fe97:654d tracker.byr.cn]]></content>
+      <tags>
+        <tag>btbyr</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python Tricks]]></title>
+    <url>%2F2018-03-day%2FPythonTricks%2F</url>
+    <content type="text"><![CDATA[python的一些常用tricks，]]></content>
       <categories>
         <category>python</category>
       </categories>
@@ -60,9 +68,6 @@
     <title><![CDATA[vim 8.0的编译安装]]></title>
     <url>%2F2017-11-day%2Fvim8_install%2F</url>
     <content type="text"><![CDATA[vim 相关~ 1. vim-8.0的安装和配置1.1. 编译 vim-8.0 1. ./configure --with-features=huge --enable-multibyte --enable-rubyinterp=yes --enable-pythoninterp=yes --with-python-config-dir=/usr/lib/python2.7/config --enable-python3interp=yes --with-python3-config-dir=$HOME/.local/software/anaconda3/lib/python3.5/config --enable-perlinterp=yes --enable-luainterp=yes --enable-gui=gtk2 --enable-cscope --prefix=$HOME/.local/software/vim-8.0 2. make install -j 48 3. 加一下vim-8.0的环境变量 （如果已经把自己的~/.local/bin目录加了环境变量的目录，直接ln -s Installpath/vim-8.0/bin/vim . 就可以） 1.2. 编译 YouCompelteMe~/.vim/bundle 下的Youcompelte要进行编译 ./install.py --clang-completer 1.3. 格式化代码工具安装首先vim支持一键格式化是这样实现的，vim安装插件vim-autoformat，可以调用相应的格式化代码软件读文件进行操作。https://github.com/Chiel92/vim-autoformat 这里是vim-autoformat的框架，然后各个programming language的autoformat工具是通过这个框架去实现在vim中自动格式化的，链接中有推荐的populate autoformat tools python代码格式化 - yapf: ~/.vim/下有yapf的源文件目录，python setup.py install –user。然后yapf命令被自动copy到~/.local/bin fortran代码格式化 - frettify: python setup.py install –user。note: 需要conda已经安装了future c++代码格式化 - clang -clang-format:下载llvm-libs llvm clang包from www.rpmfind.net/ 下载的时候看好系统版本，要一样。yum localinstall llvm-libs-3.4.2-7.el7.x86_64.rpm yum localinstall llvm-3.4.2-7.el7.x86_64.rpm yum localinstall clang-3.4.2-7.el7.x86_64.rpm note: (or rpm -ivh filename.rpm)]]></content>
-      <categories>
-        <category>技术学习</category>
-      </categories>
       <tags>
         <tag>vim</tag>
       </tags>
@@ -89,17 +94,6 @@
       </categories>
       <tags>
         <tag>xshell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Fortran命令]]></title>
-    <url>%2F2017-09-day%2Ffortran%2F</url>
-    <content type="text"><![CDATA[保存fortran的一些常用命令，以作备忘。 #有关fortran编程本身 1. rewind和backspace的用法在早期的FORTRAN规范和编译器中，BACKSPACE和REWIND的确与顺序存贮设备–比如磁带机–有关。后来，变成设备无关的语句。但是，可能与文件模式有关。REWIND现在仍然很常用。假如您的程序需要两遍读入同一个文本格式数据文件，当您读完第一遍后，用REWIND回到文件头部。BACKSPACE用于回退一个记录。后面通常加上文件号，这里的记录可以理解为一个回车符号。]]></content>
-      <categories>
-        <category>fortran</category>
-      </categories>
-      <tags>
-        <tag>fortran</tag>
       </tags>
   </entry>
   <entry>
