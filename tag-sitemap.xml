@@ -65,13 +65,6 @@
     </url>
 
     <url>
-        <loc>http://www.jiaxm.me/tags/vim/</loc>
-        <lastmod>2018-03-16T17:37:16.509Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://www.jiaxm.me/tags/python/</loc>
         <lastmod>2018-03-17T11:03:46.155Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -109,6 +102,13 @@
     <url>
         <loc>http://www.jiaxm.me/tags/cuda/</loc>
         <lastmod>2018-03-17T23:31:11.325Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.jiaxm.me/tags/vim/</loc>
+        <lastmod>2018-03-17T23:32:23.028Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

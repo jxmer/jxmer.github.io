@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://www.jiaxm.me/2017-11-day/vim8.0_install/</loc>
+    <lastmod>2018-03-17T23:32:23.028Z</lastmod>
+    <data>
+        <display>
+        <title>vim 8.0的编译安装</title>
+        <pubTime>2017-11-16T08:00:04.000Z</pubTime>
+        
+        <tag>vim</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术学习" url="http://www.jiaxm.me/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.jiaxm.me/2017-11-day/InstallationManual/</loc>
     <lastmod>2018-03-17T23:31:11.325Z</lastmod>
     <data>
@@ -83,26 +103,6 @@
            
              
               <breadCrumb title="next" url="http://www.jiaxm.me/categories/next/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.jiaxm.me/2017-11-day/vim8.0_install/</loc>
-    <lastmod>2018-03-16T17:37:16.509Z</lastmod>
-    <data>
-        <display>
-        <title>vim 8.0的编译安装</title>
-        <pubTime>2017-11-16T08:00:04.000Z</pubTime>
-        
-        <tag>vim</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术学习" url="http://www.jiaxm.me/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/"/>
           
         </display>
     </data>
