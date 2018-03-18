@@ -252,26 +252,22 @@
   
     <div class="site-search">
       
-  
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
   </div>
-
+  <div id="local-search-result"></div>
+</div>
 
 
 
@@ -411,7 +407,7 @@
       
         <p>涉及在Linux命令行下进行快速移动光标、命令编辑、编辑后执行历史命令、Bang(!)命令、控制命令等。让basher更有效率。</p>
 <a id="more"></a>
-<h1 id="1-常用"><a href="#常用" class="header-anchor"></a>1. <a href="#常用" class="headerlink" title="常用"></a>常用</h1><pre class="line-numbers language-bash"><code class="language-bash">ctrl+左右键:在单词之间跳转
+<h1 id="常用"><a href="#常用" class="header-anchor"></a>1. <a href="#常用" class="headerlink" title="常用"></a>常用</h1><pre class="line-numbers language-bash"><code class="language-bash">ctrl+左右键:在单词之间跳转
 ctrl+a:跳到本行的行首
 ctrl+e:跳到页尾
 Ctrl+u：删除当前光标前面的文字 （还有剪切功能）
@@ -421,7 +417,7 @@ Ctrl+y:粘贴Ctrl+u或ctrl+k剪切的内容
 Ctrl+w:删除光标前面的单词的字符
 Alt – d ：由光标位置开始，往右删除单词。往行尾删
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="2-移动光标"><a href="#移动光标" class="header-anchor"></a>2. <a href="#移动光标" class="headerlink" title="移动光标"></a>移动光标</h1><pre class="line-numbers language-bash"><code class="language-bash">Ctrl-a ：移到行首
+<h1 id="移动光标"><a href="#移动光标" class="header-anchor"></a>2. <a href="#移动光标" class="headerlink" title="移动光标"></a>移动光标</h1><pre class="line-numbers language-bash"><code class="language-bash">Ctrl-a ：移到行首
 Ctrl-e ：移到行尾
 Ctrl-b ：往回<span class="token punctuation">(</span>左<span class="token punctuation">)</span>移动一个字符
 Ctrl-f ：往后<span class="token punctuation">(</span>右<span class="token punctuation">)</span>移动一个字符
@@ -431,7 +427,7 @@ Ctrl-xx ：在命令行尾和光标之间移动
 M-b ：往回<span class="token punctuation">(</span>左<span class="token punctuation">)</span>移动一个单词
 M-f ：往后<span class="token punctuation">(</span>右<span class="token punctuation">)</span>移动一个单词
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="3-编辑命令"><a href="#编辑命令" class="header-anchor"></a>3. <a href="#编辑命令" class="headerlink" title="编辑命令"></a>编辑命令</h1><pre class="line-numbers language-bash"><code class="language-bash">Ctrl-h ：向前删除字符 删除光标左方位置的字符
+<h1 id="编辑命令"><a href="#编辑命令" class="header-anchor"></a>3. <a href="#编辑命令" class="headerlink" title="编辑命令"></a>编辑命令</h1><pre class="line-numbers language-bash"><code class="language-bash">Ctrl-h ：向前删除字符 删除光标左方位置的字符
 Ctrl-d ：向后删除字符 删除光标右方位置的字符（注意：当前命令行没有任何字符时，会注销系统或结束终端）
 Ctrl-w ：删除到行首
 Ctrl-u ：删除到行首 同由光标所在位置开始，删除左方所有的字符，直到该行开始。
@@ -441,7 +437,7 @@ Ctrl-t ：交换光标处和之前两个字符的位置。
 Alt+. ：使用上一条命令的最后一个参数。
 Ctrl-_ ：回复之前的状态。撤销操作。
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="4-bang命令"><a href="#bang命令" class="header-anchor"></a>4. <a href="#Bang-命令" class="headerlink" title="Bang(!)命令"></a>Bang(!)命令</h1><pre class="line-numbers language-bash"><code class="language-bash"><span class="token operator">!</span><span class="token operator">!</span> ：执行上一条命令。
+<h1 id="bang命令"><a href="#bang命令" class="header-anchor"></a>4. <a href="#Bang-命令" class="headerlink" title="Bang(!)命令"></a>Bang(!)命令</h1><pre class="line-numbers language-bash"><code class="language-bash"><span class="token operator">!</span><span class="token operator">!</span> ：执行上一条命令。
 ^foo^bar ：把上一条命令里的foo替换为bar，并执行。
 <span class="token operator">!</span>wget ：执行最近的以wget开头的命令。
 <span class="token operator">!</span>wget:p ：仅打印最近的以wget开头的命令，不执行。
@@ -453,19 +449,19 @@ Ctrl-_ ：回复之前的状态。撤销操作。
 ^foo^bar^ ：将上一条命令中的 foo 替换为 bar
 <span class="token operator">!</span>-n ：执行前n条命令，执行上一条命令： <span class="token operator">!</span>-1， 执行前5条命令的格式是： <span class="token operator">!</span>-5
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="5-查找历史命令"><a href="#查找历史命令" class="header-anchor"></a>5. <a href="#查找历史命令" class="headerlink" title="查找历史命令"></a>查找历史命令</h1><pre class="line-numbers language-bash"><code class="language-bash">Ctrl-p ：显示当前命令的上一条历史命令
+<h1 id="查找历史命令"><a href="#查找历史命令" class="header-anchor"></a>5. <a href="#查找历史命令" class="headerlink" title="查找历史命令"></a>查找历史命令</h1><pre class="line-numbers language-bash"><code class="language-bash">Ctrl-p ：显示当前命令的上一条历史命令
 Ctrl-n ：显示当前命令的下一条历史命令
 Ctrl-r ：搜索历史命令，随着输入会显示历史命令中的一条匹配命令，Enter键执行匹配命令；ESC键在命令行显示而不执行匹配命令。
 Ctrl-g ：从历史搜索模式（Ctrl – r）退出。
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="6-控制命令"><a href="#控制命令" class="header-anchor"></a>6. <a href="#控制命令" class="headerlink" title="控制命令"></a>控制命令</h1><pre class="line-numbers language-bash"><code class="language-bash">Ctrl-l ：清除屏幕，然后，在最上面重新显示目前光标所在的这一行的内容。
+<h1 id="控制命令"><a href="#控制命令" class="header-anchor"></a>6. <a href="#控制命令" class="headerlink" title="控制命令"></a>控制命令</h1><pre class="line-numbers language-bash"><code class="language-bash">Ctrl-l ：清除屏幕，然后，在最上面重新显示目前光标所在的这一行的内容。
 Ctrl-o ：执行当前命令，并选择上一条命令。
 Ctrl-s ：阻止屏幕输出
 Ctrl-q ：允许屏幕输出
 Ctrl-c ：终止命令
 Ctrl-z ：挂起命令
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="7-重复执行操作动作"><a href="#重复执行操作动作" class="header-anchor"></a>7. <a href="#重复执行操作动作" class="headerlink" title="重复执行操作动作"></a>重复执行操作动作</h1><pre class="line-numbers language-bash"><code class="language-bash">M – 操作次数 操作动作 ： 指定操作次数，重复执行指定的操作。
+<h1 id="重复执行操作动作"><a href="#重复执行操作动作" class="header-anchor"></a>7. <a href="#重复执行操作动作" class="headerlink" title="重复执行操作动作"></a>重复执行操作动作</h1><pre class="line-numbers language-bash"><code class="language-bash">M – 操作次数 操作动作 ： 指定操作次数，重复执行指定的操作。
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
       
@@ -708,7 +704,7 @@ Ctrl-z ：挂起命令
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-常用"><span class="nav-number">1.</span> <span class="nav-text">1. 常用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-移动光标"><span class="nav-number">2.</span> <span class="nav-text">2. 移动光标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-编辑命令"><span class="nav-number">3.</span> <span class="nav-text">3. 编辑命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-bang命令"><span class="nav-number">4.</span> <span class="nav-text">4. Bang(!)命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-查找历史命令"><span class="nav-number">5.</span> <span class="nav-text">5. 查找历史命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-控制命令"><span class="nav-number">6.</span> <span class="nav-text">6. 控制命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-重复执行操作动作"><span class="nav-number">7.</span> <span class="nav-text">7. 重复执行操作动作</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#常用"><span class="nav-number">1.</span> <span class="nav-text">1. 常用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#移动光标"><span class="nav-number">2.</span> <span class="nav-text">2. 移动光标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编辑命令"><span class="nav-number">3.</span> <span class="nav-text">3. 编辑命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bang命令"><span class="nav-number">4.</span> <span class="nav-text">4. Bang(!)命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查找历史命令"><span class="nav-number">5.</span> <span class="nav-text">5. 查找历史命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#控制命令"><span class="nav-number">6.</span> <span class="nav-text">6. 控制命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重复执行操作动作"><span class="nav-number">7.</span> <span class="nav-text">7. 重复执行操作动作</span></a></li></ol></div>
             
 
           </div>
@@ -915,20 +911,324 @@ Ctrl-z ：挂起命令
 
   
 
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
-
-  
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-
-  
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
 
 
 

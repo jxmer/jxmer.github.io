@@ -252,26 +252,22 @@
   
     <div class="site-search">
       
-  
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
   </div>
-
+  <div id="local-search-result"></div>
+</div>
 
 
 
@@ -417,7 +413,7 @@
 <li>TBD: vmd，galamost，anaconda， MaterialStudio， Origin，EndnoteX8</li>
 </ul>
 <p>服务器软件在<code>centos7.0</code>及以上版本安装测试通过；win软件在<code>win10</code>下测试通过。将这些软件的安装放到一起，方便自己和组内人用。<br><a id="more"></a></p>
-<h1 id="1-服务器软件的安装"><a href="#服务器软件的安装" class="header-anchor"></a>1. <a href="#服务器软件的安装" class="headerlink" title="服务器软件的安装"></a>服务器软件的安装</h1><h2 id="11-安装cuda"><a href="#安装cuda" class="header-anchor"></a>1.1. <a href="#安装cuda" class="headerlink" title="安装cuda"></a>安装cuda</h2><ol>
+<h1 id="服务器软件的安装"><a href="#服务器软件的安装" class="header-anchor"></a>1. <a href="#服务器软件的安装" class="headerlink" title="服务器软件的安装"></a>服务器软件的安装</h1><h2 id="安装cuda"><a href="#安装cuda" class="header-anchor"></a>1.1. <a href="#安装cuda" class="headerlink" title="安装cuda"></a>安装cuda</h2><ol>
 <li>安装cuda经常会遇到问题，但大部分都与如何禁用nouveau驱动相关，所以step-1，需要禁用nouveau驱动。<ul>
 <li>在配置文件中禁用nouveau<br><code>vi /etc/modprobe.d/blacklist.conf</code>  添加<code>:blacklist nouveau</code><br>CentOS 7:<br><code>vim /usr/lib/modprobe.d/dist-blacklist.conf</code><br>或<br><code>vim /lib/modprobe.d/dist-blacklist.conf</code><br>并且在加上<code>blacklist nouveau</code>之后还要加上一行<code>options nouveau modeset=0</code></li>
 <li>备份原来的<code>initramfs nouveau image</code>镜像<br><code>mv /boot/initramfs-$(uname -r).img /boot/initramfs-$(uname -r)-nouveau.img</code>  </li>
@@ -434,20 +430,20 @@
 </li>
 <li>安装cuda <code>./cuda_9.0.176_384.81_linux-run</code> 不需要装driver</li>
 </ol>
-<h2 id="12-hoomd"><a href="#hoomd" class="header-anchor"></a>1.2. <a href="#hoomd" class="headerlink" title="hoomd"></a>hoomd</h2><h3 id="121-本地编译hoomd-133及以下版本"><a href="#本地编译hoomd-133及以下版本" class="header-anchor"></a>1.2.1. <a href="#本地编译hoomd-1-3-3及以下版本" class="headerlink" title="本地编译hoomd-1.3.3及以下版本"></a>本地编译hoomd-1.3.3及以下版本</h3><pre class="line-numbers language-sh"><code class="language-sh">(1) mkdir build 然后进入build
+<h2 id="hoomd"><a href="#hoomd" class="header-anchor"></a>1.2. <a href="#hoomd" class="headerlink" title="hoomd"></a>hoomd</h2><h3 id="本地编译hoomd-133及以下版本"><a href="#本地编译hoomd-133及以下版本" class="header-anchor"></a>1.2.1. <a href="#本地编译hoomd-1-3-3及以下版本" class="headerlink" title="本地编译hoomd-1.3.3及以下版本"></a>本地编译hoomd-1.3.3及以下版本</h3><pre class="line-numbers language-sh"><code class="language-sh">(1) mkdir build 然后进入build
 (2) cmake -Wno-dev ../ -DCMAKE_INSTALL_PREFIX=$HOME/.local/hoomd -DCMAKE_BUILD_TYPE=Release -DENABLE_CUDA=On -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda -DENABLE_MPI_CUDA=On -DENABLE_MPI=On -DPYTHON_EXECUTABLE=`which python2`
 (3) make install -j8
 注意事项：
 1. 确保默认python的是用系统自带的python2
 2. 如果编译并行版本的话，需要安装openmpi，并且做好环境变量
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="122-anaconda安装hoomd"><a href="#anaconda安装hoomd" class="header-anchor"></a>1.2.2. <a href="#anaconda安装hoomd" class="headerlink" title="anaconda安装hoomd"></a>anaconda安装hoomd</h3><p>anaconda安装的hoomd实际上是anaconda云端已经编译好的hoomd，任何相关包都是依赖于anaconda，如cuda、并行库等。<br><code>conda install hoomd=1.3.3</code> 可以将hoomd以一个子包的形式安装到anaconda的软件相关目录下，如果<code>hoomd=1.3.3</code>的版本号不加，则安装最新版（最新版与2.0之前的版本差别较大，新版本的发展已经失去了控制。。。，比如没有xml支持，这简直不能忍！）<br>当然有时候我们联网并不方便，因为服务器一般与外网是隔绝的，大概为了安全（这时候可以用proxychains联网）。这时候可以将hoomd相关包下载下来本地conda安装。<br>需要四个包<code>boost-1.59.0-glotzer_py35_6.tar.gz, hoomd-1.3.3-py35_1.tar.gz, mpich2-1.4.1p1-0.tar.gz, mpich-3.2-5.tar.gz</code><br>然后按顺序</p>
+<h3 id="anaconda安装hoomd"><a href="#anaconda安装hoomd" class="header-anchor"></a>1.2.2. <a href="#anaconda安装hoomd" class="headerlink" title="anaconda安装hoomd"></a>anaconda安装hoomd</h3><p>anaconda安装的hoomd实际上是anaconda云端已经编译好的hoomd，任何相关包都是依赖于anaconda，如cuda、并行库等。<br><code>conda install hoomd=1.3.3</code> 可以将hoomd以一个子包的形式安装到anaconda的软件相关目录下，如果<code>hoomd=1.3.3</code>的版本号不加，则安装最新版（最新版与2.0之前的版本差别较大，新版本的发展已经失去了控制。。。，比如没有xml支持，这简直不能忍！）<br>当然有时候我们联网并不方便，因为服务器一般与外网是隔绝的，大概为了安全（这时候可以用proxychains联网）。这时候可以将hoomd相关包下载下来本地conda安装。<br>需要四个包<code>boost-1.59.0-glotzer_py35_6.tar.gz, hoomd-1.3.3-py35_1.tar.gz, mpich2-1.4.1p1-0.tar.gz, mpich-3.2-5.tar.gz</code><br>然后按顺序</p>
 <pre class="line-numbers language-python"><code class="language-python">conda install boost<span class="token number">-1.59</span><span class="token punctuation">.</span><span class="token number">0</span><span class="token operator">-</span>glotzer_py35_6<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz
 conda install mpich2<span class="token number">-1.4</span><span class="token punctuation">.</span>1p1<span class="token number">-0.</span>tar<span class="token punctuation">.</span>gz
 conda install mpich<span class="token number">-3.2</span><span class="token operator">-</span><span class="token number">5.</span>tar<span class="token punctuation">.</span>gz
 conda install hoomd<span class="token number">-1.3</span><span class="token punctuation">.</span><span class="token number">3</span><span class="token operator">-</span>py35_1<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="13-gromacs安装"><a href="#gromacs安装" class="header-anchor"></a>1.3. <a href="#gromacs安装" class="headerlink" title="gromacs安装"></a>gromacs安装</h2><p>Note:</p>
+<h2 id="gromacs安装"><a href="#gromacs安装" class="header-anchor"></a>1.3. <a href="#gromacs安装" class="headerlink" title="gromacs安装"></a>gromacs安装</h2><p>Note:</p>
 <ul>
 <li>需要已经安装<code>cuda</code>，确认<code>cuda</code>安装的路径。默认路径为<code>/usr/local/cuda</code></li>
 <li>需要<code>openmpi-2.0.2.tar.gz</code>, <code>fftw-3.3.6-pl2.tar.gz</code>, <code>gromacs-5.1.4.tar.gz</code>三个软件包，去官网下载最新的即可。为了方便大家，这里放上我的坚果云分享链接，<a href="https://www.jianguoyun.com/p/DZSfq58Qhc_oBRjYpkc" target="_blank" rel="external">openmpi</a>, <a href="https://www.jianguoyun.com/p/DUyIrcQQhc_oBRjVpkc" target="_blank" rel="external">fftw-3.3.6</a>, <a href="https://www.jianguoyun.com/p/Df7DN4YQhc_oBRjOpkc" target="_blank" rel="external">gromacs-5.1.4</a>,可以直接下载</li>
@@ -735,7 +731,7 @@ PATH<span class="token operator">=</span><span class="token variable">$HOME</spa
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-服务器软件的安装"><span class="nav-number">1.</span> <span class="nav-text">1. 服务器软件的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#11-安装cuda"><span class="nav-number">1.1.</span> <span class="nav-text">1.1. 安装cuda</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-hoomd"><span class="nav-number">1.2.</span> <span class="nav-text">1.2. hoomd</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#121-本地编译hoomd-133及以下版本"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1. 本地编译hoomd-1.3.3及以下版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#122-anaconda安装hoomd"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2. anaconda安装hoomd</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-gromacs安装"><span class="nav-number">1.3.</span> <span class="nav-text">1.3. gromacs安装</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#服务器软件的安装"><span class="nav-number">1.</span> <span class="nav-text">1. 服务器软件的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装cuda"><span class="nav-number">1.1.</span> <span class="nav-text">1.1. 安装cuda</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hoomd"><span class="nav-number">1.2.</span> <span class="nav-text">1.2. hoomd</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#本地编译hoomd-133及以下版本"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1. 本地编译hoomd-1.3.3及以下版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#anaconda安装hoomd"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2. anaconda安装hoomd</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gromacs安装"><span class="nav-number">1.3.</span> <span class="nav-text">1.3. gromacs安装</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -942,20 +938,324 @@ PATH<span class="token operator">=</span><span class="token variable">$HOME</spa
 
   
 
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
-
-  
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-
-  
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
 
 
 
