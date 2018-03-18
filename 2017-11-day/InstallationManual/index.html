@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Memories">
 <meta property="og:description" content="一些软件的安装步骤，以及此过程中遇到的问题的解决办法。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-17T23:58:20.641Z">
+<meta property="og:updated_time" content="2018-03-18T00:01:35.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一些软件的安装步骤(hoomd, gromacs, cuda，etc.)">
 <meta name="twitter:description" content="一些软件的安装步骤，以及此过程中遇到的问题的解决办法。">
@@ -467,13 +467,16 @@ $ <span class="token function">make</span> <span class="token function">install<
 <p>现在软件安装完毕，最后进行环境变量设置</p>
 <pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">cd</span> ~ <span class="token operator">&amp;&amp;</span> vim .bashrc
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>将下列几行写入<code>.bashrc</code>文件</p>
+<p>将下列几行写入<code>.bashrc</code>文件并保存</p>
 <pre class="line-numbers language-bash"><code class="language-bash">CPPFLAGS<span class="token operator">=</span>-I/home/jxm/.local/fftw/include
 LDFLAGS<span class="token operator">=</span>-I/home/jxm/.local/fftw/lib
 PATH<span class="token operator">=</span><span class="token variable">$HOME</span>/.local/openmpi/bin:/usr/local/cuda/bin/:<span class="token variable">$PATH</span>
 LD_LIBRARY_PATH<span class="token operator">=</span><span class="token variable">$HOME</span>/.local/openmpi/lib:<span class="token variable">$LD_LIBRARY_PATH</span>
 PATH<span class="token operator">=</span><span class="token variable">$HOME</span>/.local/gromacs/bin/:<span class="token variable">$PATH</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>source 一下</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">source</span> ~/.bashrc
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
       
     </div>
