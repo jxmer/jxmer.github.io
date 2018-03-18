@@ -84,14 +84,14 @@
 <meta name="description" content="一些软件的安装步骤，以及此过程中遇到的问题的解决办法。">
 <meta name="keywords" content="hoomd,gromacs,cuda">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一些软件的安装步骤(hoomd, gromacs, cuda，etc.)">
-<meta property="og:url" content="http://www.jiaxm.me/2017-11-day/InstallationManual/index.html">
+<meta property="og:title" content="服务器软件安装：gromacs, hoomd, cuda">
+<meta property="og:url" content="http://www.jiaxm.me/2018-03-day/InstallationManual/index.html">
 <meta property="og:site_name" content="Memories">
 <meta property="og:description" content="一些软件的安装步骤，以及此过程中遇到的问题的解决办法。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-18T00:01:35.474Z">
+<meta property="og:updated_time" content="2018-03-18T09:37:55.132Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一些软件的安装步骤(hoomd, gromacs, cuda，etc.)">
+<meta name="twitter:title" content="服务器软件安装：gromacs, hoomd, cuda">
 <meta name="twitter:description" content="一些软件的安装步骤，以及此过程中遇到的问题的解决办法。">
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://www.jiaxm.me/2017-11-day/InstallationManual/"/>
+  <link rel="canonical" href="http://www.jiaxm.me/2018-03-day/InstallationManual/"/>
 
 
 
 
 
-  <title>一些软件的安装步骤(hoomd, gromacs, cuda，etc.) | Memories</title>
+  <title>服务器软件安装：gromacs, hoomd, cuda | Memories</title>
   
 
 
@@ -304,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.jiaxm.me/2017-11-day/InstallationManual/">
+    <link itemprop="mainEntityOfPage" href="http://www.jiaxm.me/2018-03-day/InstallationManual/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="jxm">
@@ -321,7 +321,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">一些软件的安装步骤(hoomd, gromacs, cuda，etc.)</h1>
+          <h1 class="post-title" itemprop="name headline">服务器软件安装：gromacs, hoomd, cuda</h1>
         
 
         <div class="post-meta">
@@ -333,8 +333,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-16T14:00:00+08:00">
-                2017-11-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-18T09:37:00+08:00">
+                2018-03-18
               </time>
             
 
@@ -373,7 +373,7 @@
 
           
           
-             <span id="/2017-11-day/InstallationManual/" class="leancloud_visitors" data-flag-title="一些软件的安装步骤(hoomd, gromacs, cuda，etc.)">
+             <span id="/2018-03-day/InstallationManual/" class="leancloud_visitors" data-flag-title="服务器软件安装：gromacs, hoomd, cuda">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -410,7 +410,7 @@
 
       
         <p>一些软件的安装步骤，以及此过程中遇到的问题的解决办法。<br><a id="more"></a></p>
-<h1 id="服务器软件的安装"><a href="#服务器软件的安装" class="header-anchor"></a>1. <a href="#服务器软件的安装" class="headerlink" title="服务器软件的安装"></a>服务器软件的安装</h1><h2 id="安装cuda"><a href="#安装cuda" class="header-anchor"></a>1.1. <a href="#安装cuda" class="headerlink" title="安装cuda"></a>安装cuda</h2><ol>
+<h1 id="1-服务器软件的安装"><a href="#服务器软件的安装" class="header-anchor"></a>1. <a href="#服务器软件的安装" class="headerlink" title="服务器软件的安装"></a>服务器软件的安装</h1><h2 id="11-安装cuda"><a href="#安装cuda" class="header-anchor"></a>1.1. <a href="#安装cuda" class="headerlink" title="安装cuda"></a>安装cuda</h2><ol>
 <li>安装cuda经常会遇到问题，但大部分都与如何禁用nouveau驱动相关，所以step-1，需要禁用nouveau驱动。<br>```sh</li>
 <li>在配置文件中禁用nouveau<br>vi /etc/modprobe.d/blacklist.conf  添加：blacklist nouveau<br> CentOS 7:<br>  vim /usr/lib/modprobe.d/dist-blacklist.conf$<br> 或<br>  vim /lib/modprobe.d/dist-blacklist.conf<br> 并且在加上blacklist nouveau之后还要加上一行options nouveau modeset=0</li>
 <li>备份原来的 initramfs nouveau image镜像<br>mv /boot/initramfs-$(uname -r).img /boot/initramfs-$(uname -r)-nouveau.img  </li>
@@ -419,20 +419,20 @@
 <li>单独安装nvidia驱动 <code>./NVIDIA-Linux-x86_64-384.90-1080ti.run</code><br>需要注意几点：<br>（1）cuda安装包本身包含两个部分：cuda-toolkit和nvidia driver，再安装cuda的时候是可以选择只安装cuda-toolkit，而省略nvidia driver的（甚至可以从cuda中抽出单独的部分作为一个安装包）<br>（2）1080Ti的显卡需要较新的驱动384.90来支持<br>（3）安装完成后一定要用命令查看一下显卡状态<code>nvidia-smi</code>，如果有错误提示，则安装有问题。</li>
 <li>安装cuda <code>./cuda_9.0.176_384.81_linux-run</code> 不需要装driver</li>
 </ol>
-<h2 id="hoomd"><a href="#hoomd" class="header-anchor"></a>1.2. <a href="#hoomd" class="headerlink" title="hoomd"></a>hoomd</h2><h3 id="本地编译hoomd-133及以下版本"><a href="#本地编译hoomd-133及以下版本" class="header-anchor"></a>1.2.1. <a href="#本地编译hoomd-1-3-3及以下版本" class="headerlink" title="本地编译hoomd-1.3.3及以下版本"></a>本地编译hoomd-1.3.3及以下版本</h3><pre class="line-numbers language-sh"><code class="language-sh">(1) mkdir build 然后进入build
+<h2 id="12-hoomd"><a href="#hoomd" class="header-anchor"></a>1.2. <a href="#hoomd" class="headerlink" title="hoomd"></a>hoomd</h2><h3 id="121-本地编译hoomd-133及以下版本"><a href="#本地编译hoomd-133及以下版本" class="header-anchor"></a>1.2.1. <a href="#本地编译hoomd-1-3-3及以下版本" class="headerlink" title="本地编译hoomd-1.3.3及以下版本"></a>本地编译hoomd-1.3.3及以下版本</h3><pre class="line-numbers language-sh"><code class="language-sh">(1) mkdir build 然后进入build
 (2) cmake -Wno-dev ../ -DCMAKE_INSTALL_PREFIX=$HOME/.local/hoomd -DCMAKE_BUILD_TYPE=Release -DENABLE_CUDA=On -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda -DENABLE_MPI_CUDA=On -DENABLE_MPI=On -DPYTHON_EXECUTABLE=`which python2`
 (3) make install -j8
 注意事项：
 1. 确保默认python的是用系统自带的python2
 2. 如果编译并行版本的话，需要安装openmpi，并且做好环境变量
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="anaconda安装hoomd"><a href="#anaconda安装hoomd" class="header-anchor"></a>1.2.2. <a href="#anaconda安装hoomd" class="headerlink" title="anaconda安装hoomd"></a>anaconda安装hoomd</h3><p>anaconda安装的hoomd实际上是anaconda云端已经编译好的hoomd，任何相关包都是依赖于anaconda，如cuda、并行库等。<br><code>conda install hoomd=1.3.3</code> 可以将hoomd以一个子包的形式安装到anaconda的软件相关目录下，如果<code>hoomd=1.3.3</code>的版本号不加，则安装最新版（最新版与2.0之前的版本差别较大，新版本的发展已经失去了控制。。。，比如没有xml支持，这简直不能忍！）<br>当然有时候我们联网并不方便，因为服务器一般与外网是隔绝的，大概为了安全（这时候可以用proxychains联网）。这时候可以将hoomd相关包下载下来本地conda安装。<br>需要四个包<code>boost-1.59.0-glotzer_py35_6.tar.gz, hoomd-1.3.3-py35_1.tar.gz, mpich2-1.4.1p1-0.tar.gz, mpich-3.2-5.tar.gz</code><br>然后按顺序</p>
+<h3 id="122-anaconda安装hoomd"><a href="#anaconda安装hoomd" class="header-anchor"></a>1.2.2. <a href="#anaconda安装hoomd" class="headerlink" title="anaconda安装hoomd"></a>anaconda安装hoomd</h3><p>anaconda安装的hoomd实际上是anaconda云端已经编译好的hoomd，任何相关包都是依赖于anaconda，如cuda、并行库等。<br><code>conda install hoomd=1.3.3</code> 可以将hoomd以一个子包的形式安装到anaconda的软件相关目录下，如果<code>hoomd=1.3.3</code>的版本号不加，则安装最新版（最新版与2.0之前的版本差别较大，新版本的发展已经失去了控制。。。，比如没有xml支持，这简直不能忍！）<br>当然有时候我们联网并不方便，因为服务器一般与外网是隔绝的，大概为了安全（这时候可以用proxychains联网）。这时候可以将hoomd相关包下载下来本地conda安装。<br>需要四个包<code>boost-1.59.0-glotzer_py35_6.tar.gz, hoomd-1.3.3-py35_1.tar.gz, mpich2-1.4.1p1-0.tar.gz, mpich-3.2-5.tar.gz</code><br>然后按顺序</p>
 <pre class="line-numbers language-python"><code class="language-python">conda install boost<span class="token number">-1.59</span><span class="token punctuation">.</span><span class="token number">0</span><span class="token operator">-</span>glotzer_py35_6<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz
 conda install mpich2<span class="token number">-1.4</span><span class="token punctuation">.</span>1p1<span class="token number">-0.</span>tar<span class="token punctuation">.</span>gz
 conda install mpich<span class="token number">-3.2</span><span class="token operator">-</span><span class="token number">5.</span>tar<span class="token punctuation">.</span>gz
 conda install hoomd<span class="token number">-1.3</span><span class="token punctuation">.</span><span class="token number">3</span><span class="token operator">-</span>py35_1<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="gromacs安装"><a href="#gromacs安装" class="header-anchor"></a>1.3. <a href="#gromacs安装" class="headerlink" title="gromacs安装"></a>gromacs安装</h2><p>Note:</p>
+<h2 id="13-gromacs安装"><a href="#gromacs安装" class="header-anchor"></a>1.3. <a href="#gromacs安装" class="headerlink" title="gromacs安装"></a>gromacs安装</h2><p>Note:</p>
 <ul>
 <li>需要已经安装<code>cuda</code>，确认<code>cuda</code>安装的路径。默认路径为<code>/usr/local/cuda</code></li>
 <li>需要<code>openmpi-2.0.2.tar.gz</code>, <code>fftw-3.3.6-pl2.tar.gz</code>, <code>gromacs-5.1.4.tar.gz</code>三个软件包，去官网下载最新的即可。为了方便大家，这里放上我的坚果云分享链接，<a href="https://www.jianguoyun.com/p/DZSfq58Qhc_oBRjYpkc" target="_blank" rel="external">openmpi</a>, <a href="https://www.jianguoyun.com/p/DUyIrcQQhc_oBRjVpkc" target="_blank" rel="external">fftw-3.3.6</a>, <a href="https://www.jianguoyun.com/p/Df7DN4YQhc_oBRjOpkc" target="_blank" rel="external">gromacs-5.1.4</a>,可以直接下载</li>
@@ -497,7 +497,7 @@ PATH<span class="token operator">=</span><span class="token variable">$HOME</spa
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://www.jiaxm.me/2017-11-day/InstallationManual/" title="一些软件的安装步骤(hoomd, gromacs, cuda，etc.)">http://www.jiaxm.me/2017-11-day/InstallationManual/</a>
+    <a href="http://www.jiaxm.me/2018-03-day/InstallationManual/" title="服务器软件安装：gromacs, hoomd, cuda">http://www.jiaxm.me/2018-03-day/InstallationManual/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -529,8 +529,8 @@ PATH<span class="token operator">=</span><span class="token variable">$HOME</spa
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017-11-day/Xshell/" rel="next" title="Xshell 相关">
-                <i class="fa fa-chevron-left"></i> Xshell 相关
+              <a href="/2018-03-day/btbyr/" rel="next" title="北邮人能登陆，但是utorrent不能下载的解决方法">
+                <i class="fa fa-chevron-left"></i> 北邮人能登陆，但是utorrent不能下载的解决方法
               </a>
             
           </div>
@@ -539,8 +539,8 @@ PATH<span class="token operator">=</span><span class="token variable">$HOME</spa
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017-11-day/LinuxCommand/" rel="prev" title="linux 常用命令">
-                linux 常用命令 <i class="fa fa-chevron-right"></i>
+              <a href="/2018-03-day/vim8_install/" rel="prev" title="vim 8.0的编译安装">
+                vim 8.0的编译安装 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -720,7 +720,7 @@ PATH<span class="token operator">=</span><span class="token variable">$HOME</spa
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#服务器软件的安装"><span class="nav-number">1.</span> <span class="nav-text">1. 服务器软件的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装cuda"><span class="nav-number">1.1.</span> <span class="nav-text">1.1. 安装cuda</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hoomd"><span class="nav-number">1.2.</span> <span class="nav-text">1.2. hoomd</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#本地编译hoomd-133及以下版本"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1. 本地编译hoomd-1.3.3及以下版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#anaconda安装hoomd"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2. anaconda安装hoomd</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gromacs安装"><span class="nav-number">1.3.</span> <span class="nav-text">1.3. gromacs安装</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-服务器软件的安装"><span class="nav-number">1.</span> <span class="nav-text">1. 服务器软件的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#11-安装cuda"><span class="nav-number">1.1.</span> <span class="nav-text">1.1. 安装cuda</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-hoomd"><span class="nav-number">1.2.</span> <span class="nav-text">1.2. hoomd</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#121-本地编译hoomd-133及以下版本"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1. 本地编译hoomd-1.3.3及以下版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#122-anaconda安装hoomd"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2. anaconda安装hoomd</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-gromacs安装"><span class="nav-number">1.3.</span> <span class="nav-text">1.3. gromacs安装</span></a></li></ol></li></ol></div>
             
 
           </div>
