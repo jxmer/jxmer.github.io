@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://www.jiaxm.me/2018-03-day/InstallationManual/</loc>
+    <lastmod>2018-03-18T09:45:44.805Z</lastmod>
+    <data>
+        <display>
+        <title>科研软件安装：gromacs, hoomd, cuda</title>
+        <pubTime>2018-03-18T01:37:00.000Z</pubTime>
+        
+        <tag>hoomd</tag>
+         
+        <tag>gromacs</tag>
+         
+        <tag>cuda</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术学习" url="http://www.jiaxm.me/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.jiaxm.me/2018-03-day/btbyr/</loc>
     <lastmod>2018-03-18T09:37:55.276Z</lastmod>
     <data>
@@ -36,30 +60,6 @@
            
              
               <breadCrumb title="hexo" url="http://www.jiaxm.me/categories/hexo/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.jiaxm.me/2018-03-day/InstallationManual/</loc>
-    <lastmod>2018-03-18T09:37:55.132Z</lastmod>
-    <data>
-        <display>
-        <title>服务器软件安装：gromacs, hoomd, cuda</title>
-        <pubTime>2018-03-18T01:37:00.000Z</pubTime>
-        
-        <tag>hoomd</tag>
-         
-        <tag>gromacs</tag>
-         
-        <tag>cuda</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术学习" url="http://www.jiaxm.me/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/"/>
           
         </display>
     </data>
@@ -189,16 +189,14 @@
 
     
   <url>
-    <loc>http://www.jiaxm.me/2017-07-day/python_code/</loc>
+    <loc>http://www.jiaxm.me/2018-03-day/PythonTricks/</loc>
     <lastmod>2018-03-18T09:37:54.580Z</lastmod>
     <data>
         <display>
-        <title>python3 学习爬虫遇到的一点编码问题</title>
-        <pubTime>2017-07-02T06:36:06.000Z</pubTime>
+        <title>Python Tricks</title>
+        <pubTime>2018-03-17T02:44:00.000Z</pubTime>
         
         <tag>python</tag>
-         
-        <tag>编码</tag>
          
          
            
@@ -211,14 +209,16 @@
 
     
   <url>
-    <loc>http://www.jiaxm.me/2018-03-day/PythonTricks/</loc>
+    <loc>http://www.jiaxm.me/2017-07-day/python_code/</loc>
     <lastmod>2018-03-18T09:37:54.580Z</lastmod>
     <data>
         <display>
-        <title>Python Tricks</title>
-        <pubTime>2018-03-17T02:44:00.000Z</pubTime>
+        <title>python3 学习爬虫遇到的一点编码问题</title>
+        <pubTime>2017-07-02T06:36:06.000Z</pubTime>
         
         <tag>python</tag>
+         
+        <tag>编码</tag>
          
          
            

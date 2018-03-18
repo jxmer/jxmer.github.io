@@ -56,15 +56,15 @@
     </url>
 
     <url>
-        <loc>http://www.jiaxm.me/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/</loc>
-        <lastmod>2018-03-18T09:37:55.132Z</lastmod>
+        <loc>http://www.jiaxm.me/categories/hexo/</loc>
+        <lastmod>2018-03-18T09:37:55.137Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://www.jiaxm.me/categories/hexo/</loc>
-        <lastmod>2018-03-18T09:37:55.137Z</lastmod>
+        <loc>http://www.jiaxm.me/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/</loc>
+        <lastmod>2018-03-18T09:45:44.805Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
