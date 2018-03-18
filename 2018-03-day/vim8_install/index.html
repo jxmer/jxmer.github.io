@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="大概受到NeoVim的刺激，vim 8.0在10年后终于更新了一个主要版本，有许多新特性被引入（如果关注vim发展的话，会发现在7.4版本已经引入了大多数的新特性）。如vim之父发表的Announcement:  “After more than ten years there is a major Vim release. It gives you interesting new feature">
+<meta name="description" content="大概受到NeoVim的刺激，vim在10年后终于更新了一个主要版本，有许多新特性被引入。如vim之父发表的Announcement:  “After more than ten years there is a major Vim release. It gives you interesting new features, such as channels, JSON, Jobs, Timers">
 <meta name="keywords" content="vim">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vim 8.0的编译安装">
 <meta property="og:url" content="http://www.jiaxm.me/2018-03-day/vim8_install/index.html">
 <meta property="og:site_name" content="Memories">
-<meta property="og:description" content="大概受到NeoVim的刺激，vim 8.0在10年后终于更新了一个主要版本，有许多新特性被引入（如果关注vim发展的话，会发现在7.4版本已经引入了大多数的新特性）。如vim之父发表的Announcement:  “After more than ten years there is a major Vim release. It gives you interesting new feature">
+<meta property="og:description" content="大概受到NeoVim的刺激，vim在10年后终于更新了一个主要版本，有许多新特性被引入。如vim之父发表的Announcement:  “After more than ten years there is a major Vim release. It gives you interesting new features, such as channels, JSON, Jobs, Timers">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-18T09:19:45.252Z">
+<meta property="og:updated_time" content="2018-03-18T09:27:29.259Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vim 8.0的编译安装">
-<meta name="twitter:description" content="大概受到NeoVim的刺激，vim 8.0在10年后终于更新了一个主要版本，有许多新特性被引入（如果关注vim发展的话，会发现在7.4版本已经引入了大多数的新特性）。如vim之父发表的Announcement:  “After more than ten years there is a major Vim release. It gives you interesting new feature">
+<meta name="twitter:description" content="大概受到NeoVim的刺激，vim在10年后终于更新了一个主要版本，有许多新特性被引入。如vim之父发表的Announcement:  “After more than ten years there is a major Vim release. It gives you interesting new features, such as channels, JSON, Jobs, Timers">
 
 
 
@@ -387,7 +387,7 @@
       
 
       
-        <p>大概受到NeoVim的刺激，vim 8.0在10年后终于更新了一个主要版本，有许多新特性被引入（如果关注vim发展的话，会发现在7.4版本已经引入了大多数的新特性）。如vim之父发表的Announcement:</p>
+        <p>大概受到NeoVim的刺激，vim在10年后终于更新了一个主要版本，有许多新特性被引入。如vim之父发表的Announcement:</p>
 <blockquote>
 <p>“After more than ten years there is a major Vim release. It gives you interesting new features, such as channels, JSON, Jobs, Timers, Partials, Lambdas, Closures, Packages and more. Test coverage has been increased, many bugs were fixed, this is a rock stable version.Among the new features are:- Asynchronous I/O support, channels, JSON- Jobs- Timers- Partials, Lambdas and Closures- Packages- New style testing- Viminfo merged by timestamp- GTK+ 3 support- MS-Windows DirectX support</p>
 </blockquote>
@@ -398,7 +398,7 @@
 <li><code>vimrc</code> vim配置文件</li>
 <li><code>install_package</code> 依赖软件</li>
 </ul>
-<a id="more"></a>
+<p>这里给出包括配置在内的软件包是希望可以在短时间内解决程序的安装问题。vim本身学习曲线是陡峭的，从入门到用的熟练需要花一些时间，如果只是安装后简单的使用，完全不会发挥出vim作为一个强大的文本编辑器的功能。所以，建议学习vim的话还是要从原版无配置vim开始，理解每个配置是什么意思，发挥了什么功能。<br><a id="more"></a></p>
 <h1 id="vim-80的安装和配置"><a href="#vim-80的安装和配置" class="header-anchor"></a>1. <a href="#vim-8-0的安装和配置" class="headerlink" title="vim-8.0的安装和配置"></a>vim-8.0的安装和配置</h1><h2 id="配置文件vimrc和配置目录vim"><a href="#配置文件vimrc和配置目录vim" class="header-anchor"></a>1.1. <a href="#配置文件-vimrc和配置目录-vim" class="headerlink" title="配置文件.vimrc和配置目录.vim"></a>配置文件<code>.vimrc</code>和配置目录<code>.vim</code></h2><pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">tar</span> -xvf vim-8.0-installEnv.tgz <span class="token operator">&amp;&amp;</span> <span class="token function">cd</span> <span class="token operator">!</span>$
 $ <span class="token function">mv</span> vim ~/.vim <span class="token operator">&amp;&amp;</span> <span class="token function">mv</span> vimrc ~/.vimrc
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
