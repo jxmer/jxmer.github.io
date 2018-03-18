@@ -7,64 +7,64 @@
     </url>
 
     <url>
-        <loc>http://www.jiaxm.me/categories/vim/</loc>
-        <lastmod>2018-03-18T09:37:53.930Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://www.jiaxm.me/categories/VPS/</loc>
-        <lastmod>2018-03-18T09:37:53.941Z</lastmod>
+        <lastmod>2018-03-18T10:49:21.475Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://www.jiaxm.me/categories/markdown/</loc>
-        <lastmod>2018-03-18T09:37:54.709Z</lastmod>
+        <loc>http://www.jiaxm.me/categories/vim/</loc>
+        <lastmod>2018-03-18T10:49:21.681Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://www.jiaxm.me/categories/next/</loc>
-        <lastmod>2018-03-18T09:37:54.709Z</lastmod>
+        <lastmod>2018-03-18T10:49:22.511Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.jiaxm.me/categories/markdown/</loc>
+        <lastmod>2018-03-18T10:49:22.703Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://www.jiaxm.me/categories/xshell/</loc>
-        <lastmod>2018-03-18T09:37:54.846Z</lastmod>
+        <lastmod>2018-03-18T10:49:22.965Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://www.jiaxm.me/categories/linux/</loc>
-        <lastmod>2018-03-18T09:37:55.001Z</lastmod>
+        <lastmod>2018-03-18T10:49:23.050Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://www.jiaxm.me/categories/python/</loc>
-        <lastmod>2018-03-18T09:37:55.002Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://www.jiaxm.me/categories/hexo/</loc>
-        <lastmod>2018-03-18T09:37:55.137Z</lastmod>
+        <lastmod>2018-03-18T10:49:23.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://www.jiaxm.me/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/</loc>
-        <lastmod>2018-03-18T09:53:06.592Z</lastmod>
+        <lastmod>2018-03-18T10:49:23.321Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.jiaxm.me/categories/hexo/</loc>
+        <lastmod>2018-03-18T10:49:23.557Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

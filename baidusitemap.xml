@@ -4,8 +4,47 @@
 
     
   <url>
+    <loc>http://www.jiaxm.me/2018-03-day/btbyr/</loc>
+    <lastmod>2018-03-18T10:49:23.593Z</lastmod>
+    <data>
+        <display>
+        <title>北邮人能登陆，但是utorrent不能下载的解决方法</title>
+        <pubTime>2018-03-17T03:00:00.000Z</pubTime>
+        
+        <tag>btbyr</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.jiaxm.me/2017-07-day/Hexo/</loc>
+    <lastmod>2018-03-18T10:49:23.557Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo Configuration</title>
+        <pubTime>2017-07-13T11:40:00.000Z</pubTime>
+        
+        <tag>next</tag>
+         
+        <tag>hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="hexo" url="http://www.jiaxm.me/categories/hexo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.jiaxm.me/2018-03-day/InstallationManual/</loc>
-    <lastmod>2018-03-18T09:53:06.592Z</lastmod>
+    <lastmod>2018-03-18T10:49:23.321Z</lastmod>
     <data>
         <display>
         <title>科研软件安装：gromacs, hoomd, cuda</title>
@@ -28,47 +67,8 @@
 
     
   <url>
-    <loc>http://www.jiaxm.me/2018-03-day/btbyr/</loc>
-    <lastmod>2018-03-18T09:37:55.276Z</lastmod>
-    <data>
-        <display>
-        <title>北邮人能登陆，但是utorrent不能下载的解决方法</title>
-        <pubTime>2018-03-17T03:00:00.000Z</pubTime>
-        
-        <tag>btbyr</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.jiaxm.me/2017-07-day/Hexo/</loc>
-    <lastmod>2018-03-18T09:37:55.137Z</lastmod>
-    <data>
-        <display>
-        <title>Hexo Configuration</title>
-        <pubTime>2017-07-13T11:40:00.000Z</pubTime>
-        
-        <tag>next</tag>
-         
-        <tag>hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="hexo" url="http://www.jiaxm.me/categories/hexo/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.jiaxm.me/2017-07-day/LearnNumpy/</loc>
-    <lastmod>2018-03-18T09:37:55.002Z</lastmod>
+    <lastmod>2018-03-18T10:49:23.310Z</lastmod>
     <data>
         <display>
         <title>Learn Numpy The Hard Way</title>
@@ -88,7 +88,7 @@
     
   <url>
     <loc>http://www.jiaxm.me/2017-11-day/LinuxCommand/</loc>
-    <lastmod>2018-03-18T09:37:55.001Z</lastmod>
+    <lastmod>2018-03-18T10:49:23.050Z</lastmod>
     <data>
         <display>
         <title>linux 常用命令</title>
@@ -108,7 +108,7 @@
     
   <url>
     <loc>http://www.jiaxm.me/2018-03-day/LinuxTerminalCommand/</loc>
-    <lastmod>2018-03-18T09:37:54.846Z</lastmod>
+    <lastmod>2018-03-18T10:49:22.965Z</lastmod>
     <data>
         <display>
         <title>Linux命令行快捷键</title>
@@ -130,7 +130,7 @@
     
   <url>
     <loc>http://www.jiaxm.me/2017-07-day/Linux_Terminal_Shortcuts/</loc>
-    <lastmod>2018-03-18T09:37:54.844Z</lastmod>
+    <lastmod>2018-03-18T10:49:22.714Z</lastmod>
     <data>
         <display>
         <title>Linux命令行快捷键</title>
@@ -150,7 +150,7 @@
     
   <url>
     <loc>http://www.jiaxm.me/2017-07-day/Markdown_Writing/</loc>
-    <lastmod>2018-03-18T09:37:54.709Z</lastmod>
+    <lastmod>2018-03-18T10:49:22.703Z</lastmod>
     <data>
         <display>
         <title>Markdown Writing</title>
@@ -170,11 +170,11 @@
     
   <url>
     <loc>http://www.jiaxm.me/2018-03-day/NextAdjust/</loc>
-    <lastmod>2018-03-18T09:37:54.709Z</lastmod>
+    <lastmod>2018-03-18T10:49:22.511Z</lastmod>
     <data>
         <display>
         <title>Next主题从头调整</title>
-        <pubTime>2018-03-18T09:37:54.709Z</pubTime>
+        <pubTime>2018-03-18T10:49:22.511Z</pubTime>
         
         <tag>next</tag>
          
@@ -189,8 +189,28 @@
 
     
   <url>
+    <loc>http://www.jiaxm.me/2018-03-day/PythonTricks/</loc>
+    <lastmod>2018-03-18T10:49:22.462Z</lastmod>
+    <data>
+        <display>
+        <title>Python Tricks</title>
+        <pubTime>2018-03-17T02:44:00.000Z</pubTime>
+        
+        <tag>python</tag>
+         
+         
+           
+             
+              <breadCrumb title="python" url="http://www.jiaxm.me/categories/python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.jiaxm.me/2017-07-day/python_code/</loc>
-    <lastmod>2018-03-18T09:37:54.580Z</lastmod>
+    <lastmod>2018-03-18T10:49:22.231Z</lastmod>
     <data>
         <display>
         <title>python3 学习爬虫遇到的一点编码问题</title>
@@ -211,28 +231,8 @@
 
     
   <url>
-    <loc>http://www.jiaxm.me/2018-03-day/PythonTricks/</loc>
-    <lastmod>2018-03-18T09:37:54.580Z</lastmod>
-    <data>
-        <display>
-        <title>Python Tricks</title>
-        <pubTime>2018-03-17T02:44:00.000Z</pubTime>
-        
-        <tag>python</tag>
-         
-         
-           
-             
-              <breadCrumb title="python" url="http://www.jiaxm.me/categories/python/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.jiaxm.me/2017-08-day/ReinstallSystemBackup/</loc>
-    <lastmod>2018-03-18T09:37:54.404Z</lastmod>
+    <lastmod>2018-03-18T10:49:22.221Z</lastmod>
     <data>
         <display>
         <title>win10系统重装相关</title>
@@ -249,7 +249,7 @@
     
   <url>
     <loc>http://www.jiaxm.me/2017-07-day/Shadowsocks_Configuration/</loc>
-    <lastmod>2018-03-18T09:37:54.399Z</lastmod>
+    <lastmod>2018-03-18T10:49:21.994Z</lastmod>
     <data>
         <display>
         <title>Shadowsocks 的搭建</title>
@@ -268,7 +268,7 @@
     
   <url>
     <loc>http://www.jiaxm.me/2017-07-day/Ubuntu_Rescue_Mode_Repair/</loc>
-    <lastmod>2018-03-18T09:37:54.205Z</lastmod>
+    <lastmod>2018-03-18T10:49:21.919Z</lastmod>
     <data>
         <display>
         <title>Linux与Windows双系统启动引导恢复</title>
@@ -290,7 +290,7 @@
     
   <url>
     <loc>http://www.jiaxm.me/2018-03-day/vim8_install/</loc>
-    <lastmod>2018-03-18T09:37:54.145Z</lastmod>
+    <lastmod>2018-03-18T10:49:21.691Z</lastmod>
     <data>
         <display>
         <title>vim 8.0的编译安装</title>
@@ -306,28 +306,8 @@
 
     
   <url>
-    <loc>http://www.jiaxm.me/2017-07-day/VPS/</loc>
-    <lastmod>2018-03-18T09:37:53.941Z</lastmod>
-    <data>
-        <display>
-        <title>VPS Configuration</title>
-        <pubTime>2017-07-04T04:00:04.000Z</pubTime>
-        
-        <tag>VPS</tag>
-         
-         
-           
-             
-              <breadCrumb title="VPS" url="http://www.jiaxm.me/categories/VPS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.jiaxm.me/2018-01-day/vim_familiar/</loc>
-    <lastmod>2018-03-18T09:37:53.930Z</lastmod>
+    <lastmod>2018-03-18T10:49:21.681Z</lastmod>
     <data>
         <display>
         <title>vim使用技巧</title>
@@ -346,8 +326,28 @@
 
     
   <url>
+    <loc>http://www.jiaxm.me/2017-07-day/VPS/</loc>
+    <lastmod>2018-03-18T10:49:21.475Z</lastmod>
+    <data>
+        <display>
+        <title>VPS Configuration</title>
+        <pubTime>2017-07-04T04:00:04.000Z</pubTime>
+        
+        <tag>VPS</tag>
+         
+         
+           
+             
+              <breadCrumb title="VPS" url="http://www.jiaxm.me/categories/VPS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.jiaxm.me/2017-11-day/Xshell/</loc>
-    <lastmod>2018-03-18T09:37:53.824Z</lastmod>
+    <lastmod>2018-03-18T10:49:21.474Z</lastmod>
     <data>
         <display>
         <title>Xshell 相关</title>
