@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Memories">
 <meta property="og:description" content="vim 相关~">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-18T08:19:50.666Z">
+<meta property="og:updated_time" content="2018-03-18T08:26:47.248Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vim 8.0的编译安装">
 <meta name="twitter:description" content="vim 相关~">
@@ -395,6 +395,7 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p>–with-features=huge：支持最大特性<br>–enable-rubyinterp：打开对ruby编写的插件的支持<br>–enable-pythoninterp：打开对python编写的插件的支持<br>–enable-python3interp：打开对python3编写的插件的支持<br>–enable-luainterp：打开对lua编写的插件的支持<br>–enable-perlinterp：打开对perl编写的插件的支持<br>–enable-multibyte：打开多字节支持，可以在Vim中输入中文<br>–enable-cscope：打开对cscope的支持<br>–with-python-config-dir=/usr/lib/python2.7/config 指定python2.7 路径<br>–with-python-config-dir=/–with-python3-config-dir=$HOME/.local/software/anaconda3/lib/python3.5/config 指定python3路径</p>
+</blockquote>
 <h2 id="编译-youcompelteme"><a href="#编译-youcompelteme" class="header-anchor"></a>1.2. <a href="#编译-YouCompelteMe" class="headerlink" title="编译 YouCompelteMe"></a>编译 YouCompelteMe</h2><pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">cd</span> ~/.vim/bundle/YouCompelteMe/
 $ ./install.py --clang-completer
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -405,15 +406,17 @@ $ python setup.py <span class="token function">install</span> --user
 $ <span class="token function">cat</span> <span class="token string">"PATH = <span class="token variable">$HOME</span>/.vim/yapf/bin/<span class="token variable">$PATH</span>"</span> <span class="token operator">>></span> ~/.bashrc <span class="token operator">&amp;&amp;</span> <span class="token function">source</span> ~/.bashrc
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </li>
-<li>fortran代码格式化 - frettify:<pre class="line-numbers language-bash"><code class="language-bash"><span class="token variable">$python</span> setup.py <span class="token function">install</span> --user
+<li><p>fortran代码格式化 - frettify:</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token variable">$python</span> setup.py <span class="token function">install</span> --user
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-note: 需要conda已经安装了future</li>
-</ul>
+<blockquote>
+<p>note: 需要conda已经安装了future</p>
 </blockquote>
-<ul>
-<li>c++代码格式化 - clang    -clang-format:<br>下载llvm-libs llvm clang包from www.rpmfind.net/   下载的时候看好系统版本，要一样。<pre class="line-numbers language-bash"><code class="language-bash">$ yum localinstall llvm-libs-3.4.2-7.el7.x86_64.rpm
-$ yum localinstall  llvm-3.4.2-7.el7.x86_64.rpm
-$ yum localinstall  clang-3.4.2-7.el7.x86_64.rpm
+</li>
+<li><p>c++代码格式化 - clang    -clang-format:<br>下载llvm-libs llvm clang包from www.rpmfind.net/   下载的时候看好系统版本，要一样。</p>
+<pre class="line-numbers language-bash"><code class="language-bash"> $ yum localinstall llvm-libs-3.4.2-7.el7.x86_64.rpm
+ $ yum localinstall  llvm-3.4.2-7.el7.x86_64.rpm
+ $ yum localinstall  clang-3.4.2-7.el7.x86_64.rpm
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p>note: (or <code>rpm -ivh filename.rpm</code>)</p>
