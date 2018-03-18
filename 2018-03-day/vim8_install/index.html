@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="vim 相关~">
+<meta name="description" content="大概受到NeoVim的刺激，vim 8.0在10年后终于更新了一个主要版本，有许多新特性被引入（如果关注vim发展的话，会发现在7.4版本已经引入了大多数的新特性）。如vim之父发表的Announcement:  “After more than ten years there is a major Vim release. It gives you interesting new feature">
 <meta name="keywords" content="vim">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vim 8.0的编译安装">
 <meta property="og:url" content="http://www.jiaxm.me/2018-03-day/vim8_install/index.html">
 <meta property="og:site_name" content="Memories">
-<meta property="og:description" content="vim 相关~">
+<meta property="og:description" content="大概受到NeoVim的刺激，vim 8.0在10年后终于更新了一个主要版本，有许多新特性被引入（如果关注vim发展的话，会发现在7.4版本已经引入了大多数的新特性）。如vim之父发表的Announcement:  “After more than ten years there is a major Vim release. It gives you interesting new feature">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-18T08:26:47.248Z">
+<meta property="og:updated_time" content="2018-03-18T08:39:29.490Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vim 8.0的编译安装">
-<meta name="twitter:description" content="vim 相关~">
+<meta name="twitter:description" content="大概受到NeoVim的刺激，vim 8.0在10年后终于更新了一个主要版本，有许多新特性被引入（如果关注vim发展的话，会发现在7.4版本已经引入了大多数的新特性）。如vim之父发表的Announcement:  “After more than ten years there is a major Vim release. It gives you interesting new feature">
 
 
 
@@ -387,7 +387,11 @@
       
 
       
-        <p>vim 相关~<br><a id="more"></a></p>
+        <p>大概受到NeoVim的刺激，vim 8.0在10年后终于更新了一个主要版本，有许多新特性被引入（如果关注vim发展的话，会发现在7.4版本已经引入了大多数的新特性）。如vim之父发表的Announcement:</p>
+<blockquote>
+<p>“After more than ten years there is a major Vim release. It gives you interesting new features, such as channels, JSON, Jobs, Timers, Partials, Lambdas, Closures, Packages and more. Test coverage has been increased, many bugs were fixed, this is a rock stable version.Among the new features are:- Asynchronous I/O support, channels, JSON- Jobs- Timers- Partials, Lambdas and Closures- Packages- New style testing- Viminfo merged by timestamp- GTK+ 3 support- MS-Windows DirectX support</p>
+</blockquote>
+<p>在这个安装教程中，同时提供我所用的vim的配置及涉及到的插件，并提供坚果云分享下载链接。<br><a id="more"></a></p>
 <h1 id="vim-80的安装和配置"><a href="#vim-80的安装和配置" class="header-anchor"></a>1. <a href="#vim-8-0的安装和配置" class="headerlink" title="vim-8.0的安装和配置"></a>vim-8.0的安装和配置</h1><h2 id="编译-vim-80"><a href="#编译-vim-80" class="header-anchor"></a>1.1. <a href="#编译-vim-8-0" class="headerlink" title="编译 vim-8.0"></a>编译 vim-8.0</h2><pre class="line-numbers language-bash"><code class="language-bash">    $ <span class="token function">tar</span> -xvf vim-8.0.tgz <span class="token operator">&amp;&amp;</span> <span class="token function">cd</span> vim-8.0  
     $ ./configure --with-features<span class="token operator">=</span>huge --enable-multibyte  --enable-rubyinterp<span class="token operator">=</span>yes --enable-pythoninterp<span class="token operator">=</span>yes  --with-python-config-dir<span class="token operator">=</span>/usr/lib/python2.7/config   --enable-python3interp<span class="token operator">=</span>yes --with-python3-config-dir<span class="token operator">=</span><span class="token variable">$HOME</span>/.local/software/anaconda3/lib/python3.5/config   --enable-perlinterp<span class="token operator">=</span>yes  --enable-luainterp<span class="token operator">=</span>yes --enable-gui<span class="token operator">=</span>gtk2 --enable-cscope --prefix<span class="token operator">=</span><span class="token variable">$HOME</span>/.local/software/vim-8.0
     $ <span class="token function">make</span> <span class="token function">install</span> -j9
