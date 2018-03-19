@@ -49,13 +49,6 @@
     </url>
 
     <url>
-        <loc>http://www.jiaxm.me/categories/python/</loc>
-        <lastmod>2018-03-18T10:49:23.310Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://www.jiaxm.me/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/</loc>
         <lastmod>2018-03-18T10:49:23.321Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -65,6 +58,13 @@
     <url>
         <loc>http://www.jiaxm.me/categories/hexo/</loc>
         <lastmod>2018-03-18T10:49:23.557Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.jiaxm.me/categories/python/</loc>
+        <lastmod>2018-03-19T12:59:49.881Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
