@@ -404,17 +404,17 @@
 
       
         <p>基于官方原始next主题包进行如下调整，方便记录修改。<br><a id="more"></a></p>
-<h1 id="1-基础设定"><a href="#基础设定" class="header-anchor"></a>1. <a href="#基础设定" class="headerlink" title="基础设定"></a>基础设定</h1><h2 id="11-选择scheme"><a href="#选择scheme" class="header-anchor"></a>1.1. <a href="#选择Scheme" class="headerlink" title="选择Scheme"></a>选择Scheme</h2><p>Scheme 是 NexT 提供的一种特性，借助于 Scheme，NexT 为你提供多种不同的外观。同时，几乎所有的配置都可以 在 Scheme 之间共用。目前 NexT 支持三种 Scheme，他们是：</p>
+<h1 id="基础设定"><a href="#基础设定" class="header-anchor"></a>1. <a href="#基础设定" class="headerlink" title="基础设定"></a>基础设定</h1><h2 id="选择scheme"><a href="#选择scheme" class="header-anchor"></a>1.1. <a href="#选择Scheme" class="headerlink" title="选择Scheme"></a>选择Scheme</h2><p>Scheme 是 NexT 提供的一种特性，借助于 Scheme，NexT 为你提供多种不同的外观。同时，几乎所有的配置都可以 在 Scheme 之间共用。目前 NexT 支持三种 Scheme，他们是：</p>
 <ul>
 <li>Muse - 默认 Scheme，这是 NexT 最初的版本，黑白主调，大量留白</li>
 <li>Mist - Muse 的紧凑版本，整洁有序的单栏外观</li>
 <li>Pisces - 双栏 Scheme，小家碧玉似的清新</li>
 <li>Germini 最新的Scheme（有点不太协调啊~~~）<br>Scheme的切换通过<code>站点配置文件</code></li>
 </ul>
-<h2 id="12-设置语言"><a href="#设置语言" class="header-anchor"></a>1.2. <a href="#设置语言" class="headerlink" title="设置语言"></a>设置语言</h2><p>编辑<code>站点配置文件</code>， 将<code>language</code>设置成你所需要的语言。建议明确设置你所需要的语言，例如选用简体中文，配置如下：</p>
+<h2 id="设置语言"><a href="#设置语言" class="header-anchor"></a>1.2. <a href="#设置语言" class="headerlink" title="设置语言"></a>设置语言</h2><p>编辑<code>站点配置文件</code>， 将<code>language</code>设置成你所需要的语言。建议明确设置你所需要的语言，例如选用简体中文，配置如下：</p>
 <pre class="line-numbers language-yml"><code class="language-yml">language: zh-hans
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="13-设置菜单"><a href="#设置菜单" class="header-anchor"></a>1.3. <a href="#设置菜单" class="headerlink" title="设置菜单"></a>设置菜单</h2><p>菜单配置包括三个部分，第一是菜单项（名称和链接），第二是菜单项的显示文本，第三是菜单项对应的图标。 NexT 使用的是<a href="https://fontawesome.com/" target="_blank" rel="external">Font Awesome</a>提供的图标， Font Awesome 提供了 600+ 的图标，可以满足绝大的多数的场景，同时无须担心在 Retina 屏幕下 图标模糊的问题。<br>编辑<code>主题配置文件</code>，修改一下内容：</p>
+<h2 id="设置菜单"><a href="#设置菜单" class="header-anchor"></a>1.3. <a href="#设置菜单" class="headerlink" title="设置菜单"></a>设置菜单</h2><p>菜单配置包括三个部分，第一是菜单项（名称和链接），第二是菜单项的显示文本，第三是菜单项对应的图标。 NexT 使用的是<a href="https://fontawesome.com/" target="_blank" rel="external">Font Awesome</a>提供的图标， Font Awesome 提供了 600+ 的图标，可以满足绝大的多数的场景，同时无须担心在 Retina 屏幕下 图标模糊的问题。<br>编辑<code>主题配置文件</code>，修改一下内容：</p>
 <ul>
 <li>设定菜单内容，对应的字段是<code>menu</code>。菜单内容的设置<code>item name: link</code>。其中<code>item name</code>是一个名称，这个名称并不直接显示在页面上，她将用于匹配图标以及翻译。<code>||</code>之后的是<code>awesome</code>图标库中图标的名称（note:这是最新版本hexo的语法格式，与之前不同）<pre class="line-numbers language-yml"><code class="language-yml">menu:
 home: / || home
@@ -436,8 +436,8 @@ archives: /archives/ || archive
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, question icon will be loaded.
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>另外，如果想改变<code>home</code>, <code>about</code>对应的汉字，可以到<code>language/zh-Hans.yml</code>中修改，比如可以修改<code>关于</code>为<code>关于我</code>等等</p>
-<h1 id="2-next主题背景个性化diy"><a href="#next主题背景个性化diy" class="header-anchor"></a>2. <a href="#Next主题背景个性化DIY" class="headerlink" title="Next主题背景个性化DIY"></a>Next主题背景个性化DIY</h1><h2 id="21-介绍一个图片网站"><a href="#介绍一个图片网站" class="header-anchor"></a>2.1. <a href="#介绍一个图片网站" class="headerlink" title="介绍一个图片网站"></a>介绍一个图片网站</h2><p>首先，分享一个非常nice的图片网站，感觉这个国外的图片社区网站真的秒杀一众图片网站啊，不仅图片质量高，免费，而且还提供了随机拉取图片的服务API，<a href="https://source.unsplash.com" target="_blank" rel="external">点这里</a></p>
-<h2 id="22-添加背景图片"><a href="#添加背景图片" class="header-anchor"></a>2.2. <a href="#添加背景图片" class="headerlink" title="添加背景图片"></a>添加背景图片</h2><p>修改<code>themes\next\source\css\ _custom\custom.styl</code>文件，这个是Next故意留给用户自己个性化定制一些样式的文件，添加以下代码：</p>
+<h1 id="next主题背景个性化diy"><a href="#next主题背景个性化diy" class="header-anchor"></a>2. <a href="#Next主题背景个性化DIY" class="headerlink" title="Next主题背景个性化DIY"></a>Next主题背景个性化DIY</h1><h2 id="介绍一个图片网站"><a href="#介绍一个图片网站" class="header-anchor"></a>2.1. <a href="#介绍一个图片网站" class="headerlink" title="介绍一个图片网站"></a>介绍一个图片网站</h2><p>首先，分享一个非常nice的图片网站，感觉这个国外的图片社区网站真的秒杀一众图片网站啊，不仅图片质量高，免费，而且还提供了随机拉取图片的服务API，<a href="https://source.unsplash.com" target="_blank" rel="external">点这里</a></p>
+<h2 id="添加背景图片"><a href="#添加背景图片" class="header-anchor"></a>2.2. <a href="#添加背景图片" class="headerlink" title="添加背景图片"></a>添加背景图片</h2><p>修改<code>themes\next\source\css\ _custom\custom.styl</code>文件，这个是Next故意留给用户自己个性化定制一些样式的文件，添加以下代码：</p>
 <pre class="line-numbers language-json"><code class="language-json">body <span class="token punctuation">{</span>
     background<span class="token operator">:</span>url(https<span class="token operator">:</span>//source.unsplash.com/random/1600x900<span class="token punctuation">)</span><span class="token punctuation">;</span>
     background-repeat<span class="token operator">:</span> no-repeat<span class="token punctuation">;</span>
@@ -445,7 +445,7 @@ archives: /archives/ || archive
     background-position<span class="token operator">:</span><span class="token number">50</span>% <span class="token number">50</span>%<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="23-修改博客主体样式"><a href="#修改博客主体样式" class="header-anchor"></a>2.3. <a href="#修改博客主体样式" class="headerlink" title="修改博客主体样式"></a>修改博客主体样式</h2><p>如果按照上一步添加完图片之后，发现出现了另外一个大问题，整个博客背景都是透明的，只能看见图片，看不清文章文字，这样绝对不行的，办法如下，照例在上面的文件下面继续追加如下代码：</p>
+<h2 id="修改博客主体样式"><a href="#修改博客主体样式" class="header-anchor"></a>2.3. <a href="#修改博客主体样式" class="headerlink" title="修改博客主体样式"></a>修改博客主体样式</h2><p>如果按照上一步添加完图片之后，发现出现了另外一个大问题，整个博客背景都是透明的，只能看见图片，看不清文章文字，这样绝对不行的，办法如下，照例在上面的文件下面继续追加如下代码：</p>
 <pre class="line-numbers language-json"><code class="language-json">.main-inner <span class="token punctuation">{</span>
     margin-top<span class="token operator">:</span> 60px<span class="token punctuation">;</span>
     padding<span class="token operator">:</span> 60px 60px 60px 60px<span class="token punctuation">;</span>
@@ -453,7 +453,7 @@ archives: /archives/ || archive
     min-height<span class="token operator">:</span> 500px<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="24-站内搜索"><a href="#站内搜索" class="header-anchor"></a>2.4. <a href="#站内搜索" class="headerlink" title="站内搜索"></a>站内搜索</h2><h3 id="241-algolia搜索服务集成"><a href="#algolia搜索服务集成" class="header-anchor"></a>2.4.1. <a href="#algolia搜索服务集成" class="headerlink" title="algolia搜索服务集成"></a>algolia搜索服务集成</h3><p>有点复杂，放上官网操作<a href="https://theme-next.iissnan.com/third-party-services.html#algolia-search" target="_blank" rel="external">链接</a><br>note:</p>
+<h2 id="站内搜索"><a href="#站内搜索" class="header-anchor"></a>2.4. <a href="#站内搜索" class="headerlink" title="站内搜索"></a>站内搜索</h2><h3 id="algolia搜索服务集成"><a href="#algolia搜索服务集成" class="header-anchor"></a>2.4.1. <a href="#algolia搜索服务集成" class="headerlink" title="algolia搜索服务集成"></a>algolia搜索服务集成</h3><p>有点复杂，放上官网操作<a href="https://theme-next.iissnan.com/third-party-services.html#algolia-search" target="_blank" rel="external">链接</a><br>note:</p>
 <blockquote>
 <p><code>apiKey</code>指的是<code>Search-Only API Key</code></p>
 </blockquote>
@@ -471,7 +471,7 @@ archives: /archives/ || archive
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p>但是最新测试结果发现<code>algolia</code>已经对发往<code>algolia server</code>的内容大小做了限制，为10KB（json格式）。<br>另外一个algolia的packge <a href="https://github.com/LouisBarranqueiro/hexo-algoliasearch" target="_blank" rel="external"><code>hexo-algoliasearch</code></a>测试过，发现不好用。</p>
-<h3 id="242-本地搜索"><a href="#本地搜索" class="header-anchor"></a>2.4.2. <a href="#本地搜索" class="headerlink" title="本地搜索"></a>本地搜索</h3><ol>
+<h3 id="本地搜索"><a href="#本地搜索" class="header-anchor"></a>2.4.2. <a href="#本地搜索" class="headerlink" title="本地搜索"></a>本地搜索</h3><ol>
 <li>安装 <code>hexo-generator-searchdb</code>，在站点根目录下执行以下命令：<pre class="line-numbers language-shell"><code class="language-shell"> npm install hexo-generator-searchdb --save
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
@@ -489,8 +489,8 @@ archives: /archives/ || archive
 </li>
 </ol>
 </blockquote>
-<h2 id="25-隐藏网页底部的powered-by-hexo-强力驱动"><a href="#隐藏网页底部的powered-by-hexo-强力驱动" class="header-anchor"></a>2.5. <a href="#隐藏网页底部的powered-By-Hexo-强力驱动" class="headerlink" title="隐藏网页底部的powered By Hexo / 强力驱动"></a>隐藏网页底部的<code>powered By Hexo / 强力驱动</code></h2><p>打开<code>themes/next/layout/_partials/footer.swig</code>,使用“<!-- -->”隐藏之间关于<code>power</code>代码即可，或者直接删除。</p>
-<h1 id="3-修改内链文字样式"><a href="#修改内链文字样式" class="header-anchor"></a>3. <a href="#修改内链文字样式" class="headerlink" title="修改内链文字样式"></a>修改内链文字样式</h1><p>原来版本的内链样式跟默认的字体很类似，这里进行修改。将链接文本设置为蓝色，鼠标划过时文字颜色加深，并显示下划线。修改文件<code>themes\next\source\css\_common\components\post\post.styl</code>，添加如下css样式：</p>
+<h2 id="隐藏网页底部的powered-by-hexo-强力驱动"><a href="#隐藏网页底部的powered-by-hexo-强力驱动" class="header-anchor"></a>2.5. <a href="#隐藏网页底部的powered-By-Hexo-强力驱动" class="headerlink" title="隐藏网页底部的powered By Hexo / 强力驱动"></a>隐藏网页底部的<code>powered By Hexo / 强力驱动</code></h2><p>打开<code>themes/next/layout/_partials/footer.swig</code>,使用“<!-- -->”隐藏之间关于<code>power</code>代码即可，或者直接删除。</p>
+<h1 id="修改内链文字样式"><a href="#修改内链文字样式" class="header-anchor"></a>3. <a href="#修改内链文字样式" class="headerlink" title="修改内链文字样式"></a>修改内链文字样式</h1><p>原来版本的内链样式跟默认的字体很类似，这里进行修改。将链接文本设置为蓝色，鼠标划过时文字颜色加深，并显示下划线。修改文件<code>themes\next\source\css\_common\components\post\post.styl</code>，添加如下css样式：</p>
 <pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token class">.post-body</span> p a</span><span class="token punctuation">{</span>
   <span class="token selector">color: <span class="token id">#0593d3</span>;
   border-bottom: none;
@@ -742,7 +742,7 @@ archives: /archives/ || archive
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-基础设定"><span class="nav-number">1.</span> <span class="nav-text">1. 基础设定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#11-选择scheme"><span class="nav-number">1.1.</span> <span class="nav-text">1.1. 选择Scheme</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-设置语言"><span class="nav-number">1.2.</span> <span class="nav-text">1.2. 设置语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-设置菜单"><span class="nav-number">1.3.</span> <span class="nav-text">1.3. 设置菜单</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-next主题背景个性化diy"><span class="nav-number">2.</span> <span class="nav-text">2. Next主题背景个性化DIY</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#21-介绍一个图片网站"><span class="nav-number">2.1.</span> <span class="nav-text">2.1. 介绍一个图片网站</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#22-添加背景图片"><span class="nav-number">2.2.</span> <span class="nav-text">2.2. 添加背景图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#23-修改博客主体样式"><span class="nav-number">2.3.</span> <span class="nav-text">2.3. 修改博客主体样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#24-站内搜索"><span class="nav-number">2.4.</span> <span class="nav-text">2.4. 站内搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#241-algolia搜索服务集成"><span class="nav-number">2.4.1.</span> <span class="nav-text">2.4.1. algolia搜索服务集成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#242-本地搜索"><span class="nav-number">2.4.2.</span> <span class="nav-text">2.4.2. 本地搜索</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-隐藏网页底部的powered-by-hexo-强力驱动"><span class="nav-number">2.5.</span> <span class="nav-text">2.5. 隐藏网页底部的powered By Hexo / 强力驱动</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-修改内链文字样式"><span class="nav-number">3.</span> <span class="nav-text">3. 修改内链文字样式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础设定"><span class="nav-number">1.</span> <span class="nav-text">1. 基础设定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#选择scheme"><span class="nav-number">1.1.</span> <span class="nav-text">1.1. 选择Scheme</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置语言"><span class="nav-number">1.2.</span> <span class="nav-text">1.2. 设置语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置菜单"><span class="nav-number">1.3.</span> <span class="nav-text">1.3. 设置菜单</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#next主题背景个性化diy"><span class="nav-number">2.</span> <span class="nav-text">2. Next主题背景个性化DIY</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍一个图片网站"><span class="nav-number">2.1.</span> <span class="nav-text">2.1. 介绍一个图片网站</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加背景图片"><span class="nav-number">2.2.</span> <span class="nav-text">2.2. 添加背景图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改博客主体样式"><span class="nav-number">2.3.</span> <span class="nav-text">2.3. 修改博客主体样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#站内搜索"><span class="nav-number">2.4.</span> <span class="nav-text">2.4. 站内搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#algolia搜索服务集成"><span class="nav-number">2.4.1.</span> <span class="nav-text">2.4.1. algolia搜索服务集成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地搜索"><span class="nav-number">2.4.2.</span> <span class="nav-text">2.4.2. 本地搜索</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐藏网页底部的powered-by-hexo-强力驱动"><span class="nav-number">2.5.</span> <span class="nav-text">2.5. 隐藏网页底部的powered By Hexo / 强力驱动</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改内链文字样式"><span class="nav-number">3.</span> <span class="nav-text">3. 修改内链文字样式</span></a></li></ol></div>
             
 
           </div>
